@@ -18,7 +18,7 @@
         if (mte_option[mte_count] === ""){mte_option.splice(mte_count, 1);if (mte_count > 0) mte_count--;}
     }
     //console.log(mte_option);
-    mte_option = [{type:'circle', size:'10px', color:'blue', range:50, transition:'none', opacity:'1', render:'default', rotate:'none', translate:[0,0]},mte_option];
+    mte_option = [{type:'circle', size:'10px', color:'blue', range:50, transition:'none', opacity:'1', render:'default', rotate:'none', translate:'(0,0)'},mte_option];
     for (mte_count = 0; mte_count < mte_option[1].length; mte_count++){
         if(mte_option[1][mte_count].match(/type=/)){
             mte_option[0].type = mte_option[1][mte_count].replace(/type=/, ``);
