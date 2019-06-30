@@ -149,9 +149,9 @@
         case 'rhomb':
         case 'cat':
         case 'dog':
-        case 'star': console.log("MTE.js: Loading...");for(mte_count = 0; mte_count < mte_option.range-1;mte_count++){onMoveEvent(-100, -100);}break;
+        case 'star': for(mte_count = 0; mte_count < mte_option.range-1;mte_count++){onMoveEvent(-100, -100);}break;
     }
     document.onmousemove = function(e){if(mte_drag == 1)onMoveEvent(e.clientX, e.clientY);}
     document.addEventListener('touchmove',function(e){onMoveEvent(e.touches[0].clientX, e.touches[0].clientY);});
-    console.log("MTE.js: Loaded ver α");
+    console.log("MTE.js: Loaded ver β");
 })();
