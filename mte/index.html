@@ -7,20 +7,174 @@
     <title>MTE.js document</title>
 </head>
 <body>
+    <style>
+        body {
+            margin:0;
+            background-color:rgb(245, 245, 245);
+        }
+        #content {
+            position:relative;
+            width:1000px;
+            top:5vw;
+            left:50%;
+            transform:translateX(-50%);
+            padding:20px;
+            box-shadow:0 2px 5px lightslategray;
+            background-color:white;
+        }
+        header {
+            font-size:1.5vw;
+            width:100vw;
+            height:10vw;
+            box-shadow:0 1px 1vw lightslategray;
+            background-color:rgb(255, 180, 42);
+            color:white;
+            border-bottom:solid 5px orange;
+            text-shadow:0 0 1px white;
+        }
+        h1 {
+            margin:0;
+            position:relative;
+            top:50%;
+            left:10vw;
+            transform: translateY(-50%);
+        }
+        h4 {
+            margin-bottom:0;
+        }
+        pre {
+            background-color: rgb(246, 246, 246);
+            box-shadow:1px 1px 2px lightgray;
+            padding:3px;
+            padding-left:10px;
+            font-size:16px;
+            width:800px;
+            /*border-left: solid 5px rgb(92, 110, 189);*/
+            border-left: solid 5px rgb(255, 192, 75);
+        }
+        tag {
+            color:rgb(21, 75, 146);
+        }
+        id {
+            color:rgb(92, 189, 221);
+        }
+        opt {
+            color:rgb(216, 130, 96);
+        }
+        #sampleCode {
+            width:500px;
+        }
+        #sample {
+            position:absolute;
+            left:550px;
+        }
+    </style>
     <header>
         <h1>MTE.js <br>webアプリケーションガジェット</h1>
     </header>
     <nav></nav>
+<div id="content">
     <section>
         <h2>MTE.jsとは</h2>
         <p>
             MTE(MouseTrackinngEffect)はマウスカーソルの軌道上にエフェクトを発生させることができるプログラムです。 <br>
-            HTML上にスクリプトリンクとして記述することで、簡単に実装させることができます。
+            HTML上にスクリプトリンクとして記述することで、簡単に実装させることができます。<br>
+            ※ MTE.js は開発中のガジェットです。
         </p>
     </section>
+    <hr>
     <section>
         <h2>使い方</h2>
-
+        <h3>ベース</h3>
+        HTMLに以下のコードを書くことで、埋め込むことができます。
+<pre>&lt;<tag>script</tag> <id>src</id>=<opt>&quot;https://ao2324-00.github.io/mte/MTE.js&quot;</opt>&gt;
+    &nbsp;&nbsp;<span style="color:rgb(26, 139, 69);">オプション</span>
+&lt;/<tag>script</tag>&gt;</pre>
+        <h3>オプション</h3>
+        <ul>
+            <li><a href="#type">type エフェクトの形</a></li>
+            <li><a href="#color">color エフェクトの色</a></li>
+            <li><a href="#size">size エフェクトの大きさ</a></li>
+            <li><a href="#range">range エフェクトの表示数</a></li>
+            <li><a href="#opacity">opacity エフェクトの透明度</a></li>
+            <li><a href="#translate">translate エフェクトの平行移動</a></li>
+            <li><a href="#rotate">rotate　エフェクトの回転</a></li>
+            <li><a href="#transition">transition エフェクトのアニメーション</a></li>
+            <li><a href="#render">render エフェクトの表示方法</a></li>
+        </ul>
+        <h4 id="type">type エフェクトの形</h4>
+        <pre><id>type</id>=<opt>"タイプ名"</opt></pre>
+        <p>
+            エフェクトの形を指定します(デフォルトはcircle)。<br>
+            square : 四角形, 
+            circle : 円, 
+            rhomb　: ひし形, 
+            star : 星型, 
+            dog : 足跡, 
+            cat : 足跡
+        </p>
+        <h4 id="color">color エフェクトの色</h4>
+        <pre><id>color</id>=<opt>"色"</opt></pre>
+        <p>
+            エフェクトの色を指定します(デフォルトはblue)。<br>
+            指定方法は、<br>
+            色名, RGB, RGBA, グラデーション などがあります。
+        </p>
+        <h4 id="size">size エフェクトの大きさ</h4>
+        <pre><id>size</id>=<opt>"大きさ"</opt></pre>
+        <h4 id="range">range エフェクトの表示数</h4>
+        <pre><id>range</id>=<opt>"数値"</opt></pre>
+        <h4 id="opacity">opacity エフェクトの透明度</h4>
+        <pre><id>opacity</id>=<opt>"数値"</opt></pre>
+        <h4 id="translate">translate エフェクトの平行移動</h4>
+        <pre><id>translate</id>=<opt>"(x, y)"</opt></pre>
+        <h4 id="rotate">rotate　エフェクトの回転</h4>
+        <pre><id>rotate</id>=<opt>"角度"</opt></pre>
+        <pre><id>rotate</id>=<opt>"follow"</opt></pre>
+        <h4 id="transition">transition エフェクトのアニメーション</h4>
+        <pre><id>transition</id>=<opt>"(種類, 遅れ, 変化時間)"</opt></pre>
+        <h4 id="render">render エフェクトの表示方法</h4>
+        <pre><id>render</id>=<opt>"drag"</opt></pre>
     </section>
+    <hr>
+    <section>
+        <h2>サンプルプログラム</h2>
+        <h3>サンンプル1</h3>
+        <iframe id="sample" src="./sample1.html"></iframe>
+<pre id="sampleCode">&lt;<tag>script</tag> <id>src</id>=<opt>&quot;https://ao2324-00.github.io/mte/MTE.js&quot;</opt>&gt;
+    <id>type</id>=<opt>"star"</opt>
+    <id>color</id>=<opt>"rgb(20, 90, 255)"</opt>
+    <id>size</id>=<opt>"6-30px"</opt>
+    <id>range</id>=<opt>"100"</opt>
+    <id>opacity</id>=<opt>"0.5"</opt>
+&lt;/<tag>script</tag>&gt;</pre>
+
+        <h3>サンンプル2</h3>
+        <iframe id="sample" src="./sample2.html"></iframe>
+<pre id="sampleCode">&lt;<tag>script</tag> <id>src</id>=<opt>&quot;https://ao2324-00.github.io/mte/MTE.js&quot;</opt>&gt;
+    <id>type</id>=<opt>"circle"</opt>
+    <id>color</id>=<opt>"radial-gradient(orange, red)"</opt>
+    <id>size</id>=<opt>"4px,8px,12px"</opt>
+    <id>range</id>=<opt>"1000"</opt>
+    <id>render</id>=<opt>"drag"</opt>
+&lt;/<tag>script</tag>&gt;</pre>
+
+        <h3>サンンプル3</h3>
+        <iframe id="sample" src="./sample3.html"></iframe>
+<pre id="sampleCode">&lt;<tag>script</tag> <id>src</id>=<opt>&quot;https://ao2324-00.github.io/mte/MTE.js&quot;</opt>&gt;
+    <id>type</id>=<opt>"cat"</opt>
+    <id>color</id>=<opt>"rgb(90,50,0)"</opt>
+    <id>size</id>=<opt>"5px, 0px, 5px, 0px"</opt>
+    <id>range</id>=<opt>"700"</opt>
+    <id>opacity</id>=<opt>"0.5"</opt>
+    <id>translate</id>=<opt>"(20, 0), (0, 0), (-20, 0), (0, 0)"</opt>
+    <id>rotate</id>=<opt>"follow"</opt>
+    <id>transition</id>=<opt>"fade, 0.7, 1"</opt>
+&lt;/<tag>script</tag>&gt;</pre>
+    </section>
+</div>
+<footer>
+    
+</footer>
 </body>
 </html>
