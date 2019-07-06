@@ -4,17 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>MTE.js document</title>
+    <title>MTE.js リファレンス</title>
 </head>
 <body>
     <style>
+        #date {
+            color:gray;
+        }
         body {
             margin:0;
             background-color:rgb(245, 245, 245);
         }
         #content {
             position:relative;
-            width:1000px;
+            width:900px;
             top:5vw;
             left:50%;
             transform:translateX(-50%);
@@ -23,26 +26,37 @@
             background-color:white;
         }
         header {
-            font-size:1.5vw;
+            font-size:1.5vmax;
             width:100vw;
-            height:10vw;
+            height:10vmax;
             box-shadow:0 1px 1vw lightslategray;
             background-color:rgb(255, 180, 42);
             color:white;
             border-bottom:solid 5px orange;
             text-shadow:0 0 1px white;
         }
+        footer {
+            position:relative;
+            top:8vw;
+            width:100vw;
+            height:10vmax;
+            background-color:rgb(46, 46, 46);
+        }
         h1 {
+            width:900px;
+            display:table;
             margin:0;
             position:relative;
             top:50%;
-            left:10vw;
-            transform: translateY(-50%);
+            left:50%;
+            transform: translateX(-50%) translateY(-50%);
         }
         h4 {
             margin-bottom:0;
         }
         pre {
+            overflow:scroll;
+            color:gray;
             background-color: rgb(246, 246, 246);
             box-shadow:1px 1px 2px lightgray;
             padding:3px;
@@ -68,29 +82,91 @@
             position:absolute;
             left:550px;
         }
+        #goTop {
+            position:fixed;
+            bottom:3vmin;
+            right:3vmin;
+            width:50px;
+            height:50px;
+            color:rgba(71, 71, 71, 0.9);
+            background-color:rgba(255, 255, 255, 0.5);
+            border-radius:50%;
+            box-shadow:1px 1px 4px rgba(0, 0, 0, 0.3);
+        }
+        #goTop:hover{
+            color:white;
+            background-color:rgb(71, 71, 71);
+        }
+        #goTop > div {
+            display:table;
+            position:relative;
+            top:50%;
+            left:50%;
+            transform:translateX(-50%) translateY(-55%);
+            font-size:180%;
+
+        }
+        @media (max-width : 900px) {
+            h1 {
+                width:95vw;
+                padding:10px;
+            }
+            header {
+                width:100vw;
+            }
+            footer {
+                width:100vw;
+            }
+            #content {
+                width:90vw;
+            }
+            pre {
+                width:95%;
+            }
+            #sample {
+                position:relative;
+                left:5px;
+            }
+            #sampleCode {
+                width:95%;
+            }
+        }
     </style>
-    <header>
+    <header id="Top">
         <h1>MTE.js <br>webアプリケーションガジェット</h1>
     </header>
-    <nav></nav>
+    <nav>
+    </nav>
 <div id="content">
+    <div id="date"><time>2019-07-06</time>に更新</div>
     <section>
         <h2>MTE.jsとは</h2>
         <p>
             MTE(MouseTrackinngEffect)はマウスカーソルの軌道上にエフェクトを発生させることができるプログラムです。 <br>
             HTML上にスクリプトリンクとして記述することで、簡単に実装させることができます。<br>
-            ※ MTE.js は開発中のガジェットです。
+            ※ MTE.js は開発中の為、仕様が変更される可能性があります。
         </p>
     </section>
-    <hr>
     <section>
+        <h2>目次</h2>
+        <ol>
+            <li><a href="#howTo">使い方</a></li>
+            <ul>
+                <li><a href="#howTo_base">ベース</a></li>
+                <li><a href="#howTo_opt">オプション</a></li>
+            </ul>
+            <li><a href="#samplePgm">サンプルプログラム</a></li>
+        </ol>
+    </section>
+    <hr>
+    <section id="howTo">
         <h2>使い方</h2>
-        <h3>ベース</h3>
+        <h3 id="howTo_base">ベース</h3>
         HTMLに以下のコードを書くことで、埋め込むことができます。
 <pre>&lt;<tag>script</tag> <id>src</id>=<opt>&quot;https://ao2324-00.github.io/mte/MTE.js&quot;</opt>&gt;
     &nbsp;&nbsp;<span style="color:rgb(26, 139, 69);">オプション</span>
 &lt;/<tag>script</tag>&gt;</pre>
-        <h3>オプション</h3>
+        <h3 id="howTo_opt">オプション</h3>
         <ul>
             <li><a href="#type">type エフェクトの形</a></li>
             <li><a href="#color">color エフェクトの色</a></li>
@@ -106,38 +182,76 @@
         <pre><id>type</id>=<opt>"タイプ名"</opt></pre>
         <p>
             エフェクトの形を指定します(デフォルトはcircle)。<br>
-            square : 四角形, 
-            circle : 円, 
-            rhomb　: ひし形, 
-            star : 星型, 
-            dog : 足跡, 
-            cat : 足跡
+            <opt>"square"</opt> : 四角形,  
+            <opt>"circle"</opt> : 円,  
+            <opt>"rhomb"</opt> : ひし形,  
+            <opt>"star"</opt> : 星型,  
+            <opt>"dog"</opt> : 足跡,  
+            <opt>"cat"</opt> : 足跡
         </p>
         <h4 id="color">color エフェクトの色</h4>
         <pre><id>color</id>=<opt>"色"</opt></pre>
         <p>
             エフェクトの色を指定します(デフォルトはblue)。<br>
             指定方法は、<br>
-            色名, RGB, RGBA, グラデーション などがあります。
+            色名, RGB, RGBA, グラデーション などを使うことが出来ます。
         </p>
         <h4 id="size">size エフェクトの大きさ</h4>
         <pre><id>size</id>=<opt>"大きさ"</opt></pre>
+        <p>
+            エフェクトの大きさを指定します(デフォルトは10px)。<br>
+            サイズはpx以外の単位でも指定可能です。<br>
+            サイズを<opt>","</opt>で区切ることで複数のサイズを左から順に繰り返すことができます。<br>
+            また、<opt>"数値-数値px"</opt>のように<opt>"-"</opt>で区切ると、その範囲でランダムなサイズのエフェクトを表示させる事ができます。
+        </p>
         <h4 id="range">range エフェクトの表示数</h4>
         <pre><id>range</id>=<opt>"数値"</opt></pre>
+        <p>
+            エフェクトを何個まで表示させるかを指定します(デフォルトは50個)。<br>
+            1000個までの表示は問題なく可能ですが、四角形、円形以外のエフェクトはこれ以上表示すると描画が遅れる可能性があります。<br>
+            また、<id>transition</id>を使用しても描画が少し遅れる可能性があります。
+        </p>
         <h4 id="opacity">opacity エフェクトの透明度</h4>
         <pre><id>opacity</id>=<opt>"数値"</opt></pre>
+        <p>
+            エフェクトの透明度を指定します。<br>
+            数値は1.0(不透明)〜0.0(透明)で使用します。
+        </p>
         <h4 id="translate">translate エフェクトの平行移動</h4>
         <pre><id>translate</id>=<opt>"(x, y)"</opt></pre>
+        <p>
+            エフェクトの表示位置をずらすために使用します。<br>
+            <opt>"(x1, y1), (x2, y2)"</opt>のように<opt>","</opt>で区切って指定すると、左から順の繰り返しでずらす事がきます。<br>
+            <id>rotate</id>と併用すると、rotateが必ず先に適用されます。よって、指定角度に比例してx、y軸も角度が変化します。
+        </p>
         <h4 id="rotate">rotate　エフェクトの回転</h4>
         <pre><id>rotate</id>=<opt>"角度"</opt></pre>
-        <pre><id>rotate</id>=<opt>"follow"</opt></pre>
+        <pre><id>rotate</id>=<opt>"プロパティ"</opt></pre>
+        <p>
+            表示されるエフェクトの角度を指定します。<br>
+            プロパティに<opt>"follow"</opt>を指定すると、マウスカーソルがある方を常に上とした角度でエフェクトが表示されます。<br>
+            <id>translate</id>と併用すると、<id>rotate</id>が先に適用されます。
+        </p>
         <h4 id="transition">transition エフェクトのアニメーション</h4>
-        <pre><id>transition</id>=<opt>"(種類, 遅れ, 変化時間)"</opt></pre>
+        <pre><id>transition</id>=<opt>"(種類, 数値1, 数値2)"</opt></pre>
+        <p>
+            エフェクトが表示されてからのアニメーションを指定します。<br>
+            種類 : アニメーションの種類を指定します。<br>
+            数値1: 何秒後にアニメーションを開始するか。<br>
+            数値2: 何秒かけてアニメーションするか<br>
+            <ul>
+                <li>フェードアウト : <opt>"(fade, 数値1, 数値2)"</opt></li>
+            </ul>
+        </p>
         <h4 id="render">render エフェクトの表示方法</h4>
-        <pre><id>render</id>=<opt>"drag"</opt></pre>
+        <pre><id>render</id>=<opt>"プロパティ"</opt></pre>
+        <p>
+            エフェクトを表示するイベントを指定します。<br>
+            <opt>"drag"</opt> : ドラッグ中に表示します。
+        </p>
     </section>
     <hr>
-    <section>
+    <section id="samplePgm">
         <h2>サンプルプログラム</h2>
         <h3>サンンプル1</h3>
         <iframe id="sample" src="./sample1.html"></iframe>
@@ -176,5 +290,6 @@
 <footer>
     
 </footer>
+<a href="#Top"><div id="goTop"><div>▲</div></div></a>
 </body>
 </html>
