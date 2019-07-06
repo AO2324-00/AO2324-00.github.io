@@ -184,5 +184,5 @@
     }
     document.onmousemove = function(e){if(mte_drag == 1)onMoveEvent(e.clientX, e.clientY);}
     document.addEventListener('touchmove',function(e){onMoveEvent(e.touches[0].clientX, e.touches[0].clientY);});
-    console.log("MTE.js: ver α");
+    console.log("MTE.js: ver β");
 })();
