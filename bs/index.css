@@ -1,0 +1,98 @@
+body {
+    margin:0;
+}
+header {
+    width:100vw;
+    background-color:gray;
+}
+#bg-video{
+    position: relative;
+    top: 0;
+    left: 0;
+    min-width: 100%;
+    min-height: 100%;
+    width: 100%;
+    height: auto;
+    background: url('./TopImg.png') no-repeat;
+    background-size: cover;
+}
+video {
+    background-color:rgb(59, 59, 59);
+}
+#video {
+    float:left;
+    width: 400px;
+    height: auto;
+    padding:10px;
+}
+#video > video {
+    width:100%;
+    height:auto;
+}
+nav {
+    position: sticky;
+    top:0;
+    height:10vh;
+    width:100vw;
+    background-color:rgb(29, 29, 29);
+    z-index: 100;
+}
+nav > ul {
+    display:table;
+    position:relative;
+    top:50%;
+    left:50%;
+    transform:translateX(-50%) translateY(-50%);
+    margin:0;
+    padding:0;
+}
+a > li {
+    width:23vw;
+    float:left;
+    text-align:center;
+    list-style:none;
+    color:white;
+    padding:1vw;
+}
+a > li:hover {
+    background-color:rgb(73, 73, 73);
+    text-shadow:0 0 2px white;
+}
+section {
+    position: relative;
+    left:51%;
+    transform:translateX(-50%);
+    width:1000px;
+}
+h2 {
+    position: relative;
+    left : -1%;
+    padding:10px;
+    border-left:10px solid black;
+    background-color:rgb(87, 87, 87);
+    color:white;
+    -webkit-clip-path:polygon(0% 0%, 100% 0%, 97% 100%, 0% 100%);
+    -moz-clip-path:polygon(0% 0%, 100% 0%, 97% 100%, 0% 100%);
+    -ms-clip-path:polygon(0% 0%, 100% 0%, 97% 100%, 0% 100%);
+    clip-path:polygon(0% 0%, 100% 0%, 97% 100%, 0% 100%);
+}
+h3 {
+    margin-bottom:0;
+}
+h4 {
+    margin-bottom:5px;
+}
+ul {
+    margin:0;
+}
+@media (max-width : 1000px) {
+    section {
+        width:100vw;
+    }
+    #video {
+        float:left;
+        width: 100vw;
+        height: auto;
+        padding:10px;
+    }
+}

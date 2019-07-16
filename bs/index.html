@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./index.css">
+    <title>EV3</title>
+</head>
+<body>
+    <header id="Top">
+       <video id="bg-video" poster="./TopImg.png" preload="none" autoplay loop muted ><source src="./TopMv.mp4" type="video/mp4" /></video>
+    </header>
+    <nav>
+        <ul>
+            <a href="#Top"><li>Top</li></a>
+            <a href="#About"><li>About</li></a>
+            <a href="#Technology"><li>Technology</li></a>
+            <a href="#Gallary"><li>Gallery</li></a>
+        </ul>
+    </nav>
+    <section id="About" style="margin-top:50px;">
+        <h2>About</h2>
+        <h3>コンセプト：ゴミをアームで拾う掃除ロボット</h3>
+        <h3>Member</h3>
+        <h4>足部分 担当</h4>
+        <ul>
+            <li>馬明勇気</li>
+            <li>藤倉 紀輝</li>
+        </ul>
+        <h4>腕部分 担当</h4>
+        <ul>
+            <li>三好</li>
+            <li>竹田かずたか</li>
+        </ul>
+        <h4>コントローラ 担当</h4>
+        <ul>
+            <li>西尾明莉</li>
+            <li>坂本</li>
+        </ul>
+        <h4>システム 担当</h4>
+        <ul>
+            <li>松本碧</li>
+        </ul>
+        <h4>広報 担当</h4>
+        <ul>
+            <li>曽川慶来</li>
+        </ul>
+    </section>
+    <section id="Technology">
+        <h2>Technology</h2>
+        <h3>Construction</h3>
+        <p>
+            このロボットは，主に足と腕の二つの部位で構成されています．<br>
+            足には二つのタイヤがついており，自由自在に移動することができます．<br>
+            腕は2つのモータで制御されており，1つはアームの上げ下げ，もう一つは手を開け閉めを行っています．<br>
+            手の開け閉めにはゴムとワイヤを用い，腕自体がなるべく軽くなるよう工夫されています．
+        </p>
+        <h3>System</h3>
+        <p>
+            このロボットは本体であるEV3にLinux(EV3dev)をいれ，Pythonで動かしています．<br>
+            操作方法はev3が自動で動くオートマチックコントロールと，Macbookをコントローラとしたマニュアルコントロールの2種類があります．<br>
+            オートマチックでは，EV3が自ら探索し目標物を見つけるとアームを降ろします．<br>
+            マニュアルでは，EV3のPythonとMacbookのPythonでソケット通信を行い，キーボードの入力をリアルタイムでEV3に伝えます．
+        </p>
+        <h3>How to control</h3>
+        <p>
+            キーボードのW A S Dキーで移動，スペースキーでアームを降ろします．<br>
+            C キーでオートマチックコントロールをオンにすることができます．
+        </p>
+    </section>
+    <section id="Gallary">
+        <h2>Gallary</h2>
+        <div id="video">
+            <h3>Manuel control</h3>
+            <video src="./TopMv.mp4" poster="./TopImg.png" controls></video>
+        </div>
+        <div id="video">
+            <h3>Automatic control</h3>
+            <video src="./autoMv.mp4" poster="./autoImg.png" controls></video>
+        </div>
+        <div id="video">
+            <h3>開発中のArm</h3>
+            <video src="./armMv.mp4" controls></video>
+        </div>
+        <div id="video">
+            <h3>EV3</h3>
+            <img src="./ev3.jpg" alt="" width="100%">
+        </div>
+        <div id="video">
+            <h3>EV3dev</h3>
+            <img src="./ev3dev.jpg" alt="" width="100%">
+        </div>
+        <div id="video">
+            <h3>開発中の本体</h3>
+            <img src="./robot.jpg" alt="" width="100%">
+        </div>
+
+    </section>
+    <footer>
+
+    </footer>
+</body>
+</html>
