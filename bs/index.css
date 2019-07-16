@@ -5,6 +5,16 @@ header {
     width:100vw;
     background-color:gray;
 }
+#scroll {
+    font-size: 2vmax;
+    position:absolute;
+    top:65%;
+    left:50%;
+    transform:translateX(-50%);
+    z-index: 100;
+    color:rgba(255, 255, 255, 0.6);
+    text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.5);
+}
 #bg-video{
     position: relative;
     top: 0;
@@ -64,6 +74,14 @@ section {
     transform:translateX(-50%);
     width:1000px;
 }
+h1 {
+    font-size: 4vmax;
+    position:absolute;
+    left:3vw;
+    color:white;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
 h2 {
     position: relative;
     left : -1%;
@@ -86,13 +104,22 @@ ul {
     margin:0;
 }
 @media (max-width : 1000px) {
+    h1 {
+        font-size: 3.6vmax;
+        width:90vw;
+        top:5vh;
+        text-align: center;
+    }
     section {
-        width:100vw;
+        width:95vw;
     }
     #video {
         float:left;
-        width: 100vw;
+        width: 88vw;
         height: auto;
         padding:10px;
+    }
+    #scroll {
+        display: none;
     }
 }
