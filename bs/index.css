@@ -8,7 +8,7 @@ header {
 #scroll {
     font-size: 2vmax;
     position:absolute;
-    top:65%;
+    top:-12vw;
     left:50%;
     transform:translateX(-50%);
     z-index: 100;
