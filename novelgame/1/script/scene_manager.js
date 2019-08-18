@@ -1,20 +1,27 @@
 const bgm = new Audio();
 const se = new Audio();
 
-const name_box = document.getElementById("name_box");
-const text_box = document.getElementById("text_box");
+let name_box;
+let text_box;
+let text_display_speed = 60;
 
-const choice_window = document.getElementById("choice_window");
+let choice_window;
 
+function se_player (sceneP){
+    se.src = sceneP[1];
+    se.play();
+}
 
+bgm.addEventListener("ended",function () {
+    bgm.currentTime = 0;
+    bgm.play();
+}, false);
 function bgm_player (sceneP){
     switch (sceneP[1]) {
         case "play":
                 console.log("bgmplay");
                 bgm.src = sceneP[2];
-                bgm.loop = true;
                 bgm.play();
-                bgm.volume = 0.5;
             break;
         case "stop":
                 console.log("bgmstop");
@@ -43,8 +50,18 @@ function text_display (name, text, sce_count, string_counter = 0){
             str_counter++;
         }
     }
+    if (text[str_counter] != "["){
+        text_box.innerHTML = text.slice(0 , str_counter);
+    } else {
+        let str_counter_S = str_counter+1;
+        while (text[str_counter] != "]"){
+            str_counter++;
+        }
+        se.src = text.slice(str_counter_S , str_counter);
+        se.play();
+    }
     if (str_counter != text.length && scene_count == sce_count) {
-        setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", 30)
+        setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
     }
 }
 
@@ -101,6 +118,10 @@ function nextBtn(sceneP) {
 
 
 async function scene_play () {
+    name_box = document.getElementById("name_box");
+    text_box = document.getElementById("text_box");
+
+    choice_window = document.getElementById("choice_window");
     while(scene_count != scene_list[scene_number].length) {
         //console.log(scene_list[scene_number][scene_count]);
         let sceneP = scene_list[scene_number][scene_count];
@@ -121,7 +142,10 @@ async function scene_play () {
                     bgm_player(sceneP);
                     console.log("clicked");
                 break;
-        
+            case "se":
+                    se_player(sceneP);
+                    console.log("clicked");
+                break;
             case "change_scene":
                     scene_number = sceneP[1];
                     scene_count = 0;

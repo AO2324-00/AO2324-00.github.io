@@ -23,7 +23,7 @@
 
     <div id="save_data" style="display: none;">
     </div>
-
+    <div id="scene_box">
     <div id="scene" style="display: none;">
         <div id="renndering_box">
             <div id="character_box_L" class="character_box">
@@ -47,10 +47,24 @@
 
         </div>
     </div>
+    </div>
+    <div id="setting_winndow" style="display: none;">
+        <button class="closeBtn" onclick="btn('close_setting')">X</button>
+        <div style="font-size:30px;">環境設定</div>
+        <div>文章表示スピード</div>
+        <input id="text_display_speed_F" name="speed" type="radio" onclick="display_speed_btn(30)"><label for="text_display_speed_F" style="display:inline-block;position:relative;top:3px;left:3px;margin-right:8px;">早い</label>
+        <input id="text_display_speed_N" name="speed" type="radio" onclick="display_speed_btn(60)" checked=""><label for="text_display_speed_N" style="display:inline-block;position:relative;top:3px;left:3px;margin-right:8px;">普通</label>
+        <input id="text_display_speed_L" name="speed" type="radio" onclick="display_speed_btn(120)"><label for="text_display_speed_L" style="display:inline-block;position:relative;top:3px;left:3px;margin-right:8px;">遅い</label>
+        <div>オーディオ設定</div>
+        <label for="se_slider" style="display:inline-block;width:45px;">SE</label>
+        <input id="se_slider" type="range" minn="0" max="100" value="50"><br>
+        <label for="bgm_slider" style="display:inline-block;width:45px;">BGM</label>
+        <input id="bgm_slider" type="range" minn="0" max="100" value="50">
+    </div>
     
 </body>
 <script type="text/javascript">
-    const frame_name = ["top-title", "save_data", "scene"];
+    let frame_name = ["top-title", "save_data", "scene", "setting_winndow"];
     const scene_title = document.getElementById("top-title");
     const scene = document.getElementById("scene");
 
