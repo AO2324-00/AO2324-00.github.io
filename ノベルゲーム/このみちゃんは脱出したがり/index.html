@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <audio id="bgm" src=""></audio>
+    <audio id="se" src=""></audio>
+
+    <div id="top-title" class="">
+        <h1>このみちゃんは脱出したがり</h1>
+        <nav>
+            <button class="title_button" onclick="btn('start')">はじめから</button>
+            <button class="title_button" onclick="btn('continue')">つづきから</button>
+            <button class="title_button" onclick="btn('credit')">クレジット</button>
+            <button class="title_button" onclick="btn('setting')">環境設定</button>
+        </nav>
+    </div>
+
+    <div id="save_data" style="display: none;">
+    </div>
+
+    <div id="scene" style="display: none;">
+        <div id="renndering_box">
+            <div id="character_box_L" class="character_box">
+
+            </div>
+            <div id="character_box_R" class="character_box">
+
+            </div>
+        </div>
+        <nav>
+            <button class="title_button" onclick="btn('gotop')">タイトルに戻る</button>
+            <button class="title_button" onclick="btn('load')">ロード</button>
+            <button class="title_button" onclick="btn('save')">セーブ</button>
+            <button class="title_button" onclick="btn('setting')">環境設定</button>
+        </nav>
+        <div id="message_window">
+            <div id="name_box"></div>
+            <div id="text_box"></div>
+        </div>
+        <div id="choice_window">
+
+        </div>
+    </div>
+    
+</body>
+<script type="text/javascript">
+    const frame_name = ["top-title", "save_data", "scene"];
+    const scene_title = document.getElementById("top-title");
+    const scene = document.getElementById("scene");
+
+    let frame_number = 0;
+    let scene_number = -1;
+    let scene_count = 0;
+
+    for (let count = 0; count < frame_name.length; count++){
+        frame_name[count] = document.getElementById(frame_name[count]);
+    }
+</script>
+<script type="text/javascript" src="./script/title.js"></script>
+<script type="text/javascript" src="./script/scene_data.js"></script>
+<script type="text/javascript" src="./script/scene_manager.js"></script>
+<script type="text/javascript" src="./script/render.js"></script>
+<script type="text/javascript" src="./script/controler.js"></script>
+</html>
