@@ -4,14 +4,17 @@ console.log(scene_default);
 se.volume = 0.5;
 const se_slider = document.getElementById("se_slider");
 se_slider.addEventListener("change",function () {
+    for (let count = 0; count < se_list.length; count++){
+        se_list[count].volume = se_slider.value/100;
+    }
     se.volume = se_slider.value/100;
 });
 bgm.volume = 0.5;
 const bgm_slider = document.getElementById("bgm_slider");
 bgm_slider.addEventListener("change",function () {
-    console.log(bgm.volume);
-    bgm.volume = bgm_slider.value/100;
-    console.log(bgm.volume);
+    for (let count = 0; count < bgm_list.length; count++){
+        bgm_list[count].volume = bgm_slider.value/100;
+    }
 });
 
 function display_speed_btn(num){
@@ -52,6 +55,16 @@ function btn(key){
 
         case "close_setting":
                 frame_name[3].style.display = 'none';
+            break;
+        case "sound_on":
+                frame_name[4].style.display = 'none';
+                sounds_load();
+                sounds_mute();
+            break;
+        case "sound_mute":
+                frame_name[4].style.display = 'none';
+                sounds_load();
+                document.getElementById("mute_btn").checked = 'true';
             break;
         default:
             break;

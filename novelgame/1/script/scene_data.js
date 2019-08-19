@@ -5,15 +5,15 @@ scene_list[0].push(['darkening']);
 scene_list[0].push(['span', 1000]);
 scene_list[0].push(["text", "descriptive", "ある女の子らしい部屋の中で、<ruby><rb>脱出</rb><rp>（</rp><rt>だついで</rt><rp>）</rp></ruby>このみは一人頭を傾げていた。"]);
 scene_list[0].push(["text", "このみ", "「妹が私を閉じ込めた……」"]);
-scene_list[0].push(["bgm", "play", "./data_bgm/Close_Room_1_Gillthim.ogg"]);
+scene_list[0].push(["bgm", "play", 0]);
 scene_list[0].push(["fead", "in"]);
 scene_list[0].push(["text", "descriptive", "このみは俯くと、やがて肩を震わせはじめた。"]);
 scene_list[0].push(["text", "このみ", "「あはは！　よくやった妹！　こんな感じで自分の部屋から脱出してみたかったんだよなー」"]);
-scene_list[0].push(["text", "descriptive", "このみは高らかに笑うと部屋の真ん中の、膝下程の丸いテーブルに置いてあるヒントと書かれた紙を<span class=hide>[./data_se/01Paper.wav]</span>手に取った。"]);
+scene_list[0].push(["text", "descriptive", "このみは高らかに笑うと部屋の真ん中の、膝下程の丸いテーブルに置いてあるヒントと書かれた紙を<span class=hide>[0]</span>手に取った。"]);
 scene_list[0].push(["text", "このみ", "なるほど、ヒントがあるんだな。<br>「なになに……、幼馴染の男子に電話して脱出することがルール？　心当たりが一人しかいないんだけど」"]);
-scene_list[0].push(["text", "descriptive", "そういってこのみはスマホを取り出すと番号を入力<span class=hide>[./data_se/02Call.wav]</span>した。"]);
+scene_list[0].push(["text", "descriptive", "そういってこのみはスマホを取り出すと番号を入力<span class=hide>[1]</span>した。"]);
 
-scene_list[0].push(["choice",  "descriptive", "<span class=hide>[./data_se/03Notification.wav]</span>スマホの着信音がなった", [ "電話に出る", "電話に出ない" ] ,
+scene_list[0].push(["choice",  "descriptive", "<span class=hide>[2]</span>スマホの着信音がなった", [ "電話に出る", "電話に出ない" ] ,
     [  "skip" ] ,
     [ "loop", "descriptive", "こにみは少し苛立ちを見せながら、電話をかけ直した。" ]
 ]);
@@ -28,9 +28,9 @@ scene_list[0].push(["choice",  "descriptive", "『ねえもしもし？　聞こ
     ]
 ]);
 
-scene_list[0].push(["text", "descriptive", "このみはスマホを片方の手でもち、もう一つあった紙を<span class=hide>[./data_se/01Paper.wav]</span>手にした。"]);
+scene_list[0].push(["text", "descriptive", "このみはスマホを片方の手でもち、もう一つあった紙を<span class=hide>[0]</span>手にした。"]);
 scene_list[0].push(["text", "このみ", "『お、案外簡単そう。一つだけ問題解けばいいみたい。暇つぶしぐらいにはなりそうね』"]);
-scene_list[0].push(["bgm", "play", "./data_bgm/Close_Room_2_Gillthim.ogg"]);
+scene_list[0].push(["bgm", "play", 1]);
 scene_list[0].push([  "change_scene", 1]);
 
 //問題
@@ -66,7 +66,7 @@ scene_list[2].push(["text", "このみ", "『確かに人気……はありそ�
 scene_list[2].push(["text", "descriptive", "そういうと、このみはスマホで妹にメッセージを送った。"]);
 scene_list[2].push(["fead", 'out']);
 scene_list[2].push(["span", 1000]);
-scene_list[2].push(["text", "descriptive", "しばらくして返信を知らせる<span class=hide>[./data_se/03Notification.wav]</span>着信音が鳴った。"]);
+scene_list[2].push(["text", "descriptive", "しばらくして返信を知らせる<span class=hide>[2]</span>着信音が鳴った。"]);
 scene_list[2].push(["fead", 'in']);
 
 scene_list[2].push(["choice",  "このみ", "『……違うってさ！　人気ありそうじゃん！<br>うーん、ご飯はなくなったけど、わからないままなのも嫌ね。頑張ろう』", [  "答えは 総理大臣 だと伝える", "答えは スーパーアイドル だと伝える"] ,
@@ -79,7 +79,7 @@ scene_list[3].push(["text", "descriptive", "このみは納得いかない様子
 scene_list[3].push(["text", "このみ", "『にしてもなんで総理大臣……。理由があるって？　なら、信じるけど』"]);
 scene_list[3].push(["text", "descriptive", "まだ納得いかないといった様子だったが、このみはスマホで妹にメッセージを送った。"]);
 scene_list[3].push(["text",  "このみ", "『本当に総理大臣で正解なの？』"]);
-scene_list[3].push(["text", "descriptive", "とその時だった。<br><span class=hide>[./data_se/04OpenDoor.wav]</span>部屋のドアが無遠慮に開かれた。"]);
+scene_list[3].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[3].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[3].push([  "change_scene", 8]);
 
@@ -88,7 +88,7 @@ scene_list[4].push(["text", "このみ", "『私もそれだと思ってた！�
 scene_list[4].push(["text", "descriptive", "このみはすぐさまスマホで妹にメッセージを送ると、タダ飯が食べれる事を想像しているのか涎を垂らし始めた。"]);
 scene_list[4].push(["fead","out"]);
 scene_list[4].push(["span", 500]);
-scene_list[4].push(["se", "./data_se/03Notification.wav"]);
+scene_list[4].push(["se", 2]);
 scene_list[4].push(["span", 1000]);
 scene_list[4].push(["text", "descriptive", "数分もしないうちの返信。"]);
 scene_list[4].push(["fead","in"]);
@@ -107,7 +107,7 @@ scene_list[5].push(["text", "このみ", "『確かに人気……はありそ�
 scene_list[5].push(["text", "descriptive", "そういうと、このみはスマホで妹にメッセージを送った。"]);
 scene_list[5].push(["fead", 'out']);
 scene_list[5].push(["span", 1000]);
-scene_list[5].push(["text", "descriptive", "しばらくして返信を知らせる<span class=hide>[./data_se/03Notification.wav]</span>着信音が鳴った。"]);
+scene_list[5].push(["text", "descriptive", "しばらくして返信を知らせる<span class=hide>[2]</span>着信音が鳴った。"]);
 scene_list[5].push(["fead", 'in']);
 scene_list[5].push(["text",  "このみ", "『……違うってさ！　人気ありそうじゃん！<br>うーん、ってことは，総理大臣が答え ?』"]);
 scene_list[5].push([  "change_scene", 10]);
@@ -118,7 +118,7 @@ scene_list[6].push(["text", "descriptive", "このみは納得いかない様子
 scene_list[6].push(["text", "このみ", "『にしてもなんで総理大臣……。理由があるって？　なら、信じるけど』"]);
 scene_list[6].push(["text", "descriptive", "まだ納得いかないといった様子だったが、このみはスマホで妹にメッセージを送った。"]);
 scene_list[6].push(["text",  "このみ", "『本当に総理大臣で正解なの？』"]);
-scene_list[6].push(["text", "descriptive", "とその時だった。<br><span class=hide>[./data_se/04OpenDoor.wav]</span>部屋のドアが無遠慮に開かれた。"]);
+scene_list[6].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[6].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[6].push([  "change_scene", 9]);
 
@@ -127,7 +127,7 @@ scene_list[7].push(["text", "このみ", "『私もそれかもって思って�
 scene_list[7].push(["text", "descriptive", "このみはすぐさまスマホで妹にメッセージを送ると、タダ飯が食べれる事を想像しているのか涎を垂らし始めた"]);
 scene_list[7].push(["fead","out"]);
 scene_list[7].push(["span", 500]);
-scene_list[7].push(["se", "./data_se/03Notification.wav"]);
+scene_list[7].push(["se", 2]);
 scene_list[7].push(["span", 1000]);
 scene_list[7].push(["text", "descriptive", "数分もしないうちの返信。"]);
 scene_list[7].push(["fead","in"]);
@@ -137,7 +137,7 @@ scene_list[7].push([  "change_scene", 10]);
 console.log(scene_list);
 
 //エンディング
-scene_list[8].push(["se", "./data_se/05Correct_answer.wav"]);
+scene_list[8].push(["se", 4]);
 scene_list[8].push(["bgm", "stop"]);
 scene_list[8].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[8].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
@@ -150,7 +150,7 @@ scene_list[8].push(["text", "妹", "うぅ……"]);
 scene_list[8].push(["text", "このみ", "『あんたもそこで見てないで早く出て来て。　食べに行くよ！』"]);
 
 //失敗エンディング1
-scene_list[9].push(["se", "./data_se/05Correct_answer.wav"]);
+scene_list[9].push(["se", 4]);
 scene_list[9].push(["bgm", "stop"]);
 scene_list[9].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[9].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
@@ -159,7 +159,7 @@ scene_list[9].push(["text",  "このみ", "『一緒に考えてくれてあり�
 scene_list[9].push(["text", "このみ", "『あんたも行くのよ！』<br>『そんなところで見てないで、早く出て来なさい。』"]);
 
 //失敗エンディング2
-scene_list[10].push(["text", "descriptive", "とその時だった。<br><span class=hide>[./data_se/04OpenDoor.wav]</span>部屋のドアが無遠慮に開かれた。"]);
+scene_list[10].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[10].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[10].push(["bgm", "stop"]);
 scene_list[10].push(["text", "妹", "もう！お姉ちゃん達、全然正解しないじゃん！"]);

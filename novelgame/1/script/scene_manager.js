@@ -1,5 +1,3 @@
-const bgm = new Audio();
-const se = new Audio();
 
 let name_box;
 let text_box;
@@ -46,36 +44,6 @@ function fade (option = "normal"){
     }
 }
 
-function se_player (sceneP){
-    se.src = sceneP[1];
-    se.load();
-    se.play();
-}
-
-bgm.addEventListener("ended",function () {
-    bgm.currentTime = 0;
-    bgm.load();
-    bgm.play();
-}, false);
-function bgm_player (sceneP){
-    switch (sceneP[1]) {
-        case "play":
-                console.log("bgmplay");
-                bgm.src = sceneP[2];
-                bgm.load();
-                bgm.play();
-            break;
-        case "stop":
-                console.log("bgmstop");
-                bgm.pause();
-                bgm.currentTime = 0;
-            break;
-    
-        default:
-            break;
-    }
-}
-
 function text_display (name, text, sce_count, string_counter = 0){
 
     let str_counter = string_counter;
@@ -99,9 +67,7 @@ function text_display (name, text, sce_count, string_counter = 0){
         while (text[str_counter] != "]"){
             str_counter++;
         }
-        se.src = text.slice(str_counter_S , str_counter);
-        se.load();
-        se.play();
+        se_list[Number(text.slice(str_counter_S , str_counter) )].play();
     }
     if (str_counter != text.length) {
         if (scene_count == sce_count){

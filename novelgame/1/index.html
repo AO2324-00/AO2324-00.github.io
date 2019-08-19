@@ -59,16 +59,24 @@
         <input id="text_display_speed_M" name="speed" type="radio" onclick="display_speed_btn(60)" checked=""><label  class="radio_label" for="text_display_speed_M">普通</label>
         <input id="text_display_speed_L" name="speed" type="radio" onclick="display_speed_btn(120)"><label  class="radio_label" for="text_display_speed_L">遅い</label>
         <div>オーディオ設定</div>
+        <input id="mute_btn" type="checkbox" onclick="sounds_mute()"> 
+        <label class="radio_label" for="mute_btn">Mute</label><br>
         <label for="se_slider" style="display:inline-block;width:45px;">SE</label>
         <input id="se_slider" type="range" minn="0" max="100" value="50"><br>
         <label for="bgm_slider" style="display:inline-block;width:45px;">BGM</label>
         <input id="bgm_slider" type="range" minn="0" max="100" value="50">
         <style id="font_size">.font_size { font-size: 20px}</style>
     </div>
+    <div id="warning" style="">
+        <div>このサイトは音声が流れます</div>
+        <div>音量は環境設定から変更することが可能です</div>
+        <button class="warning_button" onclick="btn('sound_on')">OK</button>
+        <button class="warning_button" onclick="btn('sound_mute')">Muteにする</button>
+    </div>
     
 </body>
 <script type="text/javascript">
-    let frame_name = ["top-title", "save_data", "scene", "setting_winndow"];
+    let frame_name = ["top-title", "save_data", "scene", "setting_winndow", "warning"];
     const scene_title = document.getElementById("top-title");
     const scene = document.getElementById("scene");
 
@@ -80,7 +88,7 @@
         frame_name[count] = document.getElementById(frame_name[count]);
     }
 </script>
-<script type="text/javascript" src="./script/title.js"></script>
+<script type="text/javascript" src="./script/sounds.js"></script>
 <script type="text/javascript" src="./script/scene_data.js"></script>
 <script type="text/javascript" src="./script/scene_manager.js"></script>
 <script type="text/javascript" src="./script/render.js"></script>
