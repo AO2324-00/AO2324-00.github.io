@@ -3,6 +3,8 @@ let name_box;
 let text_box;
 let text_display_speed = 60;
 
+let text_displaying = false;
+
 let choice_window;
 
 function span (num){
@@ -45,41 +47,44 @@ function fade (option = "normal"){
 }
 
 function text_display (name, text, sce_count, string_counter = 0){
-
-    let str_counter = string_counter;
-    if (name == "descriptive"){
-        name_box.innerHTML = '';
-    }else {
-        name_box.innerHTML = '<div id="name">'+name+'</div>';
-    }
-    
-    if (text[str_counter] != "<"){
-        text_box.innerHTML = text.slice(0 , str_counter);
-    } else {
-        while (text[str_counter] != ">"){
-            str_counter++;
-        }
-    }
-    if (text[str_counter] != "["){
-        text_box.innerHTML = text.slice(0 , str_counter);
-    } else {
-        let str_counter_S = str_counter+1;
-        while (text[str_counter] != "]"){
-            str_counter++;
-        }
-        se_list[Number(text.slice(str_counter_S , str_counter) )].play();
-    }
-    if (str_counter != text.length) {
-        if (scene_count == sce_count){
-            setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
-        } else {
-            setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ text.length +")", 0);
+    if (text_displaying == true){
+        let str_counter = string_counter;
+        if (name == "descriptive"){
+            name_box.innerHTML = '';
+        }else {
+            name_box.innerHTML = '<div id="name">'+name+'</div>';
         }
         
+        if (text[str_counter] != "<"){
+            text_box.innerHTML = text.slice(0 , str_counter);
+        } else {
+            while (text[str_counter] != ">"){
+                str_counter++;
+            }
+        }
+        if (text[str_counter] != "["){
+            text_box.innerHTML = text.slice(0 , str_counter);
+        } else {
+            let str_counter_S = str_counter+1;
+            while (text[str_counter] != "]"){
+                str_counter++;
+            }
+            se_list[Number(text.slice(str_counter_S , str_counter) )].play();
+        }
+        if (str_counter != text.length) {
+            if (scene_count == sce_count){
+                setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
+            } else {
+                setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ text.length +")", 0);
+                text_displaying = false;
+            }
+            
+        } else text_displaying = false;
     }
 }
 
 function choiceBtn(sceneP) {
+    text_displaying = true;
     text_display( sceneP[1], sceneP[2], scene_count );
     return new Promise(function(resolve) {
         for (let count = 0; count < sceneP[3].length; count++) {
@@ -123,11 +128,24 @@ function choiceBtn(sceneP) {
         }
     });
 }
-function nextBtn(sceneP) {
-    text_display( sceneP[1], sceneP[2], scene_count );
+function next() {
     return new Promise(function(resolve) {
         text_box.addEventListener("click", resolve, {once: true});
     });
+}
+async function nextBtn(sceneP) {
+    text_displaying = true;
+    text_display( sceneP[1], sceneP[2], scene_count );
+    await next(sceneP);
+    if (text_displaying == true) {
+        text_displaying = false;
+        text_box.innerHTML = sceneP[2];
+        if (sceneP[2].indexOf('[') !== -1){
+            sceneP[2] = sceneP[2].match(/\[(.*?)\]/)[0].replace(/\[|\]/g, '');
+            se_list[Number(sceneP[2])].play();
+        }
+        await next(sceneP);
+    }
 }
 
 
