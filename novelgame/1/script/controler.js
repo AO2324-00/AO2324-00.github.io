@@ -43,8 +43,9 @@ function btn(key){
                 frame_name[frame_number = 0].style.display = 'initial';
                 scene_number = 0;
                 scene_count = 0;
-                bgm.pause();
-                bgm.currentTime = 0;
+                bgm_list[bgm_num].pause();
+                bgm_list[bgm_num].currentTime = 0;
+                bgm_num = -1;
                 document.getElementById("scene_box").innerHTML = scene_default;
                 frame_name[2] = document.getElementById("scene");
             break;
