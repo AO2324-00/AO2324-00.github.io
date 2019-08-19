@@ -48,11 +48,13 @@ function fade (option = "normal"){
 
 function se_player (sceneP){
     se.src = sceneP[1];
+    se.load();
     se.play();
 }
 
 bgm.addEventListener("ended",function () {
     bgm.currentTime = 0;
+    bgm.load();
     bgm.play();
 }, false);
 function bgm_player (sceneP){
@@ -60,6 +62,7 @@ function bgm_player (sceneP){
         case "play":
                 console.log("bgmplay");
                 bgm.src = sceneP[2];
+                bgm.load();
                 bgm.play();
             break;
         case "stop":
@@ -97,6 +100,7 @@ function text_display (name, text, sce_count, string_counter = 0){
             str_counter++;
         }
         se.src = text.slice(str_counter_S , str_counter);
+        se.load();
         se.play();
     }
     if (str_counter != text.length) {
@@ -114,7 +118,7 @@ function choiceBtn(sceneP) {
     return new Promise(function(resolve) {
         for (let count = 0; count < sceneP[3].length; count++) {
             (function(countIn) {
-                choice_window.insertAdjacentHTML('beforeend', '<button id="choiceBtn'+countIn+'" class="choiceBtn">'+sceneP[3][countIn]+'</button>');
+                choice_window.insertAdjacentHTML('beforeend', '<button id="choiceBtn'+countIn+'" class="choiceBtn font_size">'+sceneP[3][countIn]+'</button>');
                 document.getElementById("choiceBtn"+countIn).addEventListener("click", async function(){
                     choice_window.innerHTML = "";
                     switch (sceneP[4+countIn][0]) {

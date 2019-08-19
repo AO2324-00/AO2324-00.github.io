@@ -18,6 +18,11 @@ function display_speed_btn(num){
     text_display_speed = num;
 }
 
+function font_size_btn(num){
+    console.log("font resize")
+    document.getElementById("font_size").innerHTML = '.font_size { font-size: '+ num +'px}';
+}
+
 function btn(key){
     console.log(key);
     switch (key) {
