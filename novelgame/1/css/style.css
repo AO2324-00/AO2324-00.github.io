@@ -82,6 +82,31 @@ input[type="radio"] {
     width : 100%;
     height:10vh;
 }
+
+#still_box {
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:100vh;
+    pointer-events: none;
+}
+.black {
+    background-color:black;
+}
+.fade {
+    animation: fade 1.5s linear 0s 1 normal forwards running, fade 1.5s linear 1.75s 1 reverse forwards running;
+}
+.fadeout {
+    animation: fade 1.5s linear 0s 1 normal forwards running;
+}
+.fadein {
+    animation: fade 1.5s linear 0s 1 reverse forwards running;
+}
+@keyframes fade {
+    0% {background-color: rgba(0, 0, 0, 0)}
+    100% {background-color:black}
+}
+
 @media screen and (orientation: portrait) {/*縦長 screen */
     h1 {
         color:red;

@@ -7,6 +7,45 @@ let text_display_speed = 60;
 
 let choice_window;
 
+function span (num){
+    return new Promise(function(resolve) { 
+        console.log("span:"+num);
+        setTimeout(function() { resolve() }, num);
+    });
+}
+
+function fade (option = "normal"){
+    const still_box = document.getElementById('still_box');
+    switch (option) {
+        case 'normal':
+            return new Promise(function(resolve) {
+                still_box.className = 'fade';
+                still_box.classList.toggle('fade');
+                still_box.offsetWidth = still_box.offsetWidth;
+                still_box.classList.toggle('fade');    
+                setTimeout(function() { resolve() }, 3000);
+            });
+        case 'in':
+            return new Promise(function(resolve) {
+                still_box.className = 'fadein';
+                still_box.classList.toggle('fadein');
+                still_box.offsetWidth = still_box.offsetWidth;
+                still_box.classList.toggle('fadein');    
+                setTimeout(function() { resolve() }, 1000);
+            });
+        case 'out':
+            return new Promise(function(resolve) {
+                still_box.className = 'fadeout';
+                still_box.classList.toggle('fadeout');
+                still_box.offsetWidth = still_box.offsetWidth;
+                still_box.classList.toggle('fadeout');    
+                setTimeout(function() { resolve() }, 1000);
+            });
+        default:
+            break;
+    }
+}
+
 function se_player (sceneP){
     se.src = sceneP[1];
     se.play();
@@ -60,8 +99,13 @@ function text_display (name, text, sce_count, string_counter = 0){
         se.src = text.slice(str_counter_S , str_counter);
         se.play();
     }
-    if (str_counter != text.length && scene_count == sce_count) {
-        setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
+    if (str_counter != text.length) {
+        if (scene_count == sce_count){
+            setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
+        } else {
+            setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ text.length +")", 0);
+        }
+        
     }
 }
 
@@ -144,6 +188,19 @@ async function scene_play () {
                 break;
             case "se":
                     se_player(sceneP);
+                    console.log("clicked");
+                break;
+            case "fead":
+                    await fade(sceneP[1]);
+                    console.log("clicked");
+                break;
+            case "span":
+                    console.log("span load:"+sceneP[1]);
+                    await span(sceneP[1]);
+                    console.log("clicked");
+                break;
+            case "darkening":
+                    document.getElementById('still_box').className = 'black';
                     console.log("clicked");
                 break;
             case "change_scene":
