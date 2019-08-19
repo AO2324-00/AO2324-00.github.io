@@ -4,6 +4,7 @@ let text_box;
 let text_display_speed = 60;
 
 let text_displaying = false;
+let text_display_loop;
 
 let choice_window;
 
@@ -73,7 +74,7 @@ function text_display (name, text, sce_count, string_counter = 0){
         }
         if (str_counter != text.length) {
             if (scene_count == sce_count){
-                setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
+                text_display_loop = setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ (str_counter+1) +")", text_display_speed);
             } else {
                 setTimeout("text_display ('"+ name +"', '"+text+"', "+ sce_count +", "+ text.length +")", 0);
                 text_displaying = false;
@@ -92,6 +93,7 @@ function choiceBtn(sceneP) {
                 choice_window.insertAdjacentHTML('beforeend', '<button id="choiceBtn'+countIn+'" class="choiceBtn font_size">'+sceneP[3][countIn]+'</button>');
                 document.getElementById("choiceBtn"+countIn).addEventListener("click", async function(){
                     choice_window.innerHTML = "";
+                    clearTimeout(text_display_loop);
                     switch (sceneP[4+countIn][0]) {
                         case "next":
                                 text_box.style.cursor = 'pointer';
@@ -139,6 +141,7 @@ async function nextBtn(sceneP) {
     await next(sceneP);
     if (text_displaying == true) {
         text_displaying = false;
+        clearTimeout( text_display_loop );
         text_box.innerHTML = sceneP[2];
         if (sceneP[2].indexOf('[') !== -1){
             sceneP[2] = sceneP[2].match(/\[(.*?)\]/)[0].replace(/\[|\]/g, '');
