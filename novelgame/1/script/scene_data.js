@@ -79,6 +79,7 @@ scene_list[3].push(["text", "descriptive", "このみは納得いかない様子
 scene_list[3].push(["text", "このみ", "『にしてもなんで総理大臣……。理由があるって？　なら、信じるけど』"]);
 scene_list[3].push(["text", "descriptive", "まだ納得いかないといった様子だったが、このみはスマホで妹にメッセージを送った。"]);
 scene_list[3].push(["text",  "このみ", "『本当に総理大臣で正解なの？』"]);
+scene_list[3].push(["bgm", "stop"]);
 scene_list[3].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[3].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[3].push([  "change_scene", 8]);
@@ -118,6 +119,7 @@ scene_list[6].push(["text", "descriptive", "このみは納得いかない様子
 scene_list[6].push(["text", "このみ", "『にしてもなんで総理大臣……。理由があるって？　なら、信じるけど』"]);
 scene_list[6].push(["text", "descriptive", "まだ納得いかないといった様子だったが、このみはスマホで妹にメッセージを送った。"]);
 scene_list[6].push(["text",  "このみ", "『本当に総理大臣で正解なの？』"]);
+scene_list[6].push(["bgm", "stop"]);
 scene_list[6].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[6].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[6].push([  "change_scene", 9]);
@@ -138,7 +140,6 @@ console.log(scene_list);
 
 //エンディング
 scene_list[8].push(["se", 4]);
-scene_list[8].push(["bgm", "stop"]);
 scene_list[8].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[8].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
 scene_list[8].push(["text", "このみ", "『まじか。ふうっ！　これでタダ飯だ』"]);
@@ -151,7 +152,6 @@ scene_list[8].push(["text", "このみ", "『あんたもそこで見てない�
 
 //失敗エンディング1
 scene_list[9].push(["se", 4]);
-scene_list[9].push(["bgm", "stop"]);
 scene_list[9].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[9].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
 scene_list[9].push(["text", "このみ", "『まじか。ふうっ！　まあ、いい暇つぶしぐらいにはなったわね』"]);
@@ -159,9 +159,9 @@ scene_list[9].push(["text",  "このみ", "『一緒に考えてくれてあり�
 scene_list[9].push(["text", "このみ", "『あんたも行くのよ！』<br>『そんなところで見てないで、早く出て来なさい。』"]);
 
 //失敗エンディング2
+scene_list[10].push(["bgm", "stop"]);
 scene_list[10].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
 scene_list[10].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
-scene_list[10].push(["bgm", "stop"]);
 scene_list[10].push(["text", "妹", "もう！お姉ちゃん達、全然正解しないじゃん！"]);
 scene_list[10].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
 scene_list[10].push(["text", "このみ", "『まじか。ふうっ...　やっと解放された...』"]);
