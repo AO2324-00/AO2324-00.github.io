@@ -1,7 +1,7 @@
 
 let name_box;
 let text_box;
-let text_display_speed = 60;
+let text_display_speed;
 
 let text_displaying = false;
 let text_display_loop;
@@ -158,8 +158,8 @@ async function scene_play () {
 
     choice_window = document.getElementById("choice_window");
     while(scene_count != scene_list[scene_number].length) {
-        //console.log(scene_list[scene_number][scene_count]);
         let sceneP = scene_list[scene_number][scene_count];
+        console.log('scene'+ scene_count + '(' + sceneP[0] + ')');
         switch (sceneP[0] ) {
             case "text":
                 text_box.style.cursor = 'pointer';
@@ -205,7 +205,6 @@ async function scene_play () {
         }
 
         //let result = await choiceBtn(10);
-        console.log(scene_count);
         scene_count++;
     }
 }

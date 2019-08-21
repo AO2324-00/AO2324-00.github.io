@@ -1,29 +1,88 @@
+
+let storage = localStorage;
+let setting_data;
+if (storage.length == 0){
+    console.log("null")
+
+    setting_data = [0,0,0.5,0.5];
+    storage.setItem('setting_data', JSON.stringify(setting_data) );
+    storage.setItem('save_data', JSON.stringify({}) );
+} else {
+    setting_data = JSON.parse(storage.getItem('setting_data') );
+}
+console.log(storage);
+
 const scene_default = document.getElementById("scene").outerHTML;
 console.log(scene_default);
 
-se.volume = 0.5;
 const se_slider = document.getElementById("se_slider");
+se_slider.value = setting_data[2]*100;
+for (let count = 0; count < se_list.length; count++){
+    se_list[count].volume = setting_data[2];
+}
 se_slider.addEventListener("change",function () {
     for (let count = 0; count < se_list.length; count++){
         se_list[count].volume = se_slider.value/100;
     }
-    se.volume = se_slider.value/100;
+    setting_data[2] = se_slider.value/100;
+    storage.setItem('setting_data', JSON.stringify(setting_data) );
 });
-bgm.volume = 0.5;
+
 const bgm_slider = document.getElementById("bgm_slider");
+bgm_slider.value = setting_data[3]*100;
+for (let count = 0; count < bgm_list.length; count++){
+    bgm_list[count].volume = setting_data[3];
+}
 bgm_slider.addEventListener("change",function () {
     for (let count = 0; count < bgm_list.length; count++){
         bgm_list[count].volume = bgm_slider.value/100;
     }
+    setting_data[3] = bgm_slider.value/100;
+    storage.setItem('setting_data', JSON.stringify(setting_data) );
 });
 
+display_speed_btn(setting_data[1] );
+document.getElementById("text_display_speed_"+setting_data[1] ).checked = true;
 function display_speed_btn(num){
-    text_display_speed = num;
+    switch (num) {
+        case -1:
+            text_display_speed = 30;
+            break;
+        case 0:
+            text_display_speed = 60;
+            break;
+         case 1:
+            text_display_speed = 120;
+            break;
+    
+        default:
+            break;
+    }
+    setting_data[1] = num;
+    storage.setItem('setting_data', JSON.stringify(setting_data) );
 }
 
+font_size_btn(setting_data[0] );
+document.getElementById("font_size_"+setting_data[0] ).checked = true;
 function font_size_btn(num){
     console.log("font resize")
-    document.getElementById("font_size").innerHTML = '.font_size { font-size: '+ num +'px}';
+    const font_size = document.getElementById("font_size")
+    switch (num) {
+        case -1:
+            font_size.innerHTML = '.font_size { font-size: 15px}';
+            break;
+        case 0:
+            font_size.innerHTML = '.font_size { font-size: 20px}';
+            break;
+         case 1:
+            font_size.innerHTML = '.font_size { font-size: 25px}';
+            break;
+    
+        default:
+            break;
+    }
+    setting_data[0] = num;
+    storage.setItem('setting_data', JSON.stringify(setting_data) );
 }
 
 function btn(key){
@@ -41,13 +100,18 @@ function btn(key){
         case "gotop":
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 0].style.display = 'initial';
-                scene_number = 0;
+                scene_number = -1;
                 scene_count = 0;
                 bgm_list[bgm_num].pause();
                 bgm_list[bgm_num].currentTime = 0;
                 bgm_num = -1;
                 document.getElementById("scene_box").innerHTML = scene_default;
                 frame_name[2] = document.getElementById("scene");
+            break;
+
+        case "load":
+            let data = localStorage.getItem("myCat");
+            console.log(data);
             break;
 
         case "setting":

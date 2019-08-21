@@ -11,7 +11,6 @@ function sounds_load(){
         bgm_list[count] = new Audio();
         bgm_list[count].src = sound_tmp;
         bgm_list[count].load();
-        bgm_list[count].volume = 0.5;
         bgm_list[count].addEventListener("ended",function () {
             bgm_list[count].currentTime = 0;
             bgm_list[count].play();

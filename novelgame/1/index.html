@@ -12,13 +12,17 @@
     <audio id="se" src=""></audio>
 
     <div id="top-title" class="">
-        <h1>このみちゃんは脱出したがり</h1>
-        <nav>
-            <button class="title_button" onclick="btn('start')">はじめから</button>
-            <button class="title_button" onclick="btn('continue')">つづきから</button>
-            <button class="title_button" onclick="btn('credit')">クレジット</button>
-            <button class="title_button" onclick="btn('setting')">環境設定</button>
-        </nav>
+        <div>
+            <div>
+                <p style="display:inline-block;">このみちゃんは</p><p style="display:inline-block;">脱出したがり</p>
+            </div>
+            <nav>
+                <button class="title_button" onclick="btn('start')">はじめから</button>
+                <button class="title_button" onclick="btn('continue')">つづきから</button>
+                <button class="title_button" onclick="btn('credit')">クレジット</button>
+                <button class="title_button" onclick="btn('setting')">環境設定</button>
+            </nav>
+        </div>
     </div>
 
     <div id="save_data" style="display: none;">
@@ -35,10 +39,10 @@
         </div>
         <div id="still_box" class=""></div>
         <nav>
-            <button class="title_button" onclick="btn('gotop')">タイトルに戻る</button>
-            <button class="title_button" onclick="btn('load')">ロード</button>
-            <button class="title_button" onclick="btn('save')">セーブ</button>
-            <button class="title_button" onclick="btn('setting')">環境設定</button>
+            <button class="control_button" onclick="btn('gotop')">タイトルに戻る</button>
+            <button class="control_button" onclick="btn('load')">ロード</button>
+            <button class="control_button" onclick="btn('save')">セーブ</button>
+            <button class="control_button" onclick="btn('setting')">環境設定</button>
         </nav>
         <div id="message_window">
             <div id="name_box"></div>
@@ -51,27 +55,27 @@
         <button class="closeBtn" onclick="btn('close_setting')">X</button>
         <div style="font-size:30px;">環境設定</div>
         <div>文字サイズ</div>
-        <input id="font_size_S" name="size" type="radio" onclick="font_size_btn(15)"><label class="radio_label" for="font_size_S">小さい</label>
-        <input id="font_size_M" name="size" type="radio" onclick="font_size_btn(20)" checked=""><label  class="radio_label" for="font_size_M">普通</label>
-        <input id="font_size_L" name="size" type="radio" onclick="font_size_btn(25)"><label  class="radio_label" for="font_size_L">大きい</label>
+        <input id="font_size_-1" name="size" type="radio" onclick="font_size_btn(-1)"><label class="radio_label" for="font_size_-1">小さい</label>
+        <input id="font_size_0" name="size" type="radio" onclick="font_size_btn(0)"><label  class="radio_label" for="font_size_0">普通</label>
+        <input id="font_size_1" name="size" type="radio" onclick="font_size_btn(1)"><label  class="radio_label" for="font_size_1">大きい</label>
         <div>文章表示スピード</div>
-        <input id="text_display_speed_F" name="speed" type="radio" onclick="display_speed_btn(30)"><label class="radio_label" for="text_display_speed_F">早い</label>
-        <input id="text_display_speed_M" name="speed" type="radio" onclick="display_speed_btn(60)" checked=""><label  class="radio_label" for="text_display_speed_M">普通</label>
-        <input id="text_display_speed_L" name="speed" type="radio" onclick="display_speed_btn(120)"><label  class="radio_label" for="text_display_speed_L">遅い</label>
+        <input id="text_display_speed_-1" name="speed" type="radio" onclick="display_speed_btn(-1)"><label class="radio_label" for="text_display_speed_-1">早い</label>
+        <input id="text_display_speed_0" name="speed" type="radio" onclick="display_speed_btn(0)"><label  class="radio_label" for="text_display_speed_0">普通</label>
+        <input id="text_display_speed_1" name="speed" type="radio" onclick="display_speed_btn(1)"><label  class="radio_label" for="text_display_speed_1">遅い</label>
         <div>オーディオ設定</div>
         <input id="mute_btn" type="checkbox" onclick="sounds_mute()"> 
         <label class="radio_label" for="mute_btn">Mute</label><br>
         <label for="se_slider" style="display:inline-block;width:45px;">SE</label>
-        <input id="se_slider" type="range" minn="0" max="100" value="50"><br>
+        <input id="se_slider" type="range" minn="0" max="100"><br>
         <label for="bgm_slider" style="display:inline-block;width:45px;">BGM</label>
-        <input id="bgm_slider" type="range" minn="0" max="100" value="50">
+        <input id="bgm_slider" type="range" minn="0" max="100">
         <style id="font_size">.font_size { font-size: 20px}</style>
     </div>
     <div id="warning">
         <div style="position:absolute;left:5px; top:5px;font-size:20px;opacity:0.6;"><div style="float:left;">Novel game　</div><div style="float:left;">このみちゃんは脱出したがり</div></div>
-        <div class="center">
+        <div class="center" style="width:100vw;">
             <div>このサイトは音声が流れます</div>
-            <div>音量は環境設定から変更することが可能です</div>
+            <div><p style="display:inline-block;">音量は環境設定から</p><p style="display:inline-block;">変更することが可能です</p></div>
             <button class="warning_button" onclick="btn('sound_on')">許可する</button>
             <button class="warning_button" onclick="btn('sound_mute')">Muteにする</button>
         </div>
@@ -81,8 +85,6 @@
 </body>
 <script type="text/javascript">
     let frame_name = ["top-title", "save_data", "scene", "setting_winndow", "warning"];
-    const scene_title = document.getElementById("top-title");
-    const scene = document.getElementById("scene");
 
     let frame_number = 0;
     let scene_number = -1;
@@ -93,6 +95,7 @@
     }
 </script>
 <script type="text/javascript" src="./script/sounds.js"></script>
+<script type="text/javascript" src="./script/images.js"></script>
 <script type="text/javascript" src="./script/scene_data.js"></script>
 <script type="text/javascript" src="./script/scene_manager.js"></script>
 <script type="text/javascript" src="./script/render.js"></script>
