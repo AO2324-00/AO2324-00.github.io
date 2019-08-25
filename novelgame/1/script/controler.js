@@ -4,8 +4,9 @@ let setting_data;
 if (storage.length == 0){
     console.log("null")
 
-    setting_data = [0,0,0.5,0.5];
+    setting_data = [0,0,0.5,0.5]; // 文字の大きさ　文字スピード　オーディオ設定
     storage.setItem('setting_data', JSON.stringify(setting_data) );
+    save_data = []; // save_data_name, scene_num, scene_count, bgm_num, bgi_num, char1, char2, still
     storage.setItem('save_data', JSON.stringify({}) );
 } else {
     setting_data = JSON.parse(storage.getItem('setting_data') );

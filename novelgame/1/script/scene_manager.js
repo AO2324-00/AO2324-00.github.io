@@ -144,8 +144,7 @@ async function nextBtn(sceneP) {
         clearTimeout( text_display_loop );
         text_box.innerHTML = sceneP[2];
         if (sceneP[2].indexOf('[') !== -1){
-            sceneP[2] = sceneP[2].match(/\[(.*?)\]/)[0].replace(/\[|\]/g, '');
-            se_list[Number(sceneP[2])].play();
+            se_list[Number(sceneP[2].match(/\[(.*?)\]/)[0].replace(/\[|\]/g, ''))].play();
         }
         await next(sceneP);
     }
@@ -192,6 +191,14 @@ async function scene_play () {
                 break;
             case "darkening":
                     document.getElementById('still_box').className = 'black';
+                    console.log("clicked");
+                break;
+            case "background_image":
+                    background_image(sceneP[1]);
+                    console.log("clicked");
+                break;
+            case "character_image":
+                    character_image(sceneP);
                     console.log("clicked");
                 break;
             case "change_scene":

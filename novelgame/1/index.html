@@ -8,8 +8,6 @@
     <title>Document</title>
 </head>
 <body>
-    <audio id="bgm" src=""></audio>
-    <audio id="se" src=""></audio>
 
     <div id="top-title" class="">
         <div>
@@ -29,16 +27,23 @@
     </div>
     <div id="scene_box">
     <div id="scene" style="display: none;">
+        <div id="bgi_box"></div>
         <div id="renndering_box">
+            <div id="character_box_pre" class="character_box">
+
+            </div>
             <div id="character_box_L" class="character_box">
 
             </div>
             <div id="character_box_R" class="character_box">
 
             </div>
+            <div id="character_box_C" class="character_box">
+
+            </div>
         </div>
         <div id="still_box" class=""></div>
-        <nav>
+        <nav id="scene_menu">
             <button class="control_button" onclick="btn('gotop')">タイトルに戻る</button>
             <button class="control_button" onclick="btn('load')">ロード</button>
             <button class="control_button" onclick="btn('save')">セーブ</button>
