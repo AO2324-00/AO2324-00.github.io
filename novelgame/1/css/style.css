@@ -152,6 +152,7 @@ input[type="radio"] {
     bottom : 0;
 }
 #character_box_L{
+    transform: scale(-1, 1);
     left:0;
 }
 #character_box_C{
