@@ -1,15 +1,19 @@
 
 let storage = localStorage;
 let setting_data;
+
+let save_data;
+
 if (storage.length == 0){
     console.log("null")
 
     setting_data = [0,0,0.5,0.5]; // 文字の大きさ　文字スピード　オーディオ設定
     storage.setItem('setting_data', JSON.stringify(setting_data) );
     save_data = []; // save_data_name, scene_num, scene_count, bgm_num, bgi_num, char1, char2, still
-    storage.setItem('save_data', JSON.stringify({}) );
+    storage.setItem('save_data', JSON.stringify([]) );
 } else {
     setting_data = JSON.parse(storage.getItem('setting_data') );
+    save_data = JSON.parse(storage.getItem('save_data') );
 }
 console.log(storage);
 
@@ -114,13 +118,8 @@ function btn(key){
                 frame_name[2] = document.getElementById("scene");
             break;
 
-        case "load":
-            let data = localStorage.getItem("myCat");
-            console.log(data);
-            break;
-
         case "setting":
-                frame_name[3].style.display = 'initial';
+                frame_name[3].style.display = 'block';
             break;
 
         case "close_setting":
@@ -133,6 +132,20 @@ function btn(key){
         case "sound_mute":
                 frame_name[4].style.display = 'none';
                 document.getElementById("mute_btn").checked = 'true';
+            break;
+        case "saves":
+                frame_name[5].style.display = 'block';
+                console.log(frame_name[5]);
+            break;
+        case "close_savesWindow":
+                frame_name[5].style.display = 'none';
+            break;
+        case "save":
+                frame_name[6].style.display = 'block';
+            break;
+
+        case "close_saveWindow":
+                frame_name[6].style.display = 'none';
             break;
         default:
             break;

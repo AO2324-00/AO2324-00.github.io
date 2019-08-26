@@ -1,4 +1,5 @@
 
+let speaker = "";
 let bgi_list = ['room0.jpg'];
 let character_list = ['konomi', 'little_sister'];
 let character_img = {
@@ -28,10 +29,17 @@ function background_image ( num ){
 }
 
 function character_image ( option ) {
+    console.log("speaker:"+speaker + "  option:"+ option[1]);
+    if (speaker != option[1] && speaker != ""){
+        document.getElementById("character_box_" + speaker ).className = 'character_box';
+        console.log("hide"+speaker );
+    }
+    speaker = option[1];
     console.log("change character");
     console.log(option);
     console.log(character_list[ option[2] ] );
     if (option[2] != -1){
+        document.getElementById("character_box_" + option[1] ).className = 'character_box show';
         document.getElementById("character_box_" + option[1] ).insertAdjacentHTML('beforeend', '<img width="100%" src="./img_character/'+ character_list[ option[2] ] +'/'+ character_img[character_list[ option[2] ] ] [ option[3] ] +'"></img>');
         setTimeout(function () {
             document.getElementById("character_box_" + option[1] ).innerHTML = '<div style="position:absolute;width:100%;"><img width="100%" src="./img_character/'+ character_list[ option[2] ] +'/'+ character_img[character_list[ option[2] ] ] [ option[3] ] +'"></img></div>';

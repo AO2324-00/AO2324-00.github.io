@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="./css/style.css">
-    <title>Document</title>
+    <title>NovelGame このみちゃんは脱出したがり</title>
 </head>
 <body>
 
@@ -16,7 +16,7 @@
             </div>
             <nav>
                 <button class="title_button" onclick="btn('start')">はじめから</button>
-                <button class="title_button" onclick="btn('continue')">つづきから</button>
+                <button class="title_button" onclick="btn('saves')">つづきから</button>
                 <button class="title_button" onclick="btn('credit')">クレジット</button>
                 <button class="title_button" onclick="btn('setting')">環境設定</button>
             </nav>
@@ -42,7 +42,7 @@
         <div id="still_box" class=""></div>
         <nav id="scene_menu">
             <button class="control_button" onclick="btn('gotop')">タイトルに戻る</button>
-            <button class="control_button" onclick="btn('load')">ロード</button>
+            <button class="control_button" onclick="btn('saves')">ロード</button>
             <button class="control_button" onclick="btn('save')">セーブ</button>
             <button class="control_button" onclick="btn('setting')">環境設定</button>
         </nav>
@@ -53,7 +53,7 @@
         <div id="choice_window"></div>
     </div>
     </div>
-    <div id="setting_winndow" style="display: none;">
+    <div id="setting_window" style="display: none;">
         <button class="closeBtn" onclick="btn('close_setting')">X</button>
         <div style="font-size:30px;">環境設定</div>
         <div>文字サイズ</div>
@@ -81,12 +81,23 @@
             <button class="warning_button" onclick="btn('sound_on')">許可する</button>
             <button class="warning_button" onclick="btn('sound_mute')">Muteにする</button>
         </div>
-        
+    </div>
+    <div id="saves"  style="display: none;">
+        <div>セーブデータ</div>
+        <div id="data_box"></div>
+        <div>
+                
+                <button onclick="btn('load')">ロード</button>
+                <button onclick="btn('close_savesWindow')">キャンセル</button>
+        </div>
+    </div>
+    <div id="save_window"  style="display: none;">
+        <button class="closeBtn" onclick="btn('close_saveWindow')">X</button>
     </div>
     
 </body>
 <script type="text/javascript">
-    let frame_name = ["top-title", "save_data", "scene", "setting_winndow", "warning"];
+    let frame_name = ["top-title", "save_data", "scene", "setting_window", "warning", "saves", "save_window"];
 
     let frame_number = 0;
     let scene_number = -1;
