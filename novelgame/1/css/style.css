@@ -257,6 +257,22 @@ input[type="radio"] {
     height:100vh;
     pointer-events: none;
 }
+
+#frame_effect {
+    background-color: rgba(0, 0, 0, 0);
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:100vh;
+    pointer-events: none;
+}
+#credit {
+    position:fixed;
+    top:0;
+    width:100vw;
+    height:100vh;
+}
+
 .black {
     background-color:black;
 }

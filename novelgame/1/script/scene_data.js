@@ -103,6 +103,7 @@ scene_list[3].push(["text", "descriptive", "このみの目が丸くなり、開
 scene_list[3].push([  "change_scene", 8]);
 
 //回答３(スーパーアイドル)
+scene_list[4].push(["character_image", 'C', 0, 1]);//img
 scene_list[4].push(["text", "このみ", "『私もそれだと思ってた！　スーパーって言ってるんだし人気ありそうだよね』"]);
 scene_list[4].push(["text", "descriptive", "このみはすぐさまスマホで妹にメッセージを送ると、タダ飯が食べれる事を想像しているのか涎を垂らし始めた。"]);
 scene_list[4].push(["fead","out"]);
@@ -111,40 +112,52 @@ scene_list[4].push(["se", 2]);
 scene_list[4].push(["span", 1000]);
 scene_list[4].push(["text", "descriptive", "数分もしないうちの返信。"]);
 scene_list[4].push(["fead","in"]);
+scene_list[4].push(["character_image", 'C', 0, 5]);//img
 scene_list[4].push(["text", "このみ", "『はぁ！？　違うって！　スーパー言ってるやん！』"]);
 scene_list[4].push(["text", "descriptive", "このみは適当な方言で喚き散らしていた。"]);
 
+scene_list[4].push(["character_image", 'C', 0, 3]);//img
 scene_list[4].push(["choice",  "このみ", "『まあ、仕方ない。悔しいから一から考え直すよ！』", ["答えは 有名スポーツ選手 だと伝える",  "答えは 総理大臣 だと伝える"] ,
     [  "change_scene", 5] ,
     [  "change_scene", 6] 
 ]);
 
 //回答１(有名スポーツ選手)後
+scene_list[5].push(["character_image", 'C', 0, 2]);//img
 scene_list[5].push(["text", "このみ", "『え？　有名スポーツ選手が？』"]);
+scene_list[5].push(["character_image", 'C', 0, 3]);//img
 scene_list[5].push(["text", "descriptive", "このみは不審げにカメラを覗き込む。"]);
 scene_list[5].push(["text", "このみ", "『確かに人気……はありそうだし。妹に送ってみる』"]);
+scene_list[5].push(["character_image", 'C', 0, 2]);//img
 scene_list[5].push(["text", "descriptive", "そういうと、このみはスマホで妹にメッセージを送った。"]);
 scene_list[5].push(["fead", 'out']);
 scene_list[5].push(["span", 1000]);
 scene_list[5].push(["text", "descriptive", "しばらくして返信を知らせる<span class=hide>[2]</span>着信音が鳴った。"]);
 scene_list[5].push(["fead", 'in']);
+scene_list[5].push(["character_image", 'C', 0, 5]);//img
 scene_list[5].push(["text",  "このみ", "『……違うってさ！　人気ありそうじゃん！<br>うーん、ってことは，総理大臣が答え ?』"]);
 scene_list[5].push([  "change_scene", 10]);
 
 //回答２(総理大臣)後
+scene_list[6].push(["character_image", 'C', 0, 5]);//img
 scene_list[6].push(["text", "このみ", "『え、なんで総理大臣？　他の方が人気ありそうじゃない？』"]);
+scene_list[6].push(["character_image", 'C', 0, 3]);//img
 scene_list[6].push(["text", "descriptive", "このみは納得いかない様子でしばらく考えていた。"]);
 scene_list[6].push(["text", "このみ", "『にしてもなんで総理大臣……。理由があるって？　なら、信じるけど』"]);
 scene_list[6].push(["text", "descriptive", "まだ納得いかないといった様子だったが、このみはスマホで妹にメッセージを送った。"]);
 scene_list[6].push(["text",  "このみ", "『本当に総理大臣で正解なの？』"]);
 scene_list[6].push(["bgm", "stop"]);
+scene_list[6].push(["character_image", 'C', -1]);//img
 scene_list[6].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
+scene_list[6].push(["character_image", 'R', 0, 1]);//img
+scene_list[6].push(["character_image", 'L', 1, 6]);//img
 scene_list[6].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
 scene_list[6].push([  "change_scene", 9]);
 
 //回答３(スーパーアイドル)後
+scene_list[7].push(["character_image", 'C', 0, 1]);//img
 scene_list[7].push(["text", "このみ", "『私もそれかもって思ってた！　スーパーって言ってるんだし人気ありそうだよね』"]);
-scene_list[7].push(["text", "descriptive", "このみはすぐさまスマホで妹にメッセージを送ると、タダ飯が食べれる事を想像しているのか涎を垂らし始めた"]);
+scene_list[7].push(["text", "descriptive", "このみはすぐさまスマホで妹にメッセージを送った"]);
 scene_list[7].push(["fead","out"]);
 scene_list[7].push(["span", 500]);
 scene_list[7].push(["se", 2]);
@@ -152,6 +165,7 @@ scene_list[7].push(["span", 1000]);
 scene_list[7].push(["text", "descriptive", "数分もしないうちの返信。"]);
 scene_list[7].push(["fead","in"]);
 
+scene_list[7].push(["character_image", 'C', 0, 5]);//img
 scene_list[7].push(["text",  "このみ", "『はぁ！？　違うって！　スーパー言ってるやん！<br>ってことは，総理大臣が答えなの ?』"]);
 scene_list[7].push([  "change_scene", 10]);
 console.log(scene_list);
@@ -177,22 +191,42 @@ scene_list[8].push(["text", "妹", "うぅ……"]);
 scene_list[8].push(["character_image", 'L', 1, 1]);//img
 scene_list[8].push(["character_image", 'R', 0, 7]);//img
 scene_list[8].push(["text", "このみ", "『あんたもそこで見てないで早く出て来て。　食べに行くよ！』"]);
+scene_list[8].push(["finish"]);
 
 //失敗エンディング1
+scene_list[9].push(["character_image", 'L', 1, 5]);//img
 scene_list[9].push(["se", 4]);
 scene_list[9].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
+scene_list[9].push(["character_image", 'R', 0, 3]);//img
 scene_list[9].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
+scene_list[9].push(["character_image", 'L', 1, 1]);//img
+scene_list[9].push(["character_image", 'R', 0, 1]);//img
 scene_list[9].push(["text", "このみ", "『まじか。ふうっ！　まあ、いい暇つぶしぐらいにはなったわね』"]);
+
 scene_list[9].push(["text",  "このみ", "『一緒に考えてくれてありがとね！』<br>『奢ってもらえないのは残念だけど、せっかくの機会だし、どこかに食べに行きましょ！』"]);
-scene_list[9].push(["text", "このみ", "『あんたも行くのよ！』<br>『そんなところで見てないで、早く出て来なさい。』"]);
+scene_list[9].push(["character_image", 'L', 1, 5]);//img
+scene_list[9].push(["character_image", 'R', 0, 7]);//img
+scene_list[9].push(["text", "このみ", "『ほら！　なにやってるの？』<br>『そんなところで見てないで、早く出て来なさい。』"]);
+scene_list[9].push(["finish"]);
 
 //失敗エンディング2
+scene_list[10].push(["character_image", 'C', -1]);//img
 scene_list[10].push(["bgm", "stop"]);
 scene_list[10].push(["text", "descriptive", "とその時だった。<br><span class=hide>[3]</span>部屋のドアが無遠慮に開かれた。"]);
+scene_list[10].push(["character_image", 'R', 0, 3]);//img
+scene_list[10].push(["character_image", 'L', 1, 2]);//img
 scene_list[10].push(["text", "descriptive", "このみの目が丸くなり、開いたドアに立つ妹を見ていた。"]);
+scene_list[10].push(["character_image", 'L', 1, 3]);//img
 scene_list[10].push(["text", "妹", "もう！お姉ちゃん達、全然正解しないじゃん！"]);
+scene_list[10].push(["character_image", 'L', 1, 2]);//img
+scene_list[10].push(["character_image", 'R', 0, 5]);//img
 scene_list[10].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
+scene_list[10].push(["character_image", 'R', 0, 6]);//img
 scene_list[10].push(["text", "このみ", "『まじか。ふうっ...　やっと解放された...』"]);
+scene_list[10].push(["character_image", 'R', 0, 1]);//img
 scene_list[10].push(["text",  "このみ", "『一緒に考えてくれてありがとね。』<br>『でも、正解できなかったのはあなたのせいでもあるんだから、責任とって妹の代わりに奢ってよね！』"]);
+scene_list[10].push(["character_image", 'R', 0, 7]);//img
+scene_list[10].push(["character_image", 'L', 1, 5]);//img
 scene_list[10].push(["text", "妹", "やった！　奢りだー！"]);
 scene_list[10].push(["text", "descriptive", "あなたは、このみ と妹にご飯を奢ることになった。"]);
+scene_list[10].push(["finish"]);

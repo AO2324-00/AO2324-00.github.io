@@ -201,10 +201,16 @@ async function scene_play () {
                     character_image(sceneP);
                     console.log("clicked");
                 break;
+            case "finish":
+                    document.getElementById("frame_effect").className = 'fadeout';
+                    await span(3000);
+                    btn("gotop");
+                    console.log("finish");
+                break;
             case "change_scene":
                     scene_number = sceneP[1];
                     scene_count = 0;
-                    console.log("clicked");
+                    console.log("change_scene");
                     scene_play () ;
                 return;
             default:

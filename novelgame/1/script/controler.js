@@ -124,27 +124,32 @@ function data_load(data_num){
     
 }
 
-function btn(key){
+async function btn(key){
     console.log(key);
     switch (key) {
         case "start":
+                document.getElementById("frame_effect").className = 'fade';
+                await span (1500);
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 2].style.display = 'block';
                 console.log(frame_name[frame_number]);
                 scene_number = 0;
                 scene_count = 0;
                 scene_play();
+                await span (1500);
+                document.getElementById("frame_effect").className = '';
             break;
             
         case "gotop":
+                document.getElementById("frame_effect").className = "";
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 0].style.display = 'block';
                 scene_number = -1;
                 scene_count = 0;
                 if ( bgm_num != -1) {
                     bgm_list[bgm_num].pause();
+                    bgm_list[bgm_num].currentTime = 0;
                 }
-                bgm_list[bgm_num].currentTime = 0;
                 bgm_num = -1;
                 document.getElementById("scene_box").innerHTML = scene_default;
                 frame_name[2] = document.getElementById("scene");
