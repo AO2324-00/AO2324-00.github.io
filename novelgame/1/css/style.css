@@ -4,8 +4,17 @@ body {
 p {
     margin:0;
 }
+button {
+    cursor: pointer;
+}
+
 .hide {
     display: none;
+}
+#top-title {
+    width:100vw;
+    height:100vh;
+    background-color:rgba(0, 0, 0, 0.85);
 }
 #top-title > div {
     position:absolute;
@@ -22,16 +31,17 @@ p {
     font-size:40px;
     font-weight:bold;
     color:rgb(136, 30, 47);
-    -webkit-text-stroke: 1.5px rgb(255, 255, 255);
-    -ms-text-stroke: 1.5px rgb(255, 255, 255);
-    -moz-text-stroke: 1.5px rgb(255, 255, 255);
-    text-stroke: 1.5px rgb(255, 255, 255);
+    -webkit-text-stroke: 1px rgb(255, 255, 255);
+    -ms-text-stroke: 1px rgb(255, 255, 255);
+    -moz-text-stroke: 1px rgb(255, 255, 255);
+    text-stroke: 1px rgb(255, 255, 255);
     text-shadow:1px 1px 1px rgb(117, 48, 59), -1px -1px 1px rgb(117, 48, 59),
               -1px 1px 1px rgb(117, 48, 59), 1px -1px 1px rgb(117, 48, 59),
               0px 1px 1px rgb(117, 48, 59),  0 -1px 1px rgb(117, 48, 59),
               -1px 0 1px rgb(117, 48, 59), 1px 0 1px rgb(117, 48, 59);
 }
 .title_button {
+    width:280px;
     margin-top:3vh;
     clear:left;
     position:relative;
@@ -39,7 +49,17 @@ p {
     transform:translateX(-50%);
     display:block;
     font-size:30px;
+    color: #522121;
+    background-color: #ffe6e7da;
+    border:solid 3px rgba(193, 76, 76, 0.7);
+    border-radius: 4vh;
+    font-family: 'Hannotate SC','ＭＳ Ｐゴシック','MS PGothic','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
 }
+.title_button:hover {
+    transform:translateX(-50%) scale(1.1);
+    background-color: #fff4f4ef;
+}
+
 #warning {
     position:fixed;
     top:0;
@@ -103,6 +123,25 @@ input[type="radio"] {
     margin-right:8px;
 }
 
+.control_button {
+    color: #522121;
+    background-color: #ffe6e7da;
+    border:solid 1px rgba(193, 76, 76, 0.7);
+    border-radius: 8px;
+}
+.control_button:hover {
+    background-color: #fff4f4ef;
+}
+
+#bgi_box {
+    position:fixed;
+}
+#bgi {
+    object-fit: cover;
+    width:100vw;
+    height:100vh;
+}
+
 #scene_menu {
     position:fixed;
     top:0;
@@ -111,9 +150,6 @@ input[type="radio"] {
 .character_box {
     position:fixed;
     bottom : 0;
-}
-#character_box_pre{
-    display:none;
 }
 #character_box_L{
     left:0;
@@ -128,6 +164,7 @@ input[type="radio"] {
 
 
 #message_window {
+    font-family: 'Hannotate SC','ＭＳ Ｐゴシック','MS PGothic','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
     position:fixed;
     left:50%;
     bottom:1vw;
@@ -142,36 +179,50 @@ input[type="radio"] {
     position:absolute;
     top:-20px;
     left:1vh;
+    font-weight: bold
 }
 #name {
     position:relative;
     display:initial;
     font-size:20px;
-    background-color: gray;
-    border:solid 3px rgb(39, 39, 39);
-    border-radius:10px;
+    color: #522121;
+    background-color: #ffe6e7;
+    border:solid 3px rgb(193, 76, 76);
+    border-radius:30px;
     padding: 8px 20px;
 }
 #text_box {
+    color:white;
     width:87vw;
     height:25vh;
-    background-color: gray;
-    border:solid 4px rgb(39, 39, 39);
+    background-color: #522121e3;
+    border:solid 4px rgb(193, 76, 76);
     padding: 30px 5vw;
     border-radius: 5px;
+    -webkit-text-stroke: 0.3px rgb(26, 26, 26);
+    -ms-text-stroke: 0.3px rgb(26, 26, 26);
+    -moz-text-stroke: 0.3px rgb(26, 26, 26);
+    text-stroke: 0.3px rgb(26, 26, 26);
 }
 #choice_window {
     position:fixed;
-    top:15vh;
     left:50%;
     transform:translateX(-50%);
     width:500px;
 }
 .choiceBtn {
+    color: #522121;
     margin: 2vw 0;
     display: block;
     width : 100%;
     height:10vh;
+    background-color: #ffe6e7ee;
+    border:solid 3px rgba(193, 76, 76, 0.7);
+    border-radius: 4vh;
+    font-family: 'Hannotate SC','ＭＳ Ｐゴシック','MS PGothic','ヒラギノ角ゴシック','Hiragino Sans',sans-serif;
+}
+.choiceBtn:hover {
+    background-color: #fff4f4ef;
 }
 
 #still_box {
@@ -202,18 +253,12 @@ input[type="radio"] {
     h1 {
         color:red;
     }
+    #choice_window {
+        bottom:35vh;
+    }
     .character_box{
         width: 60vh;
         height:90vh;
-    }
-    #bgi_box {
-        position:fixed;
-        width:auto;
-        height:100vh;
-    }
-    #bgi_box  > img {
-        height: 100vh;
-        width:auto;
     }
   }
    
@@ -221,17 +266,11 @@ input[type="radio"] {
     h1 {
         color:blue;
     }
+    #choice_window {
+        bottom:40vh;
+    }
     .character_box{
         width: 60vh;
         height:90vh;
-    }
-    #bgi_box {
-        position:fixed;
-        width:100vw;
-        height:auto;
-    }
-    #bgi_box  > img {
-        height: auto;
-        width:100vw;
     }
   }
