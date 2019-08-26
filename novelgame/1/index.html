@@ -86,13 +86,15 @@
         <div>セーブデータ</div>
         <div id="data_box"></div>
         <div>
-                
+
                 <button onclick="btn('load')">ロード</button>
                 <button onclick="btn('close_savesWindow')">キャンセル</button>
         </div>
     </div>
     <div id="save_window"  style="display: none;">
-        <button class="closeBtn" onclick="btn('close_saveWindow')">X</button>
+        <div id="save_data_form"></div>
+        <button onclick="btn('saved')">保存</button>
+        <button onclick="btn('close_saveWindow')">キャンセル</button>
     </div>
     
 </body>
