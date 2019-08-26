@@ -90,7 +90,7 @@ function choiceBtn(sceneP) {
     return new Promise(function(resolve) {
         for (let count = 0; count < sceneP[3].length; count++) {
             (function(countIn) {
-                choice_window.insertAdjacentHTML('beforeend', '<button id="choiceBtn'+countIn+'" class="choiceBtn font_size">'+sceneP[3][countIn]+'</button>');
+                choice_window.insertAdjacentHTML('beforeend', '<button id="choiceBtn'+countIn+'" class="choiceBtn">'+sceneP[3][countIn]+'</button>');
                 document.getElementById("choiceBtn"+countIn).addEventListener("click", async function(){
                     choice_window.innerHTML = "";
                     clearTimeout(text_display_loop);
