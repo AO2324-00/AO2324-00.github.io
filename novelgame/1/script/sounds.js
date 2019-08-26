@@ -4,7 +4,7 @@ let se_list = ["01Paper.wav", "02Call.wav", "03Notification.wav", "04OpenDoor.wa
 let mute = true;
 let bgm_num = -1;
 
-function sounds_load(){
+(function(){
     let sound_tmp;
     for (let count = 0; count < bgm_list.length; count++){
         sound_tmp = "./data_bgm/" + bgm_list[count];
@@ -24,7 +24,7 @@ function sounds_load(){
         se_list[count].load();
         se_list[count].volume = 0.5;
     }
-}
+})();
 function sounds_mute(){
     let change = function (){
         for (let count = 0; count < bgm_list.length; count++){

@@ -32,11 +32,15 @@ se_slider.addEventListener("change",function () {
 const bgm_slider = document.getElementById("bgm_slider");
 bgm_slider.value = setting_data[3]*100;
 for (let count = 0; count < bgm_list.length; count++){
-    bgm_list[count].volume = setting_data[3];
+    bgm_list[count].volume = bgm_slider.value/100;
+    console.log("bgm list:"+bgm_list);
+    console.log("bgm vol:"+bgm_list[count].volume);
 }
 bgm_slider.addEventListener("change",function () {
     for (let count = 0; count < bgm_list.length; count++){
         bgm_list[count].volume = bgm_slider.value/100;
+        console.log("bgm list:"+bgm_list);
+        console.log("bgm vol:"+bgm_list[count].volume);
     }
     setting_data[3] = bgm_slider.value/100;
     storage.setItem('setting_data', JSON.stringify(setting_data) );
@@ -91,7 +95,7 @@ function btn(key){
     switch (key) {
         case "start":
                 frame_name[frame_number].style.display = 'none';
-                frame_name[frame_number = 2].style.display = 'initial';
+                frame_name[frame_number = 2].style.display = 'block';
                 console.log(frame_name[frame_number]);
                 scene_number = 0;
                 scene_count = 0;
@@ -100,7 +104,7 @@ function btn(key){
             
         case "gotop":
                 frame_name[frame_number].style.display = 'none';
-                frame_name[frame_number = 0].style.display = 'initial';
+                frame_name[frame_number = 0].style.display = 'block';
                 scene_number = -1;
                 scene_count = 0;
                 bgm_list[bgm_num].pause();
@@ -124,12 +128,10 @@ function btn(key){
             break;
         case "sound_on":
                 frame_name[4].style.display = 'none';
-                sounds_load();
                 sounds_mute();
             break;
         case "sound_mute":
                 frame_name[4].style.display = 'none';
-                sounds_load();
                 document.getElementById("mute_btn").checked = 'true';
             break;
         default:

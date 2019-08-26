@@ -31,10 +31,10 @@ button {
     font-size:40px;
     font-weight:bold;
     color:rgb(136, 30, 47);
-    -webkit-text-stroke: 1px rgb(255, 255, 255);
-    -ms-text-stroke: 1px rgb(255, 255, 255);
-    -moz-text-stroke: 1px rgb(255, 255, 255);
-    text-stroke: 1px rgb(255, 255, 255);
+    -webkit-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    -ms-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    -moz-text-stroke: 1px rgba(255, 255, 255, 0.8);
+    text-stroke: 1px rgba(255, 255, 255, 0.8);
     text-shadow:1px 1px 1px rgb(117, 48, 59), -1px -1px 1px rgb(117, 48, 59),
               -1px 1px 1px rgb(117, 48, 59), 1px -1px 1px rgb(117, 48, 59),
               0px 1px 1px rgb(117, 48, 59),  0 -1px 1px rgb(117, 48, 59),
@@ -199,10 +199,10 @@ input[type="radio"] {
     border:solid 4px rgb(193, 76, 76);
     padding: 30px 5vw;
     border-radius: 5px;
-    -webkit-text-stroke: 0.3px rgb(26, 26, 26);
-    -ms-text-stroke: 0.3px rgb(26, 26, 26);
-    -moz-text-stroke: 0.3px rgb(26, 26, 26);
-    text-stroke: 0.3px rgb(26, 26, 26);
+    -webkit-text-stroke: 0.1px rgb(26, 26, 26);
+    -ms-text-stroke: 0.1px rgb(26, 26, 26);
+    -moz-text-stroke: 0.1px rgb(26, 26, 26);
+    text-stroke: 0.1px rgb(26, 26, 26);
 }
 #choice_window {
     position:fixed;
