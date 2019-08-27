@@ -187,7 +187,7 @@ async function btn(key){ // ボタン入力を受け取る
                         text_data = text_data.slice(0 , 26)
                     }
                     console.log(text_data);
-                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');"><div>'+ text_data +'</div>'+ scene_data + '</button>');
+                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ text_data +'<br>'+ scene_data + '</button>');
                 }
             break;
         case "delete": // 選択されているセーブデータを削除する
