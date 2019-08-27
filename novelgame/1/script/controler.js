@@ -124,7 +124,7 @@ function data_load(data_num){ // 選択されたデータを読み込む
         bgm_list[ loaded_data[4]].currentTime = 0;
         clearTimeout(loop_bgm_timeout);
         bgm_list[ loaded_data[4]].play();
-        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ loaded_data[4] +')', (bgm_list[loaded_data[4] ].duration - 0.022)*1000 );
+        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ loaded_data[4] +')', (bgm_list[loaded_data[4] ].duration - 0.025)*1000 );
     }
     
 }

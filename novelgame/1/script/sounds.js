@@ -11,7 +11,7 @@ function loop_bgm ( num ) {
     if (bgm_num == num){
         bgm_list[num].play();
         loop_bgm;
-        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.022)*1000 );
+        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.025)*1000 );
     }
 }
 
@@ -68,11 +68,11 @@ function bgm_player (sceneP){
                     bgm_list[sceneP[2]].play();
                     bgm_list[bgm_num].currentTime = 0;
                     bgm_num = sceneP[2];
-                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
+                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.025)*1000 );
                 } else {
                     bgm_list[sceneP[2]].play();
                     bgm_num = sceneP[2];
-                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
+                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.025)*1000 );
                 }
             break;
         case "stop":
