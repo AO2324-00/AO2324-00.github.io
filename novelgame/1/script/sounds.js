@@ -22,13 +22,14 @@ function loop_bgm ( num ) {
         bgm_list[count] = new Audio();
         bgm_list[count].src = sound_tmp;
         bgm_list[count].load();
+        bgm_list[count].muted = mute;
     }
     for (let count = 0; count < se_list.length; count++){
         sound_tmp = "./data_se/" + se_list[count];
         se_list[count] = new Audio();
         se_list[count].src = sound_tmp;
         se_list[count].load();
-        se_list[count].volume = 0.5;
+        se_list[count].muted = mute;
     }
 })();
 function sounds_mute(){
@@ -47,6 +48,7 @@ function sounds_mute(){
         mute = false;
         change();
     }
+    se_list[2].currentTime = 0;
     se_list[2].play();
 }
 

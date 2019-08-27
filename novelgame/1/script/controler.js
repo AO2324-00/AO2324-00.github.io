@@ -79,7 +79,6 @@ function display_speed_btn(num){
 font_size_btn(setting_data[0] );
 document.getElementById("font_size_"+setting_data[0] ).checked = true;
 function font_size_btn(num){
-    console.log("font resize")
     const font_size = document.getElementById("font_size")
     switch (num) {
         case -1:
@@ -109,14 +108,12 @@ function data_load(data_num){ // 選択されたデータを読み込む
     let loaded_data = save_data[data_num];
     frame_name[frame_number].style.display = 'none';
     frame_name[frame_number = 2].style.display = 'block';
-    console.log(frame_name[frame_number]);
     scene_number = loaded_data[1];
     scene_count = loaded_data[2];
     document.getElementById("scene_box").innerHTML = loaded_data[3];
     document.getElementById("choice_window").innerHTML = "";
     frame_name[2] = document.getElementById("scene");
     scene_play();
-    console.log( loaded_data[4]);
     if( loaded_data[4] != -1){
         if ( bgm_num != -1) {
             bgm_list[bgm_num].pause();
@@ -128,14 +125,12 @@ function data_load(data_num){ // 選択されたデータを読み込む
 }
 
 async function btn(key){ // ボタン入力を受け取る
-    console.log(key);
     switch (key) {
         case "start": // 始めから
                 document.getElementById("frame_effect").className = 'fade';
                 await span (1500);
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 2].style.display = 'block';
-                console.log(frame_name[frame_number]);
                 scene_number = 0;
                 scene_count = 0;
                 scene_play();
@@ -166,7 +161,7 @@ async function btn(key){ // ボタン入力を受け取る
         case "close_setting": //環境設定を閉じる
                 frame_name[3].style.display = 'none';
             break;
-        case "sound_on": // ミュート解除
+        case "sound_on": // ミュートにしない
                 frame_name[4].style.display = 'none';
                 sounds_mute();
             break;
@@ -175,18 +170,15 @@ async function btn(key){ // ボタン入力を受け取る
                 document.getElementById("mute_btn").checked = 'true';
             break;
         case "saves": // セーブデータ選択画面を開く
-                console.log(save_data);
                 frame_name[5].style.display = 'block';
                 document.getElementById("data_box").innerHTML = "";
                 for (let count = 0; count < save_data.length; count++){
                     let scene_data = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
                     document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ scene_data + '</button>');
                 }
-                console.log(frame_name[5]);
             break;
         case "delete": // 選択されているセーブデータを削除する
                 if(loading_num != null) {
-                    console.log(loading_num);
                     if(loading_num != 0){
                         save_data.splice( loading_num, loading_num );
                     } else save_data.shift();
@@ -210,7 +202,6 @@ async function btn(key){ // ボタン入力を受け取る
             let date = new Date();
                 save_screen_data = document.getElementById("scene").outerHTML;
                 save_data.unshift([ [date.getFullYear(), date.getMonth()+1, date.getDate() ], scene_number, scene_count, save_screen_data, bgm_num]);
-                console.log(save_data);
                 storage.setItem('save_data', JSON.stringify(save_data));
                 frame_name[6].style.display = 'none';
             break;

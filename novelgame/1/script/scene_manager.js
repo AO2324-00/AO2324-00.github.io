@@ -118,7 +118,7 @@ function choiceBtn(sceneP) {
                         default:
                             break;
                     }
-                    resolve(console.log("choice"));
+                    resolve();
                 }, {once: true});
             })(count);
         }
