@@ -64,6 +64,10 @@
 /*==========================================*/
 body {
     margin:0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 p {
     margin:0;
@@ -326,6 +330,10 @@ input[type="radio"] {
     font-size:2.4vh;
     line-height:6vh;
     animation: rollup 20s linear 0s 1 normal forwards running;
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
 }
 @keyframes rollup {
     0% {top:0vh;}
