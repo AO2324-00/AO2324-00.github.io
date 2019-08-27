@@ -119,6 +119,9 @@ function data_load(data_num){ // 選択されたデータを読み込む
             bgm_list[bgm_num].pause();
         }
         bgm_num = loaded_data[4];
+        loading_num = null;
+        bgm_list[ loaded_data[4]].currentTime = 0;
+        clearTimeout(loop_bgm_timeout);
         bgm_list[ loaded_data[4]].play();
         loop_bgm_timeout = setTimeout( 'loop_bgm ('+ loaded_data[4] +')', (bgm_list[loaded_data[4] ].duration - 0.022)*1000 );
     }
@@ -171,11 +174,20 @@ async function btn(key){ // ボタン入力を受け取る
                 document.getElementById("mute_btn").checked = 'true';
             break;
         case "saves": // セーブデータ選択画面を開く
+                document.getElementById("data_name").innerHTML = "";
                 frame_name[5].style.display = 'block';
                 document.getElementById("data_box").innerHTML = "";
                 for (let count = 0; count < save_data.length; count++){
+                    console.log(save_data[count][3] );
                     let scene_data = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
-                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ scene_data + '</button>');
+                    let text_data = save_data[count][3].match(/id="text_box"(.*?)<\/div/)[0];
+                    console.log(text_data);
+                    text_data = text_data.match(/>(.*?)</)[0].replace('>', '').replace('<', '');
+                    if(text_data.length > 25){
+                        text_data = text_data.slice(0 , 26)
+                    }
+                    console.log(text_data);
+                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');"><div>'+ text_data +'</div>'+ scene_data + '</button>');
                 }
             break;
         case "delete": // 選択されているセーブデータを削除する

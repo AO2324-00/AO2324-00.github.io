@@ -185,6 +185,19 @@ input[type="radio"] {
     width:100vw;
     height:100vh;
 }
+
+#saves > div > button {
+    padding: 5px 20px;
+    font-size : 2.5vh;
+    border-radius: 15px;
+    border-width : 2px;
+}
+
+#data_name {
+    text-align:center;
+    font-size: 2.5vh;
+}
+
 #data_box {
     width:100vw;
     height:80vh;
