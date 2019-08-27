@@ -188,11 +188,12 @@ async function btn(key){
         case "delete":
                 if(loading_num != null) {
                     console.log(loading_num);
-                    if(save_data.length > 1){
+                    if(loading_num != 0){
                         save_data.splice( loading_num, loading_num );
-                    } else save_data = [];
+                    } else save_data.shift();
                     storage.setItem('save_data', JSON.stringify(save_data));
                     loading_num = null;
+                    document.getElementById("data_name").innerHTML = "";
                     btn("saves");
                 }
             break;
