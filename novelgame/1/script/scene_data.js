@@ -189,7 +189,6 @@ scene_list[7].push(["fead","in"]);
 scene_list[7].push(["character_image", 'C', 0, 5]);//img
 scene_list[7].push(["text",  "このみ", "『はぁ！？　違うって！　スーパー言ってるやん！<br>ってことは，総理大臣が答えなの ?』"]);
 scene_list[7].push([  "change_scene", 10]);
-console.log(scene_list);
 
 //エンディング
 scene_list[8].push(["character_image", 'L', 1, 5]);//img

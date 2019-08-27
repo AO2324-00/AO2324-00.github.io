@@ -144,6 +144,7 @@ async function btn(key){ // ボタン入力を受け取る
             break;
             
         case "gotop": // タイトルに戻る
+                clearTimeout(loop_bgm_timeout);
                 document.getElementById("frame_effect").className = "";
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 0].style.display = 'block';

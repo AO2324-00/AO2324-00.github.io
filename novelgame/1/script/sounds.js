@@ -4,13 +4,14 @@ let se_list = ["01Paper.wav", "02Call.wav", "03Notification.wav", "04OpenDoor.wa
 let mute = true;
 let bgm_num = -1;
 
+let loop_bgm_timeout;
+
 function loop_bgm ( num ) {
     bgm_list[num].currentTime = 0;
     if (bgm_num == num){
         bgm_list[num].play();
         loop_bgm;
-        console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[num ].duration);
-        setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.022)*1000 );
+        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.022)*1000 );
     }
 }
 
@@ -21,7 +22,6 @@ function loop_bgm ( num ) {
         bgm_list[count] = new Audio();
         bgm_list[count].src = sound_tmp;
         bgm_list[count].load();
-        console.log(bgm_list);
     }
     for (let count = 0; count < se_list.length; count++){
         sound_tmp = "./data_se/" + se_list[count];
@@ -61,24 +61,19 @@ function se_player (sceneP){
 function bgm_player (sceneP){
     switch (sceneP[1]) {
         case "play":
-                console.log("bgmplay_num"+bgm_num);
                 if (bgm_num != -1){
                     bgm_list[bgm_num].pause();
                     bgm_list[sceneP[2]].play();
                     bgm_list[bgm_num].currentTime = 0;
                     bgm_num = sceneP[2];
-                    console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
-                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
+                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
                 } else {
                     bgm_list[sceneP[2]].play();
                     bgm_num = sceneP[2];
-                    console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
-                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
+                    loop_bgm_timeout = setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
                 }
-                console.log("bgm_num:"+bgm_num);
             break;
         case "stop":
-                console.log("bgmstop");
                 bgm_list[bgm_num].pause();
                 bgm_list[bgm_num].currentTime = 0;
                 bgm_num = -1;

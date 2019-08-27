@@ -10,7 +10,6 @@ let choice_window;
 
 function span (num){
     return new Promise(function(resolve) { 
-        console.log("span:"+num);
         setTimeout(function() { resolve() }, num);
     });
 }
@@ -99,23 +98,19 @@ function choiceBtn(sceneP) {
                                 text_box.style.cursor = 'pointer';
                                 await nextBtn(sceneP[4+countIn]);
                                 text_box.style.cursor = 'default';
-                                console.log("clicked");
                             break;
                         case "choice":
                                 await choiceBtn(sceneP[4+countIn]);
-                                console.log("clicked");
                             break;
                         case "change_scene":
                                 scene_number = sceneP[4+countIn][1];
                                 scene_count = 0;
-                                console.log("clicked");
                                 scene_play () ;
                             return;
                         case "loop":
                                 text_box.style.cursor = 'pointer';
                                 await nextBtn(sceneP[4+countIn]);
                                 text_box.style.cursor = 'default';
-                                console.log("clicked");
                                 scene_count --;
                             break;
                         case "skip":
@@ -123,8 +118,7 @@ function choiceBtn(sceneP) {
                         default:
                             break;
                     }
-                    
-                    resolve(console.log("btn"+countIn));
+                    resolve(console.log("choice"));
                 }, {once: true});
             })(count);
         }
@@ -158,66 +152,52 @@ async function scene_play () {
     choice_window = document.getElementById("choice_window");
     while(scene_count != scene_list[scene_number].length) {
         let sceneP = scene_list[scene_number][scene_count];
-        console.log('scene'+ scene_count + '(' + sceneP[0] + ')');
         switch (sceneP[0] ) {
             case "text":
                 text_box.style.cursor = 'pointer';
                 await nextBtn(sceneP);
                 text_box.style.cursor = 'default';
-                console.log("clicked");
                 break;
 
             case "choice":
-                await choiceBtn(sceneP);
-                console.log("clicked");
+                    await choiceBtn(sceneP);
                 break;
 
             case "bgm":
                     bgm_player(sceneP);
-                    console.log("clicked");
                 break;
             case "se":
                     se_player(sceneP);
-                    console.log("clicked");
                 break;
             case "fead":
                     await fade(sceneP[1]);
-                    console.log("clicked");
                 break;
             case "span":
-                    console.log("span load:"+sceneP[1]);
                     await span(sceneP[1]);
-                    console.log("clicked");
                 break;
             case "darkening":
                     document.getElementById('still_box').className = 'black';
-                    console.log("clicked");
                 break;
             case "background_image":
                     background_image(sceneP[1]);
-                    console.log("clicked");
                 break;
             case "character_image":
                     character_image(sceneP);
-                    console.log("clicked");
                 break;
             case "finish":
                     document.getElementById("frame_effect").className = 'fadeout';
                     await span(1500);
                     btn("credit");
-                    console.log("finish");
                 break;
             case "change_scene":
                     scene_number = sceneP[1];
                     scene_count = 0;
-                    console.log("change_scene");
                     scene_play () ;
                 return;
             default:
                 break;
         }
 
-        //let result = await choiceBtn(10);
         scene_count++;
     }
 }
