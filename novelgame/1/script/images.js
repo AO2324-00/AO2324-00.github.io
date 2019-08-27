@@ -40,7 +40,7 @@ function character_image ( option ) {
         document.getElementById("character_box_" + option[1] ).insertAdjacentHTML('beforeend', '<img width="100%" src="./img_character/'+ character_list[ option[2] ] +'/'+ character_img[character_list[ option[2] ] ] [ option[3] ] +'"></img>');
         setTimeout(function () {
             document.getElementById("character_box_" + option[1] ).innerHTML = '<div style="position:absolute;width:100%;"><img width="100%" src="./img_character/'+ character_list[ option[2] ] +'/'+ character_img[character_list[ option[2] ] ] [ option[3] ] +'"></img></div>';
-        }, 200);
+        }, 500);
     } else {
         document.getElementById("character_box_" + option[1] ).innerHTML = '';
     }
