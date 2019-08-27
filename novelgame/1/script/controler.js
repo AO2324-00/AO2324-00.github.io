@@ -202,7 +202,7 @@ async function btn(key){ // ボタン入力を受け取る
                 document.getElementById("data_box").innerHTML = '';
             break;
         case "save": // セーブ確認画面
-                document.getElementById("save_data_form").innerHTML = 'シーン' + scene_number + '-' + scene_count + '"を<br>保存しますか？';
+                document.getElementById("save_data_form").innerHTML = '"シーン' + scene_number + '-' + scene_count + '"を<br>保存しますか？';
                 frame_name[6].style.display = 'block';
             break;
         case "saved": // セーブする
