@@ -10,7 +10,7 @@ function loop_bgm ( num ) {
         bgm_list[num].play();
         loop_bgm;
         console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[num ].duration);
-        setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.05)*1000 );
+        setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.022)*1000 );
     }
 }
 
@@ -68,12 +68,12 @@ function bgm_player (sceneP){
                     bgm_list[bgm_num].currentTime = 0;
                     bgm_num = sceneP[2];
                     console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
-                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.05)*1000 );
+                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
                 } else {
                     bgm_list[sceneP[2]].play();
                     bgm_num = sceneP[2];
                     console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
-                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.05)*1000 );
+                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.022)*1000 );
                 }
                 console.log("bgm_num:"+bgm_num);
             break;
