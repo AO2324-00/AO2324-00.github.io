@@ -4,11 +4,11 @@ const scene_list = [[/*導入*/], [/*問題*/], [/*回答1*/], [/*回答2*/], [/
 scene_list[ シーンナンバー ].push([オプション]);
 オプション
 ["text", "話し手", "内容"]
-["character_image", 'キャラクターボックス (L or C or R) ', キャラクター番号, 画像番号]
-["background_image", 背景番号]
+["character_image", 'キャラクターボックス (L or C or R) ', キャラクター番号, 画像番号] (画像番号は images.js を参照)
+["background_image", 背景番号] (背景番号は images.js を参照)
 ['span', ミリ秒] ( 一定時間待つ )
-["bgm", "play" or "stop", bgm番号]
-["se", se番号]
+["bgm", "play" or "stop", bgm番号] (BGM番号は sounds.js を参照)
+["se", se番号] (SE番号は sounds.js を参照)
 ["choice",  "話し手", "内容", [ "選択肢1", "選択肢2", ・・・ ] ,
 (選択肢1の内容)    [  "skip" ] , 何もせずに飛ばす
 (選択肢2の内容)    [ "loop", "話し手", "内容" ] ,  繰り返し同じ質問をする

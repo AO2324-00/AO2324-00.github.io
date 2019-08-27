@@ -1,3 +1,4 @@
+let button_pushed_check = false;
 
 let storage = localStorage;
 let setting_data;// 環境設定データ
@@ -129,6 +130,8 @@ function data_load(data_num){ // 選択されたデータを読み込む
 }
 
 async function btn(key){ // ボタン入力を受け取る
+if (button_pushed_check == false){
+    button_pushed_check = true;
     switch (key) {
         case "start": // 始めから
                 document.getElementById("frame_effect").className = 'fade';
@@ -227,5 +230,6 @@ async function btn(key){ // ボタン入力を受け取る
         default:
             break;
     }
-
+    button_pushed_check = false;
+}
 }
