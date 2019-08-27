@@ -193,7 +193,7 @@ scene_list[7].push([  "change_scene", 10]);
 //エンディング
 scene_list[8].push(["character_image", 'L', 1, 5]);//img
 scene_list[8].push(["se", 4]);
-scene_list[8].push(["span", 700]);
+scene_list[8].push(["span", 600]);
 scene_list[8].push(["bgm", "play", 2]);
 scene_list[8].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[8].push(["character_image", 'R', 0, 3]);//img
@@ -218,7 +218,7 @@ scene_list[8].push(["finish"]);
 //失敗エンディング1
 scene_list[9].push(["character_image", 'L', 1, 5]);//img
 scene_list[9].push(["se", 4]);
-scene_list[9].push(["span", 700]);
+scene_list[9].push(["span", 600]);
 scene_list[9].push(["bgm", "play", 2]);
 scene_list[9].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[9].push(["character_image", 'R', 0, 3]);//img
