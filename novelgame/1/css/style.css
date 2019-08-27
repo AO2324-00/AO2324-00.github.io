@@ -207,6 +207,7 @@ input[type="radio"] {
 
 #bgi_box {
     position:fixed;
+    pointer-events: none;
 }
 #bgi {
     object-fit: cover;
@@ -222,6 +223,7 @@ input[type="radio"] {
 .character_box {
     position:fixed;
     bottom : 0;
+    pointer-events: none;
 }
 #character_box_L{
     transform: scale(-1, 1);
