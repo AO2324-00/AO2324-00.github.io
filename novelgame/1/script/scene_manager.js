@@ -202,7 +202,6 @@ async function scene_play () {
                     console.log("clicked");
                 break;
             case "finish":
-                    await span(3000);
                     document.getElementById("frame_effect").className = 'fadeout';
                     await span(1500);
                     btn("credit");

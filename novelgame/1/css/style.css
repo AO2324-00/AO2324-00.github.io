@@ -188,7 +188,8 @@ input[type="radio"] {
 #data_box {
     width:100vw;
     height:80vh;
-    overflow: scroll;
+    overflow: auto;
+    overflow-x: hidden;
 }
 
 #save_window {

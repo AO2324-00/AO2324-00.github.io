@@ -198,6 +198,7 @@ scene_list[8].push(["text", "妹", "正解でーす！　本当に任期（人�
 scene_list[8].push(["character_image", 'R', 0, 3]);//img
 scene_list[8].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
 scene_list[8].push(["character_image", 'R', 0, 2]);//img
+scene_list[8].push(["bgm", "play", 2]);
 scene_list[8].push(["text", "このみ", "『まじか。ふうっ！　これでタダ飯だ』"]);
 scene_list[8].push(["character_image", 'R', 0, 1]);//img
 scene_list[8].push(["text", "descriptive", "このみは電話を切ることを忘れて喜んでいた。が、通話中のスマホに気付くとカメラを見て笑みを浮かべた。"]);
@@ -220,6 +221,7 @@ scene_list[9].push(["se", 4]);
 scene_list[9].push(["text", "妹", "正解でーす！　本当に任期（人気）があるからでしたぁ！　お姉ちゃんよくわかったね"]);
 scene_list[9].push(["character_image", 'R', 0, 3]);//img
 scene_list[9].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
+scene_list[9].push(["bgm", "play", 2]);
 scene_list[9].push(["character_image", 'L', 1, 1]);//img
 scene_list[9].push(["character_image", 'R', 0, 1]);//img
 scene_list[9].push(["text", "このみ", "『まじか。ふうっ！　まあ、いい暇つぶしぐらいにはなったわね』"]);
@@ -242,6 +244,7 @@ scene_list[10].push(["text", "妹", "もう！お姉ちゃん達、全然正解�
 scene_list[10].push(["character_image", 'L', 1, 2]);//img
 scene_list[10].push(["character_image", 'R', 0, 5]);//img
 scene_list[10].push(["text", "descriptive", "妹の手は南京錠を持っており、それで閉じ込めていたのが伺える。"]);
+scene_list[10].push(["bgm", "play", 2]);
 scene_list[10].push(["character_image", 'R', 0, 6]);//img
 scene_list[10].push(["text", "このみ", "『まじか。ふうっ...　やっと解放された...』"]);
 scene_list[10].push(["character_image", 'R', 0, 1]);//img

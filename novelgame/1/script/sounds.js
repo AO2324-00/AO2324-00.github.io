@@ -1,4 +1,4 @@
-let bgm_list = ["Close_Room_1_Gillthim.ogg", "Close_Room_2_Gillthim.ogg"]; //BGMの名前と拡張子
+let bgm_list = ["Close_Room_1_Gillthim.ogg", "Close_Room_2_Gillthim.ogg", "Go_to_the_dinnor.ogg"]; //BGMの名前と拡張子
 let se_list = ["01Paper.wav", "02Call.wav", "03Notification.wav", "04OpenDoor.wav", "05Correct_answer.wav"]; //SEの名前と拡張子
 
 let mute = true;
