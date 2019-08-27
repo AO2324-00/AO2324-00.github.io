@@ -1,8 +1,18 @@
-let bgm_list = ["Close_Room_1_Gillthim.ogg", "Close_Room_2_Gillthim.ogg", "Go_to_the_dinnor.ogg"]; //BGMの名前と拡張子
+let bgm_list = ["Close_Room_1_Gillthim.ogg", "Close_Room_2_Gillthim.ogg", "Lets_Go_to_the_dinnor.ogg"]; //BGMの名前と拡張子
 let se_list = ["01Paper.wav", "02Call.wav", "03Notification.wav", "04OpenDoor.wav", "05Correct_answer.wav"]; //SEの名前と拡張子
 
 let mute = true;
 let bgm_num = -1;
+
+function loop_bgm ( num ) {
+    bgm_list[num].currentTime = 0;
+    if (bgm_num == num){
+        bgm_list[num].play();
+        loop_bgm;
+        console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[num ].duration);
+        setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.05)*1000 );
+    }
+}
 
 (function(){
     let sound_tmp;
@@ -11,10 +21,6 @@ let bgm_num = -1;
         bgm_list[count] = new Audio();
         bgm_list[count].src = sound_tmp;
         bgm_list[count].load();
-        bgm_list[count].addEventListener("ended",function () {
-            bgm_list[count].currentTime = 0;
-            bgm_list[count].play();
-        }, false);
         console.log(bgm_list);
     }
     for (let count = 0; count < se_list.length; count++){
@@ -61,9 +67,13 @@ function bgm_player (sceneP){
                     bgm_list[sceneP[2]].play();
                     bgm_list[bgm_num].currentTime = 0;
                     bgm_num = sceneP[2];
+                    console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
+                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.05)*1000 );
                 } else {
                     bgm_list[sceneP[2]].play();
                     bgm_num = sceneP[2];
+                    console.log("bgm_list[sceneP[2] ].duration:"+bgm_list[sceneP[2] ].duration);
+                    setTimeout( 'loop_bgm ('+ sceneP[2] +')', (bgm_list[sceneP[2] ].duration - 0.05)*1000 );
                 }
                 console.log("bgm_num:"+bgm_num);
             break;
