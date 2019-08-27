@@ -102,6 +102,11 @@ function font_size_btn(num){
     storage.setItem('setting_data', JSON.stringify(setting_data) );
 }
 
+function data_load_button (count){
+    loading_num = count;
+    document.getElementById("data_name").innerHTML = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
+}
+
 function data_load(data_num){
     let loaded_data = save_data[data_num];
     frame_name[frame_number].style.display = 'none';
@@ -171,14 +176,27 @@ async function btn(key){
                 document.getElementById("mute_btn").checked = 'true';
             break;
         case "saves":
+                console.log(save_data);
                 frame_name[5].style.display = 'block';
+                document.getElementById("data_box").innerHTML = "";
                 for (let count = 0; count < save_data.length; count++){
-                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button onclick="loading_num = '+ count +'">'+
-                    save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2] + '</button>');
+                    let scene_data = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
+                    document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ scene_data + '</button>');
                 }
                 console.log(frame_name[5]);
             break;
-        case "load":
+        case "delete":
+                if(loading_num != null) {
+                    console.log(loading_num);
+                    if(save_data.length > 1){
+                        save_data.splice( loading_num, loading_num );
+                    } else save_data = [];
+                    storage.setItem('save_data', JSON.stringify(save_data));
+                    loading_num = null;
+                    btn("saves");
+                }
+            break;
+        case "open":
                 if(loading_num != null) data_load(loading_num);
         case "close_savesWindow":
                 frame_name[5].style.display = 'none';
@@ -196,9 +214,14 @@ async function btn(key){
                 storage.setItem('save_data', JSON.stringify(save_data));
                 frame_name[6].style.display = 'none';
             break;
-
         case "close_saveWindow":
                 frame_name[6].style.display = 'none';
+            break;
+        case "credit":
+                frame_number = 7;
+                document.getElementById("frame_effect").className = 'fadeout';
+                await span (1500);
+                frame_name[7].style.display = 'block';
             break;
         default:
             break;
