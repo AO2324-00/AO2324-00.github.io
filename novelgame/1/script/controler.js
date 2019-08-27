@@ -178,15 +178,12 @@ async function btn(key){ // ボタン入力を受け取る
                 frame_name[5].style.display = 'block';
                 document.getElementById("data_box").innerHTML = "";
                 for (let count = 0; count < save_data.length; count++){
-                    console.log(save_data[count][3] );
                     let scene_data = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
                     let text_data = save_data[count][3].match(/id="text_box"(.*?)<\/div/)[0];
-                    console.log(text_data);
                     text_data = text_data.match(/>(.*?)</)[0].replace('>', '').replace('<', '');
                     if(text_data.length > 25){
                         text_data = text_data.slice(0 , 26)
                     }
-                    console.log(text_data);
                     document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ text_data +'<br>'+ scene_data + '</button>');
                 }
             break;
