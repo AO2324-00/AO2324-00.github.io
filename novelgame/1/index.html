@@ -11,7 +11,7 @@
     <title>NovelGame このみちゃんは脱出したがり</title>
 </head>
 <body>
-
+<!-- タイトル画面 -->
     <div id="top-title" class="">
         <div>
             <div>
@@ -26,8 +26,7 @@
         </div>
     </div>
 
-    <div id="save_data" style="display: none;">
-    </div>
+    <!-- ゲーム画面 -->
     <div id="scene_box">
     <div id="scene" style="display: none;">
         <div id="bgi_box"></div>
@@ -56,6 +55,7 @@
         <div id="choice_window"></div>
     </div>
     </div>
+    <!-- 環境設定ウィンドウ -->
     <div id="setting_window" style="display: none;">
         <button class="closeBtn" onclick="btn('close_setting')">X</button>
         <div style="font-size:30px;">環境設定</div>
@@ -76,6 +76,7 @@
         <input id="bgm_slider" type="range" minn="0" max="100">
         <style id="font_size">.font_size { font-size: 20px}</style>
     </div>
+    <!-- 音声再生の警告画面 -->
     <div id="warning">
         <div style="position:absolute;left:5px; top:5px;font-size:20px;opacity:0.6;"><div style="float:left;">Novel game　</div><div style="float:left;">このみちゃんは脱出したがり</div></div>
         <div class="center" style="width:100vw;">
@@ -85,6 +86,7 @@
             <button class="warning_button" onclick="btn('sound_mute')">Muteにする</button>
         </div>
     </div>
+    <!-- セーブデータ選択画面 -->
     <div id="saves"  style="display: none;">
         <div style="text-align: center; font-size:3vh; margin-top:2vh;">セーブデータ</div>
         <div id="data_box"></div>
@@ -95,14 +97,17 @@
             <button onclick="btn('close_savesWindow')" class="control_button">キャンセル</button>
         </div>
     </div>
+    <!-- セーブ確認画面 -->
     <div id="save_window"  style="display: none;">
         <div id="save_data_form"></div>
         <button onclick="btn('saved')" class="control_button">保存</button>
         <button onclick="btn('close_saveWindow')" class="control_button">キャンセル</button>
     </div>
+    <!-- 画面暗転の演出用 -->
     <div id="frame_effect">
 
     </div>
+    <!-- クレジット画面 -->
     <div id="credit" style="display:none">
         <div>
             <div style="width:100vw;height:100vh;"></div>
@@ -125,7 +130,7 @@
     
 </body>
 <script type="text/javascript">
-    let frame_name = ["top-title", "save_data", "scene", "setting_window", "warning", "saves", "save_window", "credit"];
+    let frame_name = ["top-title", "credit" , "scene", "setting_window", "warning", "saves", "save_window"];
 
     let frame_number = 0;
     let scene_number = -1;
@@ -135,10 +140,9 @@
         frame_name[count] = document.getElementById(frame_name[count]);
     }
 </script>
-<script type="text/javascript" src="./script/sounds.js"></script>
-<script type="text/javascript" src="./script/images.js"></script>
-<script type="text/javascript" src="./script/scene_data.js"></script>
-<script type="text/javascript" src="./script/scene_manager.js"></script>
-<script type="text/javascript" src="./script/render.js"></script>
-<script type="text/javascript" src="./script/controler.js"></script>
+<script type="text/javascript" src="./script/sounds.js"></script> <!-- オーディオ関係 -->
+<script type="text/javascript" src="./script/images.js"></script> <!-- 画像関係 -->
+<script type="text/javascript" src="./script/scene_data.js"></script> <!-- シーンのデータ -->
+<script type="text/javascript" src="./script/scene_manager.js"></script> <!-- シーンのコントロール -->
+<script type="text/javascript" src="./script/controler.js"></script> <!-- ゲームのコントロール -->
 </html>

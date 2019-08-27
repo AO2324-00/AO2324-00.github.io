@@ -1,63 +1,59 @@
 
 let storage = localStorage;
-let setting_data;
+let setting_data;// 環境設定データ
 
-let save_data;
-let save_screen_data;
+let save_data;// セーブデータ
+let save_screen_data; 
 
 let loading_num;
 
+// 保存している環境設定データ，セーブデータの読み取り==================================
 if (storage.getItem('save_data') == '{}'){
     storage.setItem('save_data', JSON.stringify([]) );
 }
 
-if (storage.length == 0){
-    console.log("null")
-
-    setting_data = [0,0,0.5,0.5]; // 文字の大きさ　文字スピード　オーディオ設定
+if (storage.length == 0){//何も保存されてないときに初期値を設定する
+    setting_data = [0,0,0.5,0.5]; // 文字の大きさ　文字スピード　オーディオ設定(SE BGM)
     storage.setItem('setting_data', JSON.stringify(setting_data) );
-    save_data = []; // save_data_name, scene_num, scene_count, bgm_num, bgi_num, char1, char2, still
+    save_data = []; 
     storage.setItem('save_data', JSON.stringify(save_data) );
 } else {
     setting_data = JSON.parse(storage.getItem('setting_data') );
     save_data = JSON.parse(storage.getItem('save_data') );
 }
-console.log(setting_data);
-console.log(save_data);
+//=============================================================================
 
-const scene_default = document.getElementById("scene").outerHTML;
-console.log(scene_default);
+const scene_default = document.getElementById("scene").outerHTML; 
+// "タイトルに戻る" を押した時にゲーム画面を初期化するため，あらかじめ初期画面を保存しておく
 
+//オーディオ関係=================================================================
 const se_slider = document.getElementById("se_slider");
-se_slider.value = setting_data[2]*100;
+se_slider.value = setting_data[2]*100; // seスライダの位置を環境設定のデータと同期させる
 for (let count = 0; count < se_list.length; count++){
-    se_list[count].volume = setting_data[2];
+    se_list[count].volume = setting_data[2]; // seのボリュームを環境設定のデータと同期させる
 }
-se_slider.addEventListener("change",function () {
+se_slider.addEventListener("change",function () { // seスライダが動いた時に実行
     for (let count = 0; count < se_list.length; count++){
         se_list[count].volume = se_slider.value/100;
     }
     setting_data[2] = se_slider.value/100;
-    storage.setItem('setting_data', JSON.stringify(setting_data) );
+    storage.setItem('setting_data', JSON.stringify(setting_data) ); // 変更した環境設定データを保存する
 });
 
 const bgm_slider = document.getElementById("bgm_slider");
 bgm_slider.value = setting_data[3]*100;
 for (let count = 0; count < bgm_list.length; count++){
-    bgm_list[count].volume = bgm_slider.value/100;
-    console.log("bgm list:"+bgm_list);
-    console.log("bgm vol:"+bgm_list[count].volume);
+    bgm_list[count].volume = bgm_slider.value/100; // bgmスライダの位置を環境設定のデータと同期させる
 }
-bgm_slider.addEventListener("change",function () {
+bgm_slider.addEventListener("change",function () { // seスライダが動いた時に実行
     for (let count = 0; count < bgm_list.length; count++){
-        bgm_list[count].volume = bgm_slider.value/100;
-        console.log("bgm list:"+bgm_list);
-        console.log("bgm vol:"+bgm_list[count].volume);
+        bgm_list[count].volume = bgm_slider.value/100; // bgmのボリュームを環境設定のデータと同期させる
     }
     setting_data[3] = bgm_slider.value/100;
-    storage.setItem('setting_data', JSON.stringify(setting_data) );
+    storage.setItem('setting_data', JSON.stringify(setting_data) ); // 変更した環境設定データを保存する
 });
 
+//文字表示速度=================================================================
 display_speed_btn(setting_data[1] );
 document.getElementById("text_display_speed_"+setting_data[1] ).checked = true;
 function display_speed_btn(num){
@@ -76,9 +72,10 @@ function display_speed_btn(num){
             break;
     }
     setting_data[1] = num;
-    storage.setItem('setting_data', JSON.stringify(setting_data) );
+    storage.setItem('setting_data', JSON.stringify(setting_data) ); // 変更した環境設定データを保存する
 }
 
+//文字サイズ==================================================================
 font_size_btn(setting_data[0] );
 document.getElementById("font_size_"+setting_data[0] ).checked = true;
 function font_size_btn(num){
@@ -99,15 +96,16 @@ function font_size_btn(num){
             break;
     }
     setting_data[0] = num;
-    storage.setItem('setting_data', JSON.stringify(setting_data) );
+    storage.setItem('setting_data', JSON.stringify(setting_data) ); // 変更した環境設定データを保存する
 }
 
-function data_load_button (count){
-    loading_num = count;
+//ゲームデータ セーブ機能関連==============================================================
+function data_load_button (count){ // セーブデータをクリックした時
+    loading_num = count;　// どのデータを選択しているかを記憶
     document.getElementById("data_name").innerHTML = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
 }
 
-function data_load(data_num){
+function data_load(data_num){ // 選択されたデータを読み込む
     let loaded_data = save_data[data_num];
     frame_name[frame_number].style.display = 'none';
     frame_name[frame_number = 2].style.display = 'block';
@@ -129,10 +127,10 @@ function data_load(data_num){
     
 }
 
-async function btn(key){
+async function btn(key){ // ボタン入力を受け取る
     console.log(key);
     switch (key) {
-        case "start":
+        case "start": // 始めから
                 document.getElementById("frame_effect").className = 'fade';
                 await span (1500);
                 frame_name[frame_number].style.display = 'none';
@@ -145,7 +143,7 @@ async function btn(key){
                 document.getElementById("frame_effect").className = '';
             break;
             
-        case "gotop":
+        case "gotop": // タイトルに戻る
                 document.getElementById("frame_effect").className = "";
                 frame_name[frame_number].style.display = 'none';
                 frame_name[frame_number = 0].style.display = 'block';
@@ -160,22 +158,22 @@ async function btn(key){
                 frame_name[2] = document.getElementById("scene");
             break;
 
-        case "setting":
+        case "setting": // 環境設定
                 frame_name[3].style.display = 'block';
             break;
 
-        case "close_setting":
+        case "close_setting": //環境設定を閉じる
                 frame_name[3].style.display = 'none';
             break;
-        case "sound_on":
+        case "sound_on": // ミュート解除
                 frame_name[4].style.display = 'none';
                 sounds_mute();
             break;
-        case "sound_mute":
+        case "sound_mute": // ミュートにする
                 frame_name[4].style.display = 'none';
                 document.getElementById("mute_btn").checked = 'true';
             break;
-        case "saves":
+        case "saves": // セーブデータ選択画面を開く
                 console.log(save_data);
                 frame_name[5].style.display = 'block';
                 document.getElementById("data_box").innerHTML = "";
@@ -185,7 +183,7 @@ async function btn(key){
                 }
                 console.log(frame_name[5]);
             break;
-        case "delete":
+        case "delete": // 選択されているセーブデータを削除する
                 if(loading_num != null) {
                     console.log(loading_num);
                     if(loading_num != 0){
@@ -197,17 +195,17 @@ async function btn(key){
                     btn("saves");
                 }
             break;
-        case "open":
+        case "open": // 選択されているセーブデータを開く
                 if(loading_num != null) data_load(loading_num);
         case "close_savesWindow":
                 frame_name[5].style.display = 'none';
                 document.getElementById("data_box").innerHTML = '';
             break;
-        case "save":
+        case "save": // セーブ確認画面
                 document.getElementById("save_data_form").innerHTML = 'シーン' + scene_number + '-' + scene_count + '"を<br>保存しますか？';
                 frame_name[6].style.display = 'block';
             break;
-        case "saved":
+        case "saved": // セーブする
             let date = new Date();
                 save_screen_data = document.getElementById("scene").outerHTML;
                 save_data.unshift([ [date.getFullYear(), date.getMonth()+1, date.getDate() ], scene_number, scene_count, save_screen_data, bgm_num]);
@@ -215,14 +213,14 @@ async function btn(key){
                 storage.setItem('save_data', JSON.stringify(save_data));
                 frame_name[6].style.display = 'none';
             break;
-        case "close_saveWindow":
+        case "close_saveWindow": // セーブ確認画面を閉じる
                 frame_name[6].style.display = 'none';
             break;
-        case "credit":
-                frame_number = 7;
+        case "credit": // クレジットを再生する
+                frame_number = 1;
                 document.getElementById("frame_effect").className = 'fadeout';
                 await span (1500);
-                frame_name[7].style.display = 'block';
+                frame_name[1].style.display = 'block';
             break;
         default:
             break;
