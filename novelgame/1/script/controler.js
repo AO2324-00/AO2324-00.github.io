@@ -146,6 +146,7 @@ if (button_pushed_check == false){
             break;
             
         case "gotop": // タイトルに戻る
+                frame_name[6].style.display = 'none';
                 clearTimeout(loop_bgm_timeout);
                 document.getElementById("frame_effect").className = "";
                 frame_name[frame_number].style.display = 'none';
@@ -198,7 +199,16 @@ if (button_pushed_check == false){
                     storage.setItem('save_data', JSON.stringify(save_data));
                     loading_num = null;
                     document.getElementById("data_name").innerHTML = "";
-                    btn("saves");
+                    document.getElementById("data_box").innerHTML = "";
+                    for (let count = 0; count < save_data.length; count++){
+                        let scene_data = save_data[count][0][0] +'/'+ save_data[count][0][1] +'/'+ save_data[count][0][2] +'　シーン' + save_data[count][1] + '-' + save_data[count][2];
+                        let text_data = save_data[count][3].match(/id="text_box"(.*?)<\/div/)[0];
+                        text_data = text_data.match(/>(.*?)</)[0].replace('>', '').replace('<', '');
+                        if(text_data.length > 25){
+                            text_data = text_data.slice(0 , 26)
+                        }
+                        document.getElementById("data_box").insertAdjacentHTML('beforeend', '<button class="choiceBtn" onclick="data_load_button('+ count +');">'+ text_data +'<br>'+ scene_data + '</button>');
+                    }
                 }
             break;
         case "open": // 選択されているセーブデータを開く
