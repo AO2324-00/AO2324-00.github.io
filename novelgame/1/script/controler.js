@@ -115,18 +115,14 @@ function data_load(data_num){ // 選択されたデータを読み込む
     document.getElementById("choice_window").innerHTML = "";
     frame_name[2] = document.getElementById("scene");
     scene_play();
-    if( loaded_data[4] != -1){
-        if ( bgm_num != -1) {
-            bgm_list[bgm_num].pause();
-        }
-        bgm_num = loaded_data[4];
-        loading_num = null;
-        bgm_list[ loaded_data[4]].currentTime = 0;
-        clearTimeout(loop_bgm_timeout);
-        bgm_list[ loaded_data[4]].play();
-        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ loaded_data[4] +')', (bgm_list[loaded_data[4] ].duration - 0.025)*1000 );
+    if ( bgm_num != -1) {
+        bgm_list[bgm_num].pause();
+        bgm_list[bgm_num].currentTime = 0;
     }
-    
+    bgm_num = loaded_data[4];
+    loading_num = null;
+    clearTimeout(loop_bgm_timeout);
+    loop_bgm (loaded_data[4]);
 }
 
 async function btn(key){ // ボタン入力を受け取る

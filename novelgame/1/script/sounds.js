@@ -7,11 +7,13 @@ let bgm_num = -1;
 let loop_bgm_timeout;
 
 function loop_bgm ( num ) {
-    bgm_list[num].currentTime = 0;
-    if (bgm_num == num){
-        bgm_list[num].play();
-        loop_bgm;
-        loop_bgm_timeout = setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.025)*1000 );
+    if ( num != -1 ) {
+        bgm_list[num].currentTime = 0;
+        if (bgm_num == num){
+            bgm_list[num].play();
+            loop_bgm;
+            loop_bgm_timeout = setTimeout( 'loop_bgm ('+ num +')', (bgm_list[num].duration - 0.025)*1000 );
+        }
     }
 }
 
