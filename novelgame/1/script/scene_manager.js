@@ -154,65 +154,65 @@ async function switchBtn(sceneP) {
     for (let counter = 0; counter < sceneP[2].length; counter++) {
         if (sceneP[1] == sceneP[2][counter] ){
             count = counter;
-        } else {
-            count = sceneP[2].length-1;
+        } else if ("defalt" == sceneP[2][counter]){
+            count = counter;
         }
     }
-            switch (sceneP[3+count][0]) {
-                case "next":
-                        text_box.style.cursor = 'pointer';
-                        console.log(sceneP[3+count]);
-                        await nextBtn(sceneP[3+count]);
-                        text_box.style.cursor = 'default';
-                    break;
-                case "choice":
-                        await choiceBtn(sceneP[3+count]);
-                    break;
-                case "switch":
-                        await switchBtn(sceneP[3+count]);
-                    break;
-                case "bgm":
-                        bgm_player(sceneP[3+count]);
-                    break;
-                case "se":
-                        se_player(sceneP[3+count]);
-                    break;
-                case "fead":
-                        await fade(sceneP[3+count][1]);
-                    break;
-                case "span":
-                        await span(sceneP[3+count][1]);
-                    break;
-                case "darkening":
-                        document.getElementById('still_box').className = 'black';
-                    break;
-                case "background_image":
-                        background_image(sceneP[3+count][1]);
-                    break;
-                case "character_image":
-                        character_image(sceneP[3+count]);
-                    break;
-                case "finish":
-                        document.getElementById("frame_effect").className = 'fadeout';
-                        await span(1500);
-                        btn("credit");
-                    break;
-                case "change_scene":
-                        scene_number = sceneP[3+count][1];
-                        scene_count = 0;
-                        scene_play () ;
-                    return;
-                case "loop":
-                        text_box.style.cursor = 'pointer';
-                        await nextBtn(sceneP[3+count]);
-                        text_box.style.cursor = 'default';
-                        scene_count --;
-                    break;
-                case "skip":
-                    break;
-                default:
-                    break;
-            }
+    switch (sceneP[3+count][0]) {
+        case "next":
+                text_box.style.cursor = 'pointer';
+                console.log(sceneP[3+count]);
+                await nextBtn(sceneP[3+count]);
+                text_box.style.cursor = 'default';
+            break;
+        case "choice":
+                await choiceBtn(sceneP[3+count]);
+            break;
+        case "switch":
+                await switchBtn(sceneP[3+count]);
+            break;
+        case "bgm":
+                bgm_player(sceneP[3+count]);
+            break;
+        case "se":
+                se_player(sceneP[3+count]);
+            break;
+        case "fead":
+                await fade(sceneP[3+count][1]);
+            break;
+        case "span":
+                await span(sceneP[3+count][1]);
+            break;
+        case "darkening":
+                document.getElementById('still_box').className = 'black';
+            break;
+        case "background_image":
+                background_image(sceneP[3+count][1]);
+            break;
+        case "character_image":
+                character_image(sceneP[3+count]);
+            break;
+        case "finish":
+                document.getElementById("frame_effect").className = 'fadeout';
+                await span(1500);
+                btn("credit");
+            break;
+        case "change_scene":
+                scene_number = sceneP[3+count][1];
+                scene_count = 0;
+                scene_play () ;
+            return;
+        case "loop":
+                text_box.style.cursor = 'pointer';
+                await nextBtn(sceneP[3+count]);
+                text_box.style.cursor = 'default';
+                scene_count --;
+            break;
+        case "skip":
+            break;
+        default:
+            break;
+    }
 }
 
 function next() {
