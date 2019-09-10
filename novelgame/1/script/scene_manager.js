@@ -102,6 +102,30 @@ function choiceBtn(sceneP) {
                         case "choice":
                                 await choiceBtn(sceneP[4+countIn]);
                             break;
+                        case "switch":
+                                await switchBtn(sceneP[4+countIn]);
+                            break;
+                        case "bgm":
+                                bgm_player(sceneP[4+countIn]);
+                            break;
+                        case "se":
+                                se_player(sceneP[4+countIn]);
+                            break;
+                        case "fead":
+                                await fade(sceneP[4+countIn][1]);
+                            break;
+                        case "span":
+                                await span(sceneP[4+countIn][1]);
+                            break;
+                        case "darkening":
+                                document.getElementById('still_box').className = 'black';
+                            break;
+                        case "background_image":
+                                background_image(sceneP[4+countIn][1]);
+                            break;
+                        case "character_image":
+                                character_image(sceneP[4+countIn]);
+                            break;
                         case "change_scene":
                                 scene_number = sceneP[4+countIn][1];
                                 scene_count = 0;
@@ -124,6 +148,69 @@ function choiceBtn(sceneP) {
         }
     });
 }
+
+async function switchBtn(sceneP) {
+    for (let count = 0; count < sceneP[2].length; count++) {
+        if (sceneP[1] == sceneP[2][count] ){
+            switch (sceneP[3+count][0]) {
+                case "next":
+                        text_box.style.cursor = 'pointer';
+                        console.log(sceneP[3+count]);
+                        await nextBtn(sceneP[3+count]);
+                        text_box.style.cursor = 'default';
+                    break;
+                case "choice":
+                        await choiceBtn(sceneP[3+count]);
+                    break;
+                case "switch":
+                        await switchBtn(sceneP[3+count]);
+                    break;
+                case "bgm":
+                        bgm_player(sceneP[3+count]);
+                    break;
+                case "se":
+                        se_player(sceneP[3+count]);
+                    break;
+                case "fead":
+                        await fade(sceneP[3+count][1]);
+                    break;
+                case "span":
+                        await span(sceneP[3+count][1]);
+                    break;
+                case "darkening":
+                        document.getElementById('still_box').className = 'black';
+                    break;
+                case "background_image":
+                        background_image(sceneP[3+count][1]);
+                    break;
+                case "character_image":
+                        character_image(sceneP[3+count]);
+                    break;
+                case "finish":
+                        document.getElementById("frame_effect").className = 'fadeout';
+                        await span(1500);
+                        btn("credit");
+                    break;
+                case "change_scene":
+                        scene_number = sceneP[3+count][1];
+                        scene_count = 0;
+                        scene_play () ;
+                    return;
+                case "loop":
+                        text_box.style.cursor = 'pointer';
+                        await nextBtn(sceneP[3+count]);
+                        text_box.style.cursor = 'default';
+                        scene_count --;
+                    break;
+                case "skip":
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+}
+
 function next() {
     return new Promise(function(resolve) {
         text_box.addEventListener("click", resolve, {once: true});
@@ -161,6 +248,10 @@ async function scene_play () {
 
             case "choice":
                     await choiceBtn(sceneP);
+                break;
+
+            case "switch":
+                    await switchBtn(sceneP);
                 break;
 
             case "bgm":
