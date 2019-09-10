@@ -150,8 +150,14 @@ function choiceBtn(sceneP) {
 }
 
 async function switchBtn(sceneP) {
-    for (let count = 0; count < sceneP[2].length; count++) {
-        if (sceneP[1] == sceneP[2][count] ){
+    let count;
+    for (let counter = 0; counter < sceneP[2].length; counter++) {
+        if (sceneP[1] == sceneP[2][counter] ){
+            count = counter;
+        } else {
+            count = sceneP[2].length-1;
+        }
+    }
             switch (sceneP[3+count][0]) {
                 case "next":
                         text_box.style.cursor = 'pointer';
@@ -207,8 +213,6 @@ async function switchBtn(sceneP) {
                 default:
                     break;
             }
-        }
-    }
 }
 
 function next() {
