@@ -151,8 +151,11 @@ function choiceBtn(sceneP) {
 
 async function switchBtn(sceneP) {
     let count;
+    function safeEval(val){
+        return Function('"use strict";return ('+val+')')();
+    }
     for (let counter = 0; counter < sceneP[2].length; counter++) {
-        if (sceneP[1] == sceneP[2][counter] ){
+        if (safeEval(sceneP[1]) == sceneP[2][counter] ){
             count = counter;
         } else if ("defalt" == sceneP[2][counter]){
             count = counter;

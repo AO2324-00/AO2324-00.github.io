@@ -10,7 +10,7 @@ scene_list[ シーンナンバー ].push([オプション]);
 ["bgm", "play" or "stop", bgm番号] (BGM番号は sounds.js を参照)
 ["se", se番号] (SE番号は sounds.js を参照)
 
-["switch", 変数名 , [ケース1, ケース2,  ・・・, "defalt"],
+["switch", "変数名" , [ケース1, ケース2,  ・・・, "defalt"],
 (ケース1の処理)    [  "skip" ] , 何もせずに飛ばす
 (ケース2の処理)    [ "loop", "話し手", "内容" ] ,  繰り返し同じ質問をする
 　　　・　　　　 [ "next", "話し手", "内容"] ,
