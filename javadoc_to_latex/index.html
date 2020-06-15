@@ -162,7 +162,7 @@ function outputClass(){
             };
             innerTmp = javaSplit(innerTmp.innerText);
             try {
-                outputTex += `      \\item ${innerTmp[innerTmp.length-1]}: ${innerTmp[innerTmp.length-2]} 型，${tmp[j].getElementsByClassName("block")[0].innerText.replace(/\s{2,}/g, "").replace(/\n/g, "")}\n`;
+                outputTex += `      \\item ${innerTmp[innerTmp.length-1]}: ${innerTmp[innerTmp.length-2]} 型，${convertToTex(tmp[j].getElementsByClassName("block")[0].innerText)}\n`;
             } catch(e) {
                 outputTex += `      \\item ${innerTmp[innerTmp.length-1]}: ${innerTmp[innerTmp.length-2]} 型\n`;
             }
