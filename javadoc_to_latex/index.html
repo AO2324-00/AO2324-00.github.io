@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>レポート用スクレイピングアプリ</title>
+</head>
+<body>
+    <header>
+        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 1.0</span></h1>
+    </header>
+    <div class="box">
+        <p>LaTeX形式で書き出したいクラスについての、JavaDocのhtmlファイルを選択してください。</p>
+        <input type="file" name="" id="fileInput">
+    </div>
+    <pre id="output" class="box">
+
+    LaTeXのリストがここに書き出されます．
+    </pre>
+</body>
+<style>
+    body {
+        margin: 0;
+    }
+    header {
+        padding: 12px 0;
+        background-color: rgb(25, 165, 170);
+        box-shadow: rgb(71, 71, 71) 0px 0px 10px;
+        margin-bottom: 40px;
+    }
+    h1 {
+        margin: 0;
+    }
+    p {
+        margin: 4px 0;
+    }
+    .box {
+        width: 90vw;
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    #output {
+        overflow: auto;
+        color: white;
+        background-color: rgb(47, 47, 47);
+        padding: 10px;
+        min-height: 300px;
+        border: solid gray 4px;
+        box-shadow: rgb(102, 102, 102) 2px 2px 3px;
+    }
+</style>
+<script>
+let fileName = "";
+let fileData = "";
+let datinnerTmp2 = "";
+
+const pageFormat = document.getElementById("pageFormat");
+const fileInput = document.getElementById("fileInput");
+console.log(fileInput);
+fileInput.addEventListener('change', fileReader, false);
+
+function fileReader(evt){
+    console.log(evt);
+    var file = evt.target.files;
+
+    //FileReaderの作成
+    var reader = new FileReader();
+    //テキスト形式で読み込む
+    reader.readAsText(file[0]);
+
+    //読込終了後の処理
+    reader.onload = function(ev){
+        //テキストエリアに表示する
+        //document.test.txt.value = reader.result;
+        fileData = reader.result;
+        fileName = file[0].name;
+        //console.log("fileName : "+ fileName + "\ncontent : \n" + fileData);
+        //formatChange();
+        fileData = new DOMParser().parseFromString(fileData, "text/html");
+        //console.log(fileData.getElementsByClassName("title")[0].innerHTML);
+        try{
+            if(fileData.getElementsByClassName("title")[0].innerText.match(/クラス/)) outputClass();
+        } catch(e) {
+            console.log("aaaa");
+            output.innerHTML = "指定されたファイルはClassに関するファイルではありません。";
+        }
+        //outputClass();
+    }
+}
+const output = document.getElementById("output");
+function outputClass(){
+    let tmp;
+    let outputTex = `\\subsection*{`;
+    tmp = fileData.getElementsByClassName("title")[0].innerHTML.split(" ");
+    outputTex += `${tmp[1]} ${tmp[0]}}\n`;
+    outputTex += `\\begin{itemize}\n`;
+    let details = fileData.getElementsByClassName("details")[0].children[0].children[0].children;
+    for(let i = 0; i < details.length; i++){
+        tmp = details[i].children[0].children;
+        console.log(tmp);
+        outputTex += `  \\item ${tmp[1].innerText.split("の")[0]}\n`;
+        outputTex += `    \\begin{itemize}\n`;
+        tmp = details[i].children[0].getElementsByTagName("ul");
+        for(let j = 0; j < tmp.length; j++){
+            let innerTmp = tmp[j].getElementsByTagName("pre")[0];
+            let innerTmp2 = innerTmp.getElementsByTagName("a");
+            if(innerTmp2.length != 0){
+                for(let k = 0; k < innerTmp2.length; k++){
+                    innerTmp2[k].insertAdjacentHTML("beforebegin", innerTmp2[k].innerText);
+                    innerTmp2[k].remove();
+                }
+            };
+            innerTmp = javaSplit(innerTmp.innerText);
+            try {
+                outputTex += `      \\item ${innerTmp[innerTmp.length-1]}: ${innerTmp[innerTmp.length-2]} 型，${tmp[j].getElementsByClassName("block")[0].innerText.replace(/\s{2,}/g, "").replace(/\n/g, "")}\n`;
+            } catch(e) {
+                outputTex += `      \\item ${innerTmp[innerTmp.length-1]}: ${innerTmp[innerTmp.length-2]} 型\n`;
+            }
+        }
+        outputTex += `    \\end{itemize}\n`;
+    }
+    outputTex += `\\end{itemize}\n`;
+    output.innerText = outputTex;
+
+    function javaSplit(text){
+        text = text.replace(/\s|&nbsp;/g, " ").replace(/\s{2,}/g, " ").replace(/\n/g, "");
+        let ret = [], index = 0, flag = 0;
+        for(let i = 0; i < text.length; i++){
+            if(text[i] == "<" || text[i] == "(") ++flag;
+            else if(text[i] == ">" || text[i] == ")") --flag;
+            if(flag == 0 && text[i] == " ") ret.push(text.slice(index, index = i));
+            else if(i == text.length-1) ret.push(text.slice(index, i+1));
+        }
+        return ret;
+    }
+}
+
+</script>
+</html>
