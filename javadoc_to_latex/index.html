@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 1.1.4</span></h1>
+        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 1.1.5</span></h1>
     </header>
     <div class="box">
         <p>LaTeX形式で書き出したいクラスについての、JavaDocのhtmlファイルを選択してください。(クラス名.html や インタフェース名.html などのファイル)</p>
@@ -140,6 +140,7 @@ function fileReader(evt){
         try{
             outputClass();
         } catch(e) {
+            console.log(e);
             output.innerHTML = "指定されたファイルはLaTeXに変換できませんでした...";
         }
     }
@@ -206,7 +207,7 @@ function outputClass(){
             65279 // ゼロ幅のノーブレークスペース
         ];
 
-        text.each(function() {
+        (function() {
             let txtBefore = text;
             let txtAfter = "";
             for (let i=0; i < txtBefore.length; i++) {
