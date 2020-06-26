@@ -26,11 +26,11 @@ function bot(myHands, enemyHands){
                 else bot(myHands, enemyHands);
             break;
         case 4:
-                if(myHands.left != 0) myHand("left").to("friend", Math.floor(Math.random  * (myHands.left-1))+1 );
+                if(myHands.left != 0) myHand("left").to("friend", Math.floor(Math.random()  * (myHands.left-1))+1 );
                 else bot(myHands, enemyHands);
             break;
         case 5:
-                if(myHands.right != 0) myHand("right").to("friend", Math.floor(Math.random * (myHands.right-1))+1 );
+                if(myHands.right != 0) myHand("right").to("friend", Math.floor(Math.random() * (myHands.right-1))+1 );
                 else bot(myHands, enemyHands);
             break;
         default:
