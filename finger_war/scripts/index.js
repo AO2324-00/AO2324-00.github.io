@@ -88,7 +88,7 @@ function action(foe, lor){
 function selectingFriend(foe, lor){
     let resultText = "";
     for(let count = 1; count <= hands[currentTurn][currentState].value; count++){
-        resultText += `<img class="fingerSelector" src="./Resources/hand${count}.png" onclick="selectedFriend('${foe}','${lor}',${count})">`;
+        resultText += `<img class="fingerSelector" src="./resources/hand${count}.png" onclick="selectedFriend('${foe}','${lor}',${count})">`;
     }
     result.innerHTML = resultText;
 }
