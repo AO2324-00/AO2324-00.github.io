@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/index.css">
+    <title>指遊び</title>
+</head>
+
+<body>
+    <div id="border">
+        <div id="enemy">
+            <div class="name">AI</div>
+            <div class="hands">
+                <img class="left" src="./Resources/hand1.png" onclick="action(`enemy`, `left`)">
+                <img class="right" src="./Resources/hand1.png" onclick="action(`enemy`, `right`)">
+            </div>
+        </div>
+        <div id="result"><span onclick="startGame()">指遊び<br>ゲームスタート</span></div>
+        <div id="friend">
+            <div class="hands">
+                <img class="left" src="./Resources/hand1.png" onclick="action(`friend`, `left`)">
+                <img class="right" src="./Resources/hand1.png" onclick="action(`friend`, `right`)">
+            </div>
+            <div class="name" contenteditable>あなた</div>
+        </div>
+    </div>
+    <script src="./Scripts/bot.js"></script>
+    <script src="./Scripts/index.js"></script>
+</body>
+
+</html>

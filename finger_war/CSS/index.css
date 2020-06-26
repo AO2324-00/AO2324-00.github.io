@@ -1,0 +1,59 @@
+body {
+    margin: 0;
+}
+#border {
+    position: relative;
+    left:50vw;
+    top: 50vh;
+    transform: translateX(-50%) translateY(-50%);
+    border: solid black 4px;
+    border-radius: 3vmin;
+    width: 90vmin;
+}
+/*-------------------------*/
+#result {
+    font-weight: bold;
+    font-size: 5vmin;
+    text-align: center;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+#result > span {
+    cursor: pointer;
+}
+#result > span:hover {
+    color: gray;
+}
+.fingerSelector {
+    width: 5vmin;
+    transform: scale(2.0);
+    margin: 0 2.5vmin;
+}
+.name {
+    font-size: 3vmin;
+    text-align: center;
+    margin: 5px 6vmin;
+}
+/*-------------------------*/
+#enemy > div.hands {
+    transform: rotateZ(180deg);
+}
+img.left {
+    transform: scaleX(-1);
+}
+
+.hands {
+    display: flex;
+    justify-content: center;
+}
+.hands > img {
+    width: 35vmin;
+    height: 35vmin;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+/*-------------------------*/
