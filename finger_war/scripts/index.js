@@ -39,11 +39,11 @@ changeAllStyle("pointerEvents", "none");
 function pointAdd(foe, lor, num){
     if(num == null){
         hands[foe][lor].value = 5;
-        hands[foe][lor].src = `./Resources/hand5.png`;
+        hands[foe][lor].src = `./resources/hand5.png`;
         return;
     }
     hands[foe][lor].value = (hands[foe][lor].value + num)%5;
-    hands[foe][lor].src = `./Resources/hand${hands[foe][lor].value}.png`;
+    hands[foe][lor].src = `./resources/hand${hands[foe][lor].value}.png`;
 }
 
 /**
