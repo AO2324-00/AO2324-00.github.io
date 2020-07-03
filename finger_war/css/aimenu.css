@@ -7,10 +7,14 @@
 
 #AIpageBox {
     margin: 10px;
+    display: flex;
+    justify-content: center;
 }
 .aiName {
     font-size: 1.6em;
     font-weight: bold;
+    width: 90vw;
+    margin-bottom: 10px;
 }
 .aiDescription::before {
     content: "説明";
@@ -21,7 +25,7 @@
 }
 .aiDescription {
     font-family: Arial, Helvetica, sans-serif;
-    width: 95vw;
+    width: 90vw;
     overflow-x: auto;
     padding: 8px;
     height: calc( 1.3em * 8 );
@@ -37,16 +41,19 @@
     padding-bottom: 1px;
 }
 .script {
-    width: 95vw;
+    width: 90vw;
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
     height: 60vh;
+    margin-bottom: 8px;
+    background-color: rgb(36, 36, 36);
+    color: white;
 }
 .newAiName {
     font-size: 1.6em;
     font-weight: bold;
-    width: 95vw;
+    width: 90vw;
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
@@ -73,7 +80,7 @@
 }
 .newAiDescription {
     font-family: Arial, Helvetica, sans-serif;
-    width: 95vw;
+    width: 90vw;
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
@@ -90,11 +97,14 @@
     padding-bottom: 1px;
 }
 .newScript {
-    width: 95vw;
+    width: 90vw;
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
     height: 60vh;
+    margin-bottom: 8px;
+    background-color: rgb(36, 36, 36);
+    color: white;
 }
 /*------------------------------------------------*/
 #editNav {

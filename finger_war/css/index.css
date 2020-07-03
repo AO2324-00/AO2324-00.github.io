@@ -53,6 +53,10 @@ nav {
     width: 5vmin;
     transform: scale(2.0);
     margin: 0 2.5vmin;
+    cursor: pointer;
+}
+.fingerSelector:hover {
+    transform: scale(2.1);
 }
 .name {
     font-size: 3vmin;
@@ -80,7 +84,7 @@ img.left {
     user-select: none;
 }
 /*-------------------------*/
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     nav {
         position: relative;
         top:0;

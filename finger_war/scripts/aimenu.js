@@ -52,11 +52,11 @@ function setLocalData(key, data) {
 }
 
 function setUpAIdata(aiData){
-    console.log(aiData)
+    //console.log(aiData)
     for(let key in aiData){
         aiData[key].id = key;
         addAIPage(aiData[key]);
-        console.log(aiData[key]);
+        //console.log(aiData[key]);
     }
 }
 
@@ -67,7 +67,7 @@ openAI = function(id){
         creatingCheck = false;
     } catch(e){}
     currentID = Number(id);
-    console.log(id);
+    //console.log(id);
     AIpageBox.innerHTML = "";
     AIpageBox.appendChild((function(data){
         let newPage = document.createElement("div");
@@ -85,10 +85,10 @@ openAI = function(id){
         tmpElement.className = "aiDescription";
         tmpElement.textContent = data.description;
         tmpElement.spellcheck= false;
-        tmpElement.addEventListener("change",function(){
-            if(!editedCheck && !creatingCheck){
+        tmpElement.addEventListener("mousemove",function(){
+            if(document.getElementById("AIpage").getElementsByClassName("aiDescription")[0].value != tmpElement.textContent && !editedCheck && !creatingCheck){
                 /** DOMの変化が起こった時の処理 */
-                console.log('DOMが変化しました');
+                //console.log('DOMが変化しました');
                 editStyle.innerHTML = `#AIlabel${id}::after{content: " ●";color:gray;}`;
                 editedCheck = true;
             } else if(editStyle.innerHTML == "") editedCheck = false;
@@ -100,10 +100,10 @@ openAI = function(id){
         tmpElement.className = "script";
         tmpElement.textContent = data.script;
         tmpElement.spellcheck= false;
-        tmpElement.addEventListener("change",function(){
-            if(!editedCheck && !creatingCheck){
+        tmpElement.addEventListener("mousemove",function(){
+            if(document.getElementById("AIpage").getElementsByClassName("script")[0].value != tmpElement.textContent && !editedCheck && !creatingCheck){
                 /** DOMの変化が起こった時の処理 */
-                console.log('DOMが変化しました');
+                //console.log('DOMが変化しました');
                 editStyle.innerHTML = `#AIlabel${id}::after{content: " ●";color:gray;}`;
                 editedCheck = true;
             } else if(editStyle.innerHTML == "") editedCheck = false;
@@ -171,9 +171,9 @@ function addAIPage(data){
 
 function setUpAIpage(){
     aiData = getLocalData("aiData");
-    console.log(aiData);
+    //console.log(aiData);
     if(aiData == null || !Object.keys(aiData).length){
-        setLocalData("aiData", [{"name":`Default AI`,"description":document.getElementById("AIpage").getElementsByClassName("aiDescription")[0].textContent, "script":document.getElementById("AIpage").getElementsByClassName("script")[0].textContent}]);
+        setLocalData("aiData", [{"name":`Default AI`,"description":document.getElementById("AIpage").getElementsByClassName("aiDescription")[0].value, "script":document.getElementById("AIpage").getElementsByClassName("script")[0].value}]);
         aiData = getLocalData("aiData");
     }
     document.getElementById("AIpage").remove();
@@ -200,14 +200,14 @@ createAIpage = function(){
         tmpElement.className = "newAiName";
         tmpElement.textContent = "New algorithm";
         tmpElement.contentEditable = true;
-        tmpElement.spellcheck= false;
+        tmpElement.spellcheck = false;
         return tmpElement;
     })());
     newPage.appendChild((function(){
         let tmpElement = document.createElement("textarea");
         tmpElement.className = "newAiDescription";
-        tmpElement.textContent = "AIの説明";
-        tmpElement.spellcheck= false;
+        tmpElement.spellcheck = false;
+        tmpElement.placeholder = defaultAiMenu.childNodes[5].childNodes[1].childNodes[3].value;
         return tmpElement;
     })());
     newPage.appendChild((function(){
@@ -249,7 +249,7 @@ saveAIpage = function(){
 deleteAIpage = function(){
     aiData.splice(currentID, 1);
     setLocalData("aiData", aiData);
-    console.log(defaultAiMenu.childNodes);
+    //console.log(defaultAiMenu.childNodes);
     aiSelector.innerHTML = defaultAiMenu.childNodes[3].innerHTML;
     AIpageBox.innerHTML = defaultAiMenu.childNodes[5].innerHTML;
     setUpAIpage();
