@@ -1,4 +1,5 @@
 "use.strict";
+(function(document){
 /**
  * タイトルや勝敗、ターン表示や分身などのUIを表示するエレメントのデータ
  */
@@ -66,7 +67,7 @@ let currentTurn = "friend",currentState="";
  * @param {String} foe 行動を起こした手の情報 (friend or enemy)
  * @param {String} lor 行動を起こした手の情報 (left or right)
  */
-function action(foe, lor){
+action = function action(foe, lor){
     changeAllStyle("opacity", "1.0");
     if(currentTurn == foe && currentState == "" && hands[foe][lor].value != 0) {
         currentState = lor;
@@ -99,7 +100,7 @@ function selectingFriend(foe, lor){
  * @param {String} lor 行動を起こした手の情報 (left or right)
  * @param {Number} num 分身時に動かす指の数
  */
-function selectedFriend(foe, lor, num){
+selectedFriend = function(foe, lor, num){
     pointAdd(currentTurn, currentState, -num);
     pointAdd(foe, lor, num);
     continueGame();
@@ -134,7 +135,7 @@ function continueGame(){
 /**
  * ゲームの開始処理
  */
-function startGame(){
+startGame = function(){
     currentTurn = (Math.floor(Math.random()*2) == 0)?"friend":"enemy";
     currentState="";
     for(let foe in hands) for(let lor in hands[foe]) pointAdd(foe, lor, 1);
@@ -151,14 +152,17 @@ function startGame(){
  * 勝敗を表示する
  * @param {friend: boolean, enemy: boolean} defeat プレイヤの勝敗を保持する連想配列
  */
-function endGame(defeat){
-    let resultText = "";
-    if(defeat.friend) resultText += `<span onclick="startGame()">${document.getElementById("enemy").getElementsByClassName("name")[0].textContent}の勝利です<br>もう一度プレイする</span>`;
-    else  resultText += `<span onclick="startGame()">${document.getElementById("friend").getElementsByClassName("name")[0].textContent}の勝利です<br>もう一度プレイする</span>`;
-    result.innerHTML = resultText;
+endGame = function(defeat = null){
+    if(defeat == null) result.innerHTML =  `<div id="result"><span onclick="startGame()">指遊び<br>ゲームスタート</span></div>`;
+    else if(defeat.friend) result.innerHTML =  `<span onclick="startGame()">${document.getElementById("enemy").getElementsByClassName("name")[0].textContent}の勝利です<br>もう一度プレイする</span>`;
+    else result.innerHTML =  `<span onclick="startGame()">${document.getElementById("friend").getElementsByClassName("name")[0].textContent}の勝利です<br>もう一度プレイする</span>`;
     for(let foe in hands) for(let lor in hands[foe]) pointAdd(foe, lor, null)
     changeAllStyle("pointerEvents", "none");
     changeAllStyle("cursor", "defalt");
+}
+
+setAIname = function(name){
+    document.getElementById("enemy").getElementsByClassName("name")[0].textContent = name;
 }
 
 //======================================
@@ -190,7 +194,9 @@ const botActRight = (param1, param2)=>(
         action("friend", param2);
     })()
 );
-function myHand(leftOrRight){
+myHand = function(leftOrRight){
     if(leftOrRight == "left") return {"to":botActLeft}
     else return {"to":botActRight}
 }
+
+})(document);

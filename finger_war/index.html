@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./css/main.css">
+    <link rel="stylesheet" href="./css/index.css">
+    <link rel="stylesheet" href="./css/aimenu.css">
     <title>指遊び</title>
 </head>
 
@@ -25,9 +26,74 @@
             </div>
             <div class="name" contenteditable>あなた</div>
         </div>
+        <nav>
+            <div class="btn" onclick="endGame()">指遊び TOP</div>
+            <div class="btn" onclick="editMenuBtn()">AIの選択・編集</div>
+        </nav>
     </div>
-    <script src="./scripts/bot.js"></script>
-    <script src="./scripts/index.js"></script>
+    <div id="aiMenu" style="display: none;">
+        <div id="editNav">
+            <div onclick="editMenuBtn()">編集を終了する</div>
+            <div onclick="createAIpage()">新規AIを作成</div>
+            <div onclick="saveAIpage()">上書き保存</div>
+            <div onclick="deleteAIpage()">選択中のAIを削除</div>
+        </div>
+        <div id="aiSelector">
+            <input type="radio" name="aiSelector" id="AIdemo"><label for="AIdemo" id="AIlabelDemo">Default AI</label>
+        </div>
+        <div id="AIpageBox">
+            <div id="AIpage">
+                <div class="aiName">
+                    Default AI
+                </div>
+                <pre class="aiDescription" spellcheck=”false”>
+アルゴリズムはJavascriptで記述され、二つの変数 myHands 、 enemyHands と、実行する関数 myHand(操作する手).to(ターゲット, オプション) が用意されている。<br>
+【 変数の詳細 】<br>
+    @param {left:Number, right:Number} myHands AI自身の手の指の数 変更不可 ( 左手: myHands.left ,  右手: myHands.right )<br>
+    @param {left:Number, right:Number} enemyHands プレイヤーの手の指の数 変更不可 ( 左手: enemyHands.left ,  右手: enemyHands.right )<br>
+【 関数の使用例 】<br>
+    myHand("left").to("enemy", "right") AIの左手でプレイヤーの右手を攻撃<br>
+    myHand("right").to("friend", 2) AIの右手の指2本をAI自身の左手に分身 (.toの後の第二引数が、自身の指の数の範囲外の場合はエラーを出力する)
+                </pre>
+                <pre class="script" spellcheck=”false”>
+/** サンプルプログラム (取れる手の中からランダムなものを選択する) */
+switch (Math.floor(Math.random()*5)) {
+    case 0:
+            if(myHands.left != 0) myHand("left").to("enemy", "left");
+            else bot(myHands, enemyHands);
+        break;
+    case 1:
+            if(myHands.left != 0) myHand("left").to("enemy", "right");
+            else bot(myHands, enemyHands);
+        break;
+    case 2:
+            if(myHands.right != 0) myHand("right").to("enemy", "left");
+            else bot(myHands, enemyHands);
+        break;
+    case 3:
+            if(myHands.right != 0) myHand("right").to("enemy", "right");
+            else bot(myHands, enemyHands);
+        break;
+    case 4:
+            if(myHands.left != 0) myHand("left").to("friend", Math.floor(Math.random() * (myHands.left-1))+1 );
+            else bot(myHands, enemyHands);
+        break;
+    case 5:
+            if(myHands.right != 0) myHand("right").to("friend", Math.floor(Math.random() * (myHands.right-1))+1 );
+            else bot(myHands, enemyHands);
+        break;
+    default:
+            bot(myHands, enemyHands);
+        break;
+}
+                </pre>
+            </div>
+        </div>
+        
+    </div>
+    <script src="./scripts/bot.js" type="text/javascript"></script>
+    <script src="./scripts/index.js" type="text/javascript"></script>
+    <script src="./scripts/aimenu.js" type="text/javascript"></script>
 </body>
 
 </html>

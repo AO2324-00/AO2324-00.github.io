@@ -5,6 +5,7 @@
  * @param {left:Number, right:Number} myHands AI自身の手の指の数 変更不可 ( 左手: myHands.left ,  右手: myHands.right )
  * @param {left:Number, right:Number} enemyHands プレイヤーの手の指の数 変更不可 ( 左手: enemyHands.left ,  右手: enemyHands.right )
  */
+/*
 function bot(myHands, enemyHands){
 
 //=サンプルアルゴリズム(完全にランダム)===========================
@@ -26,7 +27,7 @@ function bot(myHands, enemyHands){
                 else bot(myHands, enemyHands);
             break;
         case 4:
-                if(myHands.left != 0) myHand("left").to("friend", Math.floor(Math.random()  * (myHands.left-1))+1 );
+                if(myHands.left != 0) myHand("left").to("friend", Math.floor(Math.random() * (myHands.left-1))+1 );
                 else bot(myHands, enemyHands);
             break;
         case 5:
@@ -34,8 +35,9 @@ function bot(myHands, enemyHands){
                 else bot(myHands, enemyHands);
             break;
         default:
+                bot(myHands, enemyHands);
             break;
     }
 //===============================================
 
-}
+}*/
