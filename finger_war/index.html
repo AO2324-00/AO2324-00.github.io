@@ -46,16 +46,16 @@
                 <div class="aiName">
                     Default AI
                 </div>
-                <pre class="aiDescription" spellcheck=”false”>
-アルゴリズムはJavascriptで記述され、二つの変数 myHands 、 enemyHands と、実行する関数 myHand(操作する手).to(ターゲット, オプション) が用意されている。<br>
-【 変数の詳細 】<br>
-    @param {left:Number, right:Number} myHands AI自身の手の指の数 変更不可 ( 左手: myHands.left ,  右手: myHands.right )<br>
-    @param {left:Number, right:Number} enemyHands プレイヤーの手の指の数 変更不可 ( 左手: enemyHands.left ,  右手: enemyHands.right )<br>
-【 関数の使用例 】<br>
-    myHand("left").to("enemy", "right") AIの左手でプレイヤーの右手を攻撃<br>
+                <textarea class="aiDescription" spellcheck=”false”>
+アルゴリズムはJavascriptで記述され、二つの変数 myHands 、 enemyHands と、実行する関数 myHand(操作する手).to(ターゲット, オプション) が用意されている。
+【 変数の詳細 】
+    @param {left:Number, right:Number} myHands AI自身の手の指の数 変更不可 ( 左手: myHands.left ,  右手: myHands.right )
+    @param {left:Number, right:Number} enemyHands プレイヤーの手の指の数 変更不可 ( 左手: enemyHands.left ,  右手: enemyHands.right )
+【 関数の使用例 】
+    myHand("left").to("enemy", "right") AIの左手でプレイヤーの右手を攻撃
     myHand("right").to("friend", 2) AIの右手の指2本をAI自身の左手に分身 (.toの後の第二引数が、自身の指の数の範囲外の場合はエラーを出力する)
-                </pre>
-                <pre class="script" spellcheck=”false”>
+                </textarea>
+                <textarea class="script" spellcheck=”false”>
 /** サンプルプログラム (取れる手の中からランダムなものを選択する) */
 switch (Math.floor(Math.random()*5)) {
     case 0:
@@ -86,7 +86,7 @@ switch (Math.floor(Math.random()*5)) {
             bot(myHands, enemyHands);
         break;
 }
-                </pre>
+                </textarea>
             </div>
         </div>
         

@@ -81,19 +81,33 @@ openAI = function(id){
         return tmpElement;
     })());
     newPage.appendChild((function(){
-        let tmpElement = document.createElement("pre");
+        let tmpElement = document.createElement("textarea");
         tmpElement.className = "aiDescription";
         tmpElement.textContent = data.description;
-        tmpElement.contentEditable = true;
         tmpElement.spellcheck= false;
+        tmpElement.addEventListener("change",function(){
+            if(!editedCheck && !creatingCheck){
+                /** DOMの変化が起こった時の処理 */
+                console.log('DOMが変化しました');
+                editStyle.innerHTML = `#AIlabel${id}::after{content: " ●";color:gray;}`;
+                editedCheck = true;
+            } else if(editStyle.innerHTML == "") editedCheck = false;
+        },false);
         return tmpElement;
     })());
     newPage.appendChild((function(){
-        let tmpElement = document.createElement("pre");
+        let tmpElement = document.createElement("textarea");
         tmpElement.className = "script";
         tmpElement.textContent = data.script;
-        tmpElement.contentEditable = true;
         tmpElement.spellcheck= false;
+        tmpElement.addEventListener("change",function(){
+            if(!editedCheck && !creatingCheck){
+                /** DOMの変化が起こった時の処理 */
+                console.log('DOMが変化しました');
+                editStyle.innerHTML = `#AIlabel${id}::after{content: " ●";color:gray;}`;
+                editedCheck = true;
+            } else if(editStyle.innerHTML == "") editedCheck = false;
+        },false);
         return tmpElement;
     })());
     newPage.appendChild((function(){
@@ -123,7 +137,7 @@ function edited(id){
     
     /** 監視時のオプション */
     const config = { 
-    attributes: true, 
+    //attributes: true, 
     childList: true, 
     characterData: true,
     subtree: true
@@ -166,7 +180,7 @@ function setUpAIpage(){
     document.getElementById("AIdemo").remove();
     document.getElementById("AIlabelDemo").remove();
     setUpAIdata(aiData);
-    openAI(currentID-1);
+    (currentID == 0)?openAI(currentID):openAI(currentID-1);
 }
 setUpAIpage();
 
@@ -190,18 +204,16 @@ createAIpage = function(){
         return tmpElement;
     })());
     newPage.appendChild((function(){
-        let tmpElement = document.createElement("div");
+        let tmpElement = document.createElement("textarea");
         tmpElement.className = "newAiDescription";
         tmpElement.textContent = "AIの説明";
-        tmpElement.contentEditable = true;
         tmpElement.spellcheck= false;
         return tmpElement;
     })());
     newPage.appendChild((function(){
-        let tmpElement = document.createElement("pre");
+        let tmpElement = document.createElement("textarea");
         tmpElement.className = "newScript";
-        tmpElement.textContent = "//Please write your script here!";
-        tmpElement.contentEditable = true;
+        tmpElement.textContent = "//Please write your script here!"
         tmpElement.spellcheck= false;
         return tmpElement;
     })());
@@ -211,7 +223,7 @@ createAIpage = function(){
         tmpElement.textContent = "保存";
         tmpElement.addEventListener("click", function(){
             let newPage = document.getElementById("AIpageBox");
-            aiData.push({name:newPage.getElementsByClassName("newAiName")[0].textContent,description:newPage.getElementsByClassName("newAiDescription")[0].textContent, script:newPage.getElementsByClassName("newScript")[0].textContent});
+            aiData.push({name:newPage.getElementsByClassName("newAiName")[0].textContent,description:newPage.getElementsByClassName("newAiDescription")[0].value, script:newPage.getElementsByClassName("newScript")[0].value});
             setLocalData("aiData", aiData);
             aiData[aiData.length-1].id = aiData.length-1;
             addAIPage(aiData[aiData.length-1]);
@@ -228,8 +240,8 @@ saveAIpage = function(){
     if(creatingCheck) return;
     document.getElementById("AIlabel"+currentID).textContent = document.getElementsByClassName("aiName")[0].innerHTML;
     aiData[currentID].name = document.getElementsByClassName("aiName")[0].innerHTML;
-    aiData[currentID].description = document.getElementsByClassName("aiDescription")[0].innerHTML;
-    aiData[currentID].script = document.getElementsByClassName("script")[0].innerHTML;
+    aiData[currentID].description = document.getElementsByClassName("aiDescription")[0].value;
+    aiData[currentID].script = document.getElementsByClassName("script")[0].value;
     setLocalData("aiData", aiData);
     editStyle.innerHTML = "";
     openAI(currentID);

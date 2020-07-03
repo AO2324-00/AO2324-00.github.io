@@ -24,6 +24,8 @@
     width: 95vw;
     overflow-x: auto;
     padding: 8px;
+    height: calc( 1.3em * 8 );
+    margin-bottom: 8px;
 }
 .script::before {
     content: "AIのアルゴリズム (Javascript)";
@@ -39,6 +41,7 @@
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
+    height: 60vh;
 }
 .newAiName {
     font-size: 1.6em;
@@ -74,6 +77,8 @@
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
+    height: calc( 1.3em * 5 );
+    margin-bottom: 8px;
 }
 .newScript::before {
     content: "AIのアルゴリズム (Javascript)";
@@ -89,6 +94,7 @@
     overflow-x: auto;
     border: solid black 1px;
     padding: 8px;
+    height: 60vh;
 }
 /*------------------------------------------------*/
 #editNav {
