@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 3.0.0</span></h1>
+        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 3.0.2</span></h1>
     </header>
     <nav style="display:none">
         <div>
@@ -49,11 +49,11 @@
             </div>
             <h2 class="box">クラス図の生成</h2>
             <div class="box class">
-                <textarea name="" id="classData" spellcheck="false" class="output"></textarea>
+                <textarea id="classData" spellcheck="false" class="output"></textarea>
                 <div id="classDiagramBox">
                     <div>
                         <div><div class="btn" onclick="copy(1)">クラス図のコードをコピー</div><div class="copied"></div></div>
-                        <div class="btn" id="dlcClassDiagram">クラス図をダウンロード(svg)</div>
+                        <div class="btn" id="dlClassDiagram">クラス図をダウンロード(svg)</div>
                     </div>
                     <div>
                         <div id="domBox" style="opacity: 0;position: absolute;"></div>
@@ -290,7 +290,7 @@ function readFile(file) {
             console.log(fileData);
             //console.log(fileData.getElementsByClassName("title")[0].innerHTML);
             try {
-                outputClass(file.name);
+                //outputClass(file.name);
                 addFiles(file.name, fileData.body.outerHTML);
                 //new DOMParser().parseFromString(getLocalData("javaDocFiles")["fileName"], "text/html");
             } catch (e) {
@@ -576,7 +576,7 @@ function copy(index) {
     let text = document.getElementsByClassName("output")[index];
     console.log(text.tagName);
     if(text.tagName == "INPUT" || text.tagName == "TEXTAREA") text = text.value;
-    else text = text.textContent;
+    else text = text.innerText;
     console.log(text);
     let area = document.createElement("textarea");
     area.textContent = text;
@@ -587,7 +587,9 @@ function copy(index) {
     let copied = document.getElementsByClassName("copied");
     copied[index].outerHTML = `<div class="copied">コピー完了！</div>`;
 }
-
+document.getElementById("classData").addEventListener("input", function(){
+    drawClassDiagram(document.getElementById("classData"));
+    },false);
 function outPutClassDiagram(){
     let inputData = files[ new Function('return this')().fileName].code;
     //console.log(inputData["classDec"]);
@@ -647,13 +649,10 @@ function outPutClassDiagram(){
     console.log(tmpClassData);
 
     classData.value = tmpClassData;
+    delete tmpClassData;
     drawClassDiagram(classData);
-    classData.addEventListener("input", function(){
-        console.log()
-        drawClassDiagram(classData);
-    },false);
 }
-outPutClassDiagram();
+//outPutClassDiagram();
 
 function drawClassDiagram(classData){
     console.log(classData)
@@ -706,24 +705,18 @@ function drawClassDiagram(classData){
     ctx.canvas.width = WIDTH;
     ctx.canvas.height = HEIGHT;
     //document.getElementById("classDiagram").parentNode.appendChild(canvas);
+    
     document.getElementById("classDiagram").src = url;
-    document.getElementById("dlcClassDiagram").addEventListener("click", function(){
-        let link = document.createElement('a')
-        link.href = window.URL.createObjectURL(svg);
-        link.download = new Function('return this')().fileName.split(".")[0] +'.svg';
-        link.click();
-        var canvas = document.createElement("canvas");
-        canvas.width = WIDTH;
-        canvas.height = HEIGHT;
-    }, false);
-    /*var image = document.createElement('image');
-    image.src = svg;
-    document.body.appendChild(img);*/
+    document.getElementById("dlClassDiagram").onclick = function(){
+        window.URL.revokeObjectURL(classDiagramURL);
+        classDiagramURL = window.URL.createObjectURL(svg);
+        classDiagramLink.href = classDiagramURL;
+        classDiagramLink.download = new Function('return this')().fileName.split(".")[0] +'.svg';
+        classDiagramLink.click();
+    };
 }
-function downloadClassDiagram () {
-    const fileName = fileName[0] +'.png';
-    window.URL.createObjectURL(blob)
-}
+let classDiagramLink = document.createElement('a');
+let classDiagramURL;
 
 
 
