@@ -297,6 +297,7 @@ function readFile(file) {
                 console.error(e);
                 output.innerHTML = "指定されたファイルはLaTeXに変換できませんでした...";
             }
+            console.log(document.getElementById(fileName.join(".")).click());
             fileName = fileName[0];
             resolve();
         }
@@ -332,6 +333,7 @@ function addFiles(fileName, data, code){
     },false);
     newElement.appendChild(newDeleteBtn);
     document.getElementById("files").prepend(newElement);
+    
     outPutClassDiagram();
 }
 const output = document.getElementsByClassName("output")[0];
