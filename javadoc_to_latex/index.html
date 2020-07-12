@@ -612,7 +612,7 @@ function outPutClassDiagram(){
         } 
         if(i == "enumConst" && inputData[i].length == 0) continue;
         
-        tmpClassData += "--\n";
+        if(i != "method") tmpClassData += "--\n";
         for(let j in inputData[i]) {
             for(let k in inputData[i][j]) inputData[i][j][k] = inputData[i][j][k].replace("\n", " ");
             
