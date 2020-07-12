@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 3.0.2</span></h1>
+        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 3.0.3</span></h1>
     </header>
     <nav style="display:none">
         <div>
@@ -186,6 +186,7 @@
         max-width: 40vw;
         min-width: 40vw;
         min-height:600px;
+        overflow-x: auto;
     }
     #classDiagramBox {
         width:40vw;
@@ -705,7 +706,7 @@ function drawClassDiagram(classData){
     ctx.canvas.width = WIDTH;
     ctx.canvas.height = HEIGHT;
     //document.getElementById("classDiagram").parentNode.appendChild(canvas);
-    
+    document.getElementById("classDiagram").xlinkns = url;
     document.getElementById("classDiagram").src = url;
     document.getElementById("dlClassDiagram").onclick = function(){
         window.URL.revokeObjectURL(classDiagramURL);
