@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: rgba(255,255,255,0);
+      }
+
+      .cls-2, .cls-3, .cls-5 {
+        fill: none;
+      }
+
+      .cls-2, .cls-3 {
+        stroke: #707070;
+      }
+
+      .cls-2 {
+        stroke-width: 4px;
+      }
+
+      .cls-3 {
+        stroke-linecap: round;
+        stroke-width: 6px;
+      }
+
+      .cls-4 {
+        stroke: none;
+      }
+    </style>
+  </defs>
+  <g id="グループ_6" data-name="グループ 6" transform="translate(-28 -115)">
+    <rect id="長方形_10" data-name="長方形 10" class="cls-1" width="100" height="100" transform="translate(28 115)"/>
+    <g id="グループ_2" data-name="グループ 2" transform="translate(-80 86)">
+      <g id="長方形_1" data-name="長方形 1" class="cls-2" transform="translate(128 42)">
+        <rect class="cls-4" width="60" height="74" rx="10"/>
+        <rect class="cls-5" x="2" y="2" width="56" height="70" rx="8"/>
+      </g>
+      <line id="線_1" data-name="線 1" class="cls-3" x2="35" transform="translate(140.5 62.5)"/>
+      <line id="線_2" data-name="線 2" class="cls-3" x2="35" transform="translate(140.5 79.5)"/>
+      <line id="線_3" data-name="線 3" class="cls-3" x2="35" transform="translate(140.5 96.5)"/>
+    </g>
+  </g>
+</svg>
