@@ -15,7 +15,7 @@ String.prototype.replacePlural = function(array){
 Document.prototype.getJavaCode = function(){
     let output = {declaration:[], enumConst:[], field:[], classField:[], constructor:[], method:[], abstract:[], classMethod:[]};
     output.declaration = [this.getElementsByTagName("pre")[0].textContent.deleteZeroSpace(), this.getElementsByClassName("title")[0].textContent.deleteZeroSpace()];
-    console.log(this.getElementsByTagName("pre")[0].textContent.parseJavaCode())
+    //console.log(this.getElementsByTagName("pre")[0].textContent.parseJavaCode())
     let details = this.getElementsByClassName("details")[0];
     let detail = details.getElementsByTagName("h3");
     for(let i = 0; i < detail.length; i ++){
@@ -24,7 +24,13 @@ Document.prototype.getJavaCode = function(){
         else if(type.match(/field.detail/)) type = "field";
         else if(type.match(/constructor.detail/)) type = "constructor";
         else type = "method";
-        let code = detail[i].parentNode.getElementsByTagName("pre");
+        
+        let code = detail[i].parentNode.getElementsByTagName("div");
+        for(let j = 0; j < code.length; j++){
+            let tmp = code[j].getElementsByTagName("pre");
+            for(let k = 0; k < tmp.length; k++) tmp[k].remove();
+        }
+        code = detail[i].parentNode.getElementsByTagName("pre");
         for(let j = 0; j < code.length; j++){
             if(type == "field" || type == "method") {
                 let tmp = code[j].textContent.parseJavaCode();
@@ -63,6 +69,7 @@ String.prototype.parseJavaCode = function(){
         if(tmp.match(/abstract/)) output.isAbstract = true;
         if(tmp.match(/final/)) output.isFinal = true;
     } else if(tmp.length == 1) {
+        output.type = tmp[0];
         tmp = tmp.join(" ");
         if(tmp.match(/public/)) output.accessModified = "public";
         else if(tmp.match(/private/)) output.accessModified = "private";
@@ -106,6 +113,37 @@ String.prototype.deleteZeroSpace = function(string = ""){
         } else output += string;
     }
     return output;
+}
+
+/** 文字列をHTML特殊文字に置き換える */
+String.prototype.entityify = function(){ 
+    var character = { 
+       '<' : '&lt;', 
+       '>' : '&gt;', 
+       '&' : '&amp;', 
+       '"' : '&quot;' 
+     }; 
+  return this.replace(/[<>&"]/g, function (c) {return character[c];});
+}
+
+/**文字列をLaTeXの特殊文字に置き換える */
+String.prototype.toLatex = function(){ 
+    var character = { 
+       '#' : '\\# ', 
+       '$' : '\\$ ', 
+       '%' : '\\% ', 
+       '&' : '\\& ',
+       '_' : '\\_ ', 
+       '\{' : '\\{ ', 
+       '\}' : '\\} ', 
+       '\\' : '\\verv|\\| ',
+       '\^' : '\\verv|\^| ', 
+       '~' : '\\verv|~| ', 
+       '\<' : '\\verv|\<| ', 
+       '\>' : '\\verv|\>| ',
+       '\|' : '\\verv+|+ '
+     }; 
+  return this.replace(/[#$%&_\{\}\\\^~\<\>\|]/g, function (c) {return character[c];});
 }
 
 /**

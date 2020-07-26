@@ -7,32 +7,77 @@
 </head>
 <body>
     <header>
-        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 2.0.0</span></h1>
+        <h1 class="box">JavaDoc to LaTeX 変換ツール <span style="font-size: 20px;">ver 3.0.4</span></h1>
     </header>
-    <div class="box">
-        <p>LaTeXのitemize形式で書き出したいクラスについての、JavaDocのhtmlファイルかJavaファイルを選択してください。</p>
-        <input type="file" name="" id="fileInput">
-    </div>
-    <pre id="output" class="box">
-
-    LaTeXのリストがここに書き出されます．
-    </pre>
-    <div class="box">
-        <div class="align-items-center">
-            <div class="copyBtn align-items-center" onclick="copy()">
-                <svg class="copy" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.699 55.699" style="enable-background:new 0 0 55.699 55.699;" xml:space="preserve"><g><path style="fill:#010002;" d="M51.51,18.001c-0.006-0.085-0.022-0.167-0.05-0.248c-0.012-0.034-0.02-0.067-0.035-0.1 c-0.049-0.106-0.109-0.206-0.194-0.291v-0.001l0,0c0,0-0.001-0.001-0.001-0.002L34.161,0.293c-0.086-0.087-0.188-0.148-0.295-0.197 c-0.027-0.013-0.057-0.02-0.086-0.03c-0.086-0.029-0.174-0.048-0.265-0.053C33.494,0.011,33.475,0,33.453,0H22.177 c-3.678,0-6.669,2.992-6.669,6.67v1.674h-4.663c-3.678,0-6.67,2.992-6.67,6.67V49.03c0,3.678,2.992,6.669,6.67,6.669h22.677 c3.677,0,6.669-2.991,6.669-6.669v-1.675h4.664c3.678,0,6.669-2.991,6.669-6.669V18.069C51.524,18.045,51.512,18.025,51.51,18.001z M34.454,3.414l13.655,13.655h-8.985c-2.575,0-4.67-2.095-4.67-4.67V3.414z M38.191,49.029c0,2.574-2.095,4.669-4.669,4.669H10.845 c-2.575,0-4.67-2.095-4.67-4.669V15.014c0-2.575,2.095-4.67,4.67-4.67h5.663h4.614v10.399c0,3.678,2.991,6.669,6.668,6.669h10.4 v18.942L38.191,49.029L38.191,49.029z M36.777,25.412h-8.986c-2.574,0-4.668-2.094-4.668-4.669v-8.985L36.777,25.412z M44.855,45.355h-4.664V26.412c0-0.023-0.012-0.044-0.014-0.067c-0.006-0.085-0.021-0.167-0.049-0.249 c-0.012-0.033-0.021-0.066-0.036-0.1c-0.048-0.105-0.109-0.205-0.194-0.29l0,0l0,0c0-0.001-0.001-0.002-0.001-0.002L22.829,8.637 c-0.087-0.086-0.188-0.147-0.295-0.196c-0.029-0.013-0.058-0.021-0.088-0.031c-0.086-0.03-0.172-0.048-0.263-0.053 c-0.021-0.002-0.04-0.013-0.062-0.013h-4.614V6.67c0-2.575,2.095-4.67,4.669-4.67h10.277v10.4c0,3.678,2.992,6.67,6.67,6.67h10.399 v21.616C49.524,43.26,47.429,45.355,44.855,45.355z"/></g></svg>
-                <p>コードをコピーする</p>
-            </div>
-            <div class="copied"></div>
+    <nav style="display:none">
+        <div>
+            ファイルの追加
         </div>
-
-        <p class="align-items-center right">
-            Created by
-            <a class="align-items-center" href="https://twitter.com/AO2324">
-                <svg viewBox="0 0 24 24" class="twitter"><g><path d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z"></path></g></svg>
-                @AO2324
-            </a>
-        </p>
+        <div>
+            <div>ファイル一覧</div>
+            <div id="files"></div>
+        </div>
+        <div>UML図を出力</div>
+    </nav>
+    <div>
+        <div class="box">
+            <h2>ファイルの選択</h2>
+            <p>LaTeXのitemize形式で書き出したいクラスについての、JavaDocのhtmlファイルかJavaファイルを選択してください。</p>
+            <input type="file" name="" id="fileInput" multiple files accept=".java,.html,.htm">
+        </div>
+        <h2 class="box">LaTeX(itemize)の生成</h2>
+        <div>
+            <div class="box"><pre class="output">
+    
+            LaTeXのリストがここに書き出されます．
+            </pre></div>
+            <div class="box">
+                <div class="align-items-center">
+                    <div class="copyBtn align-items-center" onclick="copy(0)">
+                        <svg class="copy" version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg"
+                            xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 55.699 55.699"
+                            style="enable-background:new 0 0 55.699 55.699;" xml:space="preserve">
+                            <g>
+                                <path style="fill:#010002;"
+                                    d="M51.51,18.001c-0.006-0.085-0.022-0.167-0.05-0.248c-0.012-0.034-0.02-0.067-0.035-0.1 c-0.049-0.106-0.109-0.206-0.194-0.291v-0.001l0,0c0,0-0.001-0.001-0.001-0.002L34.161,0.293c-0.086-0.087-0.188-0.148-0.295-0.197 c-0.027-0.013-0.057-0.02-0.086-0.03c-0.086-0.029-0.174-0.048-0.265-0.053C33.494,0.011,33.475,0,33.453,0H22.177 c-3.678,0-6.669,2.992-6.669,6.67v1.674h-4.663c-3.678,0-6.67,2.992-6.67,6.67V49.03c0,3.678,2.992,6.669,6.67,6.669h22.677 c3.677,0,6.669-2.991,6.669-6.669v-1.675h4.664c3.678,0,6.669-2.991,6.669-6.669V18.069C51.524,18.045,51.512,18.025,51.51,18.001z M34.454,3.414l13.655,13.655h-8.985c-2.575,0-4.67-2.095-4.67-4.67V3.414z M38.191,49.029c0,2.574-2.095,4.669-4.669,4.669H10.845 c-2.575,0-4.67-2.095-4.67-4.669V15.014c0-2.575,2.095-4.67,4.67-4.67h5.663h4.614v10.399c0,3.678,2.991,6.669,6.668,6.669h10.4 v18.942L38.191,49.029L38.191,49.029z M36.777,25.412h-8.986c-2.574,0-4.668-2.094-4.668-4.669v-8.985L36.777,25.412z M44.855,45.355h-4.664V26.412c0-0.023-0.012-0.044-0.014-0.067c-0.006-0.085-0.021-0.167-0.049-0.249 c-0.012-0.033-0.021-0.066-0.036-0.1c-0.048-0.105-0.109-0.205-0.194-0.29l0,0l0,0c0-0.001-0.001-0.002-0.001-0.002L22.829,8.637 c-0.087-0.086-0.188-0.147-0.295-0.196c-0.029-0.013-0.058-0.021-0.088-0.031c-0.086-0.03-0.172-0.048-0.263-0.053 c-0.021-0.002-0.04-0.013-0.062-0.013h-4.614V6.67c0-2.575,2.095-4.67,4.669-4.67h10.277v10.4c0,3.678,2.992,6.67,6.67,6.67h10.399 v21.616C49.524,43.26,47.429,45.355,44.855,45.355z" />
+                            </g>
+                        </svg>
+                        <p>コードをコピーする</p>
+                    </div>
+                    <div class="copied"></div>
+                </div>
+            </div>
+            <h2 class="box">クラス図の生成</h2>
+            <div class="box class">
+                <textarea id="classData" spellcheck="false" class="output"></textarea>
+                <div id="classDiagramBox">
+                    <div>
+                        <div><div class="btn" onclick="copy(1)">クラス図のコードをコピー</div><div class="copied"></div></div>
+                        <div class="btn" id="dlClassDiagram">クラス図をダウンロード(svg)</div>
+                    </div>
+                    <div>
+                        <div id="domBox" style="opacity: 0;position: absolute;"></div>
+                        <img id="classDiagram"></img>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+        <footer>
+            <p class="align-items-center">
+                Created by
+                <a class="align-items-center" href="https://twitter.com/AO2324">
+                    <svg viewBox="0 0 24 24" class="twitter">
+                        <g>
+                            <path
+                                d="M23.643 4.937c-.835.37-1.732.62-2.675.733.962-.576 1.7-1.49 2.048-2.578-.9.534-1.897.922-2.958 1.13-.85-.904-2.06-1.47-3.4-1.47-2.572 0-4.658 2.086-4.658 4.66 0 .364.042.718.12 1.06-3.873-.195-7.304-2.05-9.602-4.868-.4.69-.63 1.49-.63 2.342 0 1.616.823 3.043 2.072 3.878-.764-.025-1.482-.234-2.11-.583v.06c0 2.257 1.605 4.14 3.737 4.568-.392.106-.803.162-1.227.162-.3 0-.593-.028-.877-.082.593 1.85 2.313 3.198 4.352 3.234-1.595 1.25-3.604 1.995-5.786 1.995-.376 0-.747-.022-1.112-.065 2.062 1.323 4.51 2.093 7.14 2.093 8.57 0 13.255-7.098 13.255-13.254 0-.2-.005-.402-.014-.602.91-.658 1.7-1.477 2.323-2.41z">
+                            </path>
+                        </g>
+                    </svg>
+                    @AO2324
+                </a>
+            </p>
+        </footer>
     </div>
 </body>
 <style>
@@ -48,21 +93,37 @@
     h1 {
         margin: 0;
     }
+    h2 {
+        margin-top: 60px;
+    }
     p {
         margin: 4px 0;
     }
+
+    #files > div{
+
+    }
+    #files > div > span{
+        display: none;
+        cursor: pointer;
+    }
+    #files > div:hover > span{
+        display: inline;
+    }
+
     .box {
         width: 90vw;
         position: relative;
         left: 50%;
         transform: translateX(-50%);
     }
-    #output {
+    .output {
         overflow: auto;
         color: white;
         background-color: rgb(47, 47, 47);
         padding: 10px;
         min-height: 300px;
+        max-height: 60vh;
         border: solid gray 4px;
         box-shadow: rgb(102, 102, 102) 2px 2px 3px;
     }
@@ -88,6 +149,7 @@
         height: 25px;
     }
     .copied {
+        position:absolute;
         margin-left: 15px;
         opacity: 0;
         animation: copied 0.5s ease-in 0s 1 alternate;
@@ -97,64 +159,195 @@
         60% {opacity: 1;}
         100% {opacity: 0;}
     }
-    .twitter {
-        height: 22px;
-        fill: rgba(29,161,242,1.00);
-    }
     .align-items-center {
         display: inline-flex;
         align-items :center;
         padding: 0 5px;
     }
-    .right {
-        float: right;
+
+
+    .btn {
+        font-size: 1.2vw;
+        border: solid black 1px;
+        border-radius: 5px;
+        box-shadow: rgba(102, 102, 102, 0.6) -1px 1px 3px;
+        padding: 1px 6px;
+        cursor: pointer;
+    }
+    .btn:hover {
+        transform: scale(1.05);
+        box-shadow: none;
+    }
+    .class {
+        display: flex;
+        justify-content:space-between;
+    }
+    #classData {
+        width: 40vw;
+        min-height:600px;
+        resize: none;
+        white-space: pre;
+        overflow-wrap: normal;
+        overflow-x: auto;
+    }
+    #classDiagramBox {
+        width:40vw;
+        margin: 0px 3vw;
+    }
+    #classDiagramBox > div {
+        height: 80px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+    #classDiagramBox > div > img {
+        height: inherit;
+    }
+    #classDiagramBox > div:last-child {
+        border: solid 1px black;
+        min-height: 5vw;
+        height: 500px;
+        box-shadow: rgba(102, 102, 102, 0.6) -1px 1px 3px;
+    }
+    #classDiagram {
+        max-width: 100%;
+        object-fit:contain;
+    }
+
+    footer {
+        border-top: solid 4px gray;
+        margin-top: 60px;
+        min-height: 50px;
+        background-color: rgb(47, 47, 47);
+        color: rgb(230, 230, 230);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    footer > p > a{
+        color: gray;
+    }
+    .twitter {
+        height: 22px;
+        fill: rgb(29, 128, 242);
+        fill: rgb(230, 230, 230);
     }
 </style>
 <script>
+//FileReaderの作成
+let reader = new FileReader();
 let fileName = "";
 let fileData = "";
 let datinnerTmp2 = "";
+
+let files = getLocalData("javaDocFiles");
+if(files == null) setLocalData("javaDocFiles", files = {});
+else {
+    for(let fileName in files) {
+        console.log(files[fileName])
+        addFiles(fileName, files[fileName].doc, files[fileName].code);
+    }
+}
+
+function getLocalData(key) {
+    if (!localStorage.getItem(key)) return null;
+    else return JSON.parse(localStorage.getItem(key));
+}
+// 保存
+function setLocalData(key, data) {
+    try{
+        localStorage.setItem(key, JSON.stringify(data));
+        return true;
+    }catch(e){
+        return false;
+    }
+}
 
 const pageFormat = document.getElementById("pageFormat");
 const fileInput = document.getElementById("fileInput");
 fileInput.addEventListener('change', fileReader, false);
 
-function fileReader(evt){
-    var file = evt.target.files;
+async function fileReader(evt){
+    let file = evt.target.files;
 
-    //FileReaderの作成
-    var reader = new FileReader();
     //テキスト形式で読み込む
-    reader.readAsText(file[0]);
-
-    //読込終了後の処理
-    reader.onload = function(ev){
-        //テキストエリアに表示する
-        //document.test.txt.value = reader.result;
-        fileData = reader.result;
-        fileName = file[0].name;
-        fileName = fileName.split(".");
-        console.log(fileName);
-        //console.log("fileName : "+ fileName + "\ncontent : \n" + fileData);
-        //formatChange();
-        if(fileName[fileName.length-1] == "java")javaToHtml();
-        fileData = new DOMParser().parseFromString(fileData, "text/html");
-        console.log(fileData);
-        //console.log(fileData.getElementsByClassName("title")[0].innerHTML);
-        try{
-            outputClass();
-        } catch(e) {
-            console.log(e);
-            output.innerHTML = "指定されたファイルはLaTeXに変換できませんでした...";
-        }
-    }
+    for (let count = 0; count < file.length; count++)
+        await readFile(file[count]);
 }
-const output = document.getElementById("output");
-function outputClass(){
+function readFile(file) {
+    return new Promise(function (resolve) {
+        reader.readAsText(file);
+
+        //読込終了後の処理
+        reader.onload = function (ev) {
+            //テキストエリアに表示する
+            //document.test.txt.value = reader.result;
+            fileData = reader.result;
+            fileName = file.name;
+            fileName = fileName.split(".");
+            //console.log(fileName);
+            //console.log("fileName : "+ fileName + "\ncontent : \n" + fileData);
+            //formatChange();
+            if (fileName[fileName.length - 1] == "java") javaToHtml();
+            fileData = new DOMParser().parseFromString(fileData, "text/html");
+            console.log(fileData);
+            //console.log(fileData.getElementsByClassName("title")[0].innerHTML);
+            try {
+                //outputClass(file.name);
+                addFiles(file.name, fileData.body.outerHTML);
+                //new DOMParser().parseFromString(getLocalData("javaDocFiles")["fileName"], "text/html");
+            } catch (e) {
+                console.error(e);
+                output.innerHTML = "指定されたファイルはLaTeXに変換できませんでした...";
+            }
+            console.log(document.getElementById(fileName.join(".")).click());
+            fileName = fileName[0];
+            resolve();
+        }
+    });
+}
+function addFiles(fileName, data, code){
+    try{
+        document.getElementById(fileName).remove();
+    }catch(e){}
+    new Function('return this')().fileName = fileName;
+    files[fileName] = {"doc":data, "code":code};
+    setLocalData("javaDocFiles", files);
+    let newElement = document.createElement("div");
+    newElement.className = "fileTab";
+    newElement.id = fileName;
+    newElement.textContent = fileName;
+    newElement.addEventListener("click",function(){
+        fileData = new DOMParser().parseFromString(getLocalData("javaDocFiles")[fileName].doc, "text/html");
+        console.log(fileData);
+        console.log(getLocalData("javaDocFiles")[fileName]["code"]);
+        try{
+            outputClass(fileName);
+        } catch (e){}
+        
+    },false);
+    let newDeleteBtn = document.createElement("span");
+    newDeleteBtn.className = "fileDeleteBtn";
+    newDeleteBtn.textContent = "×";
+    newDeleteBtn.addEventListener("click",function(){
+        newElement.remove();
+        delete files[fileName];
+        setLocalData("javaDocFiles", files);
+    },false);
+    newElement.appendChild(newDeleteBtn);
+    document.getElementById("files").prepend(newElement);
+    
+    outPutClassDiagram();
+}
+const output = document.getElementsByClassName("output")[0];
+function outputClass(fileName){
+    let code = {classDec:"", enumConst:[], field:[], constructor:[], method:[]};
+    code.classDec = fileData.getElementsByTagName("pre")[0].textContent;
+    console.log(!!code["classDec"].match(/abstract/));
     let tmp;
     let outputTex = `\\subsection*{`;
     tmp = fileData.getElementsByClassName("title")[0].innerHTML.split(" ");
-    outputTex += `${convertToTex(tmp[1])} ${convertToTex(tmp[0])}}\n`;
+    outputTex += `${convertToTex(tmp[1])} ${(!code.classDec.match(/abstract/))?"":"抽象"}${convertToTex(tmp[0])}}\n`;
     outputTex += `\\begin{itemize}\n`;
     let details = fileData.getElementsByClassName("details")[0];
     for(let i = 0; i < details.getElementsByTagName("h3").length; i++){
@@ -162,6 +355,11 @@ function outputClass(){
         outputTex += `  \\item ${convertToTex(details.getElementsByTagName("h3")[i].innerText.split("の")[0])}\n`;
         outputTex += `    \\begin{itemize}\n`;
         tmp = details.getElementsByTagName("h3")[i].parentNode.getElementsByTagName("ul");
+        let codeType = details.getElementsByTagName("h3")[i].parentNode.getElementsByTagName("a")[0].outerHTML;
+        if(codeType.match("enum")) codeType = "enumConst";
+        else if(codeType.match("field")) codeType = "field";
+        else if(codeType.match("constructor")) codeType = "constructor";
+        else if(codeType.match("method")) codeType = "method";
         for(let j = 0; j < tmp.length; j++){
             let innerTmp = tmp[j].getElementsByTagName("pre")[0];
             let innerTmp2 = innerTmp.getElementsByTagName("a");
@@ -172,7 +370,9 @@ function outputClass(){
                 }
             };
             //console.log(details.getElementsByTagName("h3")[i].parentNode.getElementsByTagName("a")[0]);
+            code[codeType].push(javaSplit(innerTmp.innerText, false));
             innerTmp = javaSplit(innerTmp.innerText);
+            //console.log(innerTmp);
             let flag = false;
             try {
                 flag = Boolean(details.getElementsByTagName("h3")[i].parentNode.getElementsByTagName("a")[0].outerHTML.match(/constructor/));
@@ -189,7 +389,10 @@ function outputClass(){
     outputTex += `\\end{itemize}`;
     output.innerText = outputTex;
 
-    function javaSplit(text){
+    console.log(code);
+    addFiles(fileName, fileData.body.outerHTML, code);
+
+    function javaSplit(text, conv = true){
         
         const spChar = [
             11, // 垂直タブ
@@ -233,7 +436,7 @@ function outputClass(){
         }
         for(let r in ret){
             if(ret[r][0] == " ") ret[r] = ret[r].slice(1);
-            ret[r] = convertToTex(ret[r]);
+            if(conv) ret[r] = convertToTex(ret[r]);
         }
         ret = ret.filter(v => v)
         return ret;
@@ -246,7 +449,7 @@ function outputClass(){
 
 function javaToHtml(){
     let ret = `<body>`;
-    console.log(fileData);
+    //console.log(fileData);
     fileData = fileData.replace(/\/\/(.+)\n/g,"").replace(/(?=\/\*)(?!.*\/\*\*)(.+)\*\//g,"").replace(/\n{2,}/g, "\n").replace(/ {2,}/g, " ");
     let tmpFileData = "";
     let flag1 = 0, flag2 = 0;
@@ -270,6 +473,7 @@ function javaToHtml(){
     }
     fileData = tmpFileData;
     fileData = fileData.filter(v => v);
+    let tmpClassName = fileName;
     for(let f in fileData){
         tmpFileData = fileData[f].replace("/**", "").replace(/\s{2,}/g, " ").replace(/\n/g, "").split("*/");
         if(tmpFileData.length == 2)fileData[f] = [null, tmpFileData[0], tmpFileData[1]];
@@ -282,64 +486,101 @@ function javaToHtml(){
                 if(tmpFileData[d] == "class" || tmpFileData[d] == "enum" || tmpFileData[d] == "interface" ){
                     fileData[f][0] = tmpFileData[d];
                     let tmpTitle = "";
+                    for(let pos = 0; pos < tmpFileData.length; pos++){
+                        if(tmpFileData[pos] == "implements" || tmpFileData[pos] == "extends") break;
+                        tmpClassName = tmpFileData[pos];
+                        console.log(tmpClassName);
+                    }
                     switch (tmpFileData[d]) {
                         case "enum":
-                                ret += `<h1 class="title">列挙型 ${fileName[0]}</h1>`;
+                                ret += `<h2 class="title">列挙型 ${tmpClassName}</h2>`;
                             break;
                         case "interface":
-                                ret += `<h1 class="title">インタフェース ${fileName[0]}</h1>`;
+                                ret += `<h2 class="title">インタフェース ${tmpClassName}</h2>`;
                             break;
                     
                         default:
-                                ret += `<h1 class="title">クラス ${fileName[0]}</h1>`;
+                                ret += `<h2 class="title">クラス ${tmpClassName}</h2>`;
                             break;
                     }
+                    ret += `<pre>${tmpFileData.join(' ')}</pre>`;
                     break;
-                } else if(tmpFileData[d].match(fileName[0]) && d == tmpFileData.length-1) {
+                } else if(tmpFileData[d].match(tmpClassName) && d == tmpFileData.length-1) {
                     fileData[f][0] = "constructor";
                     break
                 } else if(tmpFileData[d] == "=" || (!fileData[f][2].match(/\}/g) && !tmpFileData[tmpFileData.length-1].match(/\)/g) && tmpFileData[0] != ("package") && tmpFileData[0] != ("import"))){
-                    fileData[f][0] = "field";
-                    fileData[f][2] = fileData[f][2].split("=")[0];
+                    if(tmpFileData[tmpFileData.length-2] == undefined){
+                        fileData[f][2] = tmpClassName + fileData[f][2];
+                        fileData[f][0] = "enumConst";
+                    } else{
+                        fileData[f][0] = "field";
+                        fileData[f][2] = fileData[f][2].split("=")[0];
+                    }
                 } else if(fileData[f][2].match(/\}/g)) fileData[f][0]="none";
             }
-            if(fileData[f][0] == null && tmpFileData[0] != ("package") && tmpFileData[0] != ("import")) fileData[f][0] = "method";
+            console.log(tmpClassName)
+            if(fileData[f][0] == null && tmpFileData[0] != ("package") && tmpFileData[0] != ("import")){
+                let tmpEnumConst = fileData[f][2].replace(","," ").replace(","," ").split(" ").filter(v => v);
+                console.log(tmpEnumConst);
+                fileData[f][0] = "none";
+                for(let pos = 0; pos < tmpEnumConst.length; pos++)if(!(tmpEnumConst[pos].match(/\(/g) && tmpEnumConst[pos].match(/\)/g))){
+                    fileData[f][0] = "method";
+                    break;
+                }
+                if(fileData[f][0] == "none"){
+                    for(let pos = 0; pos < tmpEnumConst.length; pos++){
+                        fileData.push(["enumConst", "", tmpClassName + " "+tmpEnumConst[pos]]);
+                    }
+                    
+                }
+                
+            }
         }
-        //console.log(fileData[f]);
+        console.log(fileData[f]);
         //console.log(tmpFileData);
     }
     //console.log(fileData.length)
-        ret += `<div class="details"><ul class="blockList"><li class="blockList">`;
-    let javaDocDetail = [false,false,false];
+    ret += `<div class="details"><ul class="blockList"><li class="blockList">`;
+    let javaDocDetail = [false,false,false,false];
     let field = `<ul class="blockList"><li class="blockList"><a name="field.detail"></a><h3>フィールドの詳細</h3>`;
     let constructor = `<ul class="blockList"><li class="blockList"><a name="constructor.detail"></a><h3>コンストラクタの詳細</h3>`;
     let method = `<ul class="blockList"><li class="blockList"><a name="method.detail"></a><h3>メソッドの詳細</h3>`;
+    let enumConst = `<ul class="blockList"><li class="blockList"><a name="enum.constant.detail"></a><h3>列挙型定数の詳細</h3>`;
     for(let f in fileData){
         if(fileData[f][0] == "field"){
             field += `<ul class="blockListLast"><li class="blockList"><pre>${fileData[f][2]}</pre><div class="block">${fileData[f][1]}</div></li></ul>`;
-            javaDocDetail[0] = true;
+            javaDocDetail[1] = true;
         } else if(fileData[f][0] == "constructor"){
             constructor += `<ul class="blockListLast"><li class="blockList"><pre>${fileData[f][2]}</pre><div class="block">${fileData[f][1]}</div></li></ul>`;
-            javaDocDetail[1] = true;
+            javaDocDetail[2] = true;
         } else if(fileData[f][0] == "method"){
             method += `<ul class="blockListLast"><li class="blockList"><pre>${fileData[f][2]}</pre><div class="block">${fileData[f][1]}</div></li></ul>`;
-            javaDocDetail[2] = true;
+            javaDocDetail[3] = true;
+        } else if(fileData[f][0] == "enumConst"){
+            enumConst += `<ul class="blockListLast"><li class="blockList"><pre>${fileData[f][2]}</pre><div class="block">${fileData[f][1]}</div></li></ul>`;
+            javaDocDetail[0] = true;
         }
         //console.log(fileData[f]);
     }
     field += `</li></ul>`;
     constructor += `</li></ul>`;
     method += `</li></ul>`;
-    if(javaDocDetail[0]) ret += field;
-    if(javaDocDetail[1]) ret += constructor;
-    if(javaDocDetail[2]) ret += method;
+    enumConst += `</li></ul>`;
+    if(javaDocDetail[0]) ret += enumConst;
+    if(javaDocDetail[1]) ret += field;
+    if(javaDocDetail[2]) ret += constructor;
+    if(javaDocDetail[3]) ret += method;
     ret += `</li></ul></div>`;
     //console.log(ret);
     fileData = ret;
 }
 
-function copy() {
-    let text = document.getElementById("output").innerText;
+function copy(index) {
+    let text = document.getElementsByClassName("output")[index];
+    console.log(text.tagName);
+    if(text.tagName == "INPUT" || text.tagName == "TEXTAREA") text = text.value;
+    else text = text.innerText;
+    console.log(text);
     let area = document.createElement("textarea");
     area.textContent = text;
     document.body.appendChild(area);
@@ -347,9 +588,139 @@ function copy() {
     document.execCommand("copy");
     document.body.removeChild(area);
     let copied = document.getElementsByClassName("copied");
-    for(let i in copied)
-        copied[i].outerHTML = `<div class="copied">コピー完了！</div>`;
+    copied[index].outerHTML = `<div class="copied">コピー完了！</div>`;
 }
+document.getElementById("classData").addEventListener("input", function(){
+    drawClassDiagram(document.getElementById("classData"));
+    },false);
+function outPutClassDiagram(){
+    let inputData = files[ new Function('return this')().fileName].code;
+    //console.log(inputData["classDec"]);
+    let classData = document.getElementById("classData");
+
+    let tmpClassData = "";
+    for(let i in inputData){
+        console.log(i)
+        if(i == "classDec") {
+            console.log(inputData[i] = inputData[i].replace("\n", " "))
+            if(inputData[i][1].match("abstract") || inputData[i][0].match("abstract")) tmpClassData += "/"+new Function('return this')().fileName.split(".")[0]+"/";
+            else if(inputData[i][1].match("enum") || inputData[i][0].match("enum")) tmpClassData += "<<enumeration>>\n"+new Function('return this')().fileName.split(".")[0];
+            else if(inputData[i][1].match("interface") || inputData[i][0].match("interface")) tmpClassData += "<<interface>>\n"+new Function('return this')().fileName.split(".")[0];
+            else tmpClassData += new Function('return this')().fileName.split(".")[0];
+            tmpClassData += "\n";
+            continue;
+        } 
+        if(i == "enumConst" && inputData[i].length == 0) continue;
+        
+        if(i != "method") tmpClassData += "--\n";
+        for(let j in inputData[i]) {
+            for(let k in inputData[i][j]) inputData[i][j][k] = inputData[i][j][k].replace("\n", " ");
+            
+            switch (inputData[i][j][0]) {
+                case "public": tmpClassData += "+ "; break;
+                case "private": tmpClassData += "- "; break;
+                case "protected": tmpClassData += "# "; break;
+                default: tmpClassData += "~ "; break;
+            }
+            let flag = true;
+            try {
+                flag = !Boolean(i.match(/constructor/));
+            } catch(e) {}
+            if(i == "method" || i == "constructor"){
+            let tmpParam = inputData[i][j][inputData[i][j].length-1].substring(inputData[i][j][inputData[i][j].length-1].indexOf("(")+1);
+            tmpParam = tmpParam.substring(0, tmpParam.length-1);
+            tmpClassData += inputData[i][j][inputData[i][j].length-1].substring(0, inputData[i][j][inputData[i][j].length-1].indexOf("("));
+            tmpParam = tmpParam.replace(/,+/g, ",");
+            tmpParam = tmpParam.split(",").filter(v => v);
+            for(let t in tmpParam){
+                console.log(tmpParam[t])
+                tmpParam[t] = tmpParam[t].split(" ").filter(v => v);
+                console.log(tmpParam[t])
+                tmpParam[t].push(tmpParam[t][0]);
+                tmpParam[t].shift();
+                console.log(tmpParam[t])
+                tmpParam[t] = tmpParam[t].join(': ');
+                console.log(tmpParam[t])
+            }
+            tmpParam = tmpParam.join(", ");
+            tmpClassData += "("+tmpParam+")";
+            } else tmpClassData += inputData[i][j][inputData[i][j].length-1];
+            if(flag) tmpClassData += ": "+ inputData[i][j][inputData[i][j].length-2];
+            tmpClassData += "\n";
+        }
+    }
+    console.log(tmpClassData);
+
+    classData.value = tmpClassData;
+    delete tmpClassData;
+    drawClassDiagram(classData);
+}
+//outPutClassDiagram();
+
+function drawClassDiagram(classData){
+    console.log(classData)
+    classData = classData.value.split("\n");
+    console.log(classData);
+    let isFirstBlock = true;
+    let dom = `<div style="font-family:monospace; font-size: 20px;background-color: white;padding:10px"><div style="border: solid black 1.5px">`;
+        for(let count = 0; count < classData.length; count++){
+            let opt = "";
+            classData[count] = classData[count].replace("<<", "≪").replace(">>", "≫").replace("<", "＜").replace(">", "＞").replace(/\s/g, "&#160;").replace(/\n/g, "&#160;");
+            console.log(classData[count]);
+            if(isFirstBlock) opt += "text-align: center;";
+            if(classData[count][0] == "_" && classData[count][classData[count].length-1] == "_") {classData[count] = classData[count].substring(1, classData[count].length-1); opt += "text-decoration: underline;"}
+            if(classData[count][0] == "/" && classData[count][classData[count].length-1] == "/") {classData[count] = classData[count].substring(1, classData[count].length-1); opt += "font-style: oblique;"}
+            if(classData[count][0] == "_" && classData[count][classData[count].length-1] == "_") {classData[count] = classData[count].substring(1, classData[count].length-1); opt += "text-decoration: underline;"}
+            if(classData[count] == "--") {dom += `<div style="width:100%;border-bottom: solid black 1.5px; margin-bottom: 5px;"></div>`; isFirstBlock = false;}
+            else dom += `<div style="${opt} padding: 3px 8px;">${classData[count]}</div>`;
+        }
+        dom += `</div></div>`;
+
+    let domBox = document.getElementById("domBox");
+        domBox.innerHTML = dom;
+    let WIDTH = domBox.clientWidth;
+    let HEIGHT = domBox.clientHeight;
+    document.getElementById("classData").style.height = (HEIGHT+50) +"px";
+    domBox.innerHTML = "";
+    let FONT_SIZE = 20;
+    let canvas = document.createElement("canvas");
+    let ctx = canvas.getContext("2d");
+    let data =
+        "<svg xmlns='http://www.w3.org/2000/svg' width='" + WIDTH + "px' height='" + HEIGHT + "px'>" +
+        "<foreignObject width='100%' height='100%'>" +
+        "<div xmlns='http://www.w3.org/1999/xhtml' style='font-size: " + FONT_SIZE + "px; font-family:monospace;'>" +
+        dom +
+        "</div>" +
+        "</foreignObject>" +
+        "</svg>";
+    let DOMURL = self.URL || self.webkitURL || self;
+    let img = new Image();
+    let svg = new Blob([data], { type: "image/svg+xml;charset=utf-8" });
+    console.log(svg);
+    let url = DOMURL.createObjectURL(svg);
+    console.log(url);
+    img.addEventListener("load", function () {
+        DOMURL.revokeObjectURL(url);
+
+        ctx.drawImage(img, 0, 0);
+    }, false);
+    img.src = url;
+    ctx.canvas.width = WIDTH;
+    ctx.canvas.height = HEIGHT;
+    //document.getElementById("classDiagram").parentNode.appendChild(canvas);
+    document.getElementById("classDiagram").xlinkns = url;
+    document.getElementById("classDiagram").src = url;
+    document.getElementById("dlClassDiagram").onclick = function(){
+        window.URL.revokeObjectURL(classDiagramURL);
+        classDiagramURL = window.URL.createObjectURL(svg);
+        classDiagramLink.href = classDiagramURL;
+        classDiagramLink.download = new Function('return this')().fileName.split(".")[0] +'.svg';
+        classDiagramLink.click();
+    };
+}
+let classDiagramLink = document.createElement('a');
+let classDiagramURL;
+
 
 
 </script>

@@ -4,7 +4,7 @@
  * @param {String} file Javaファイル
  */
 function java_to_doc(file){
-    let fileData = file.replacePlural([[/\/\/(.+)\n/g,""], [/(?=\/\*)(?!.*\/\*\*)(.+)\*\//g,""], [/\n{2,}/g, "\n"], [/ {2,}/g, " "]]);
+    let fileData = file.deleteZeroSpace(" ").replacePlural([[/\/\/(.+)\n/g,""], [/(?=\/\*)(?!.*\/\*\*)(.+)\*\//g,""], [/\n{2,}/g, "\n"], [/ {2,}/g, " "]]);
 
     let data = {declaration:null,enumConst:[], field:[],constructor:[], method:[]};
     let cd = 0;

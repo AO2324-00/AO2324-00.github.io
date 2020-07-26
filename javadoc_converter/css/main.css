@@ -4,7 +4,7 @@
 
 .scroll::-webkit-scrollbar {
     width: 6px;
-    height: 6px;
+    height: 8px;
 }
 .scroll::-webkit-scrollbar-track{
     background-color:rgb(44, 44, 44);
@@ -151,6 +151,16 @@ div#right {
 div#right > div:first-child {
     background-color: rgb(60, 60, 60);
 }
+div#right > div:first-child > img {
+    float: right;
+    height: 1.5em;
+    margin: 0.1em;
+    margin-right: 5px;
+    cursor: pointer;
+}
+div#right > div:first-child > img:hover {
+    background-color: rgb(214, 214, 214);
+}
 div#right > div:first-child > input {
     display: none;
 }
@@ -188,9 +198,8 @@ div#right > div:first-child > input:checked+label {
 #fileList {
     overflow-x: hidden;
     width: 100%;
-}
-#fileList > div:first-child {
-    background-color: rgb(49, 49, 49);
+    min-height: 100px;
+    max-height: 70vh;
 }
 #fileList > div {
     padding: 2px;
@@ -273,10 +282,11 @@ div#right > div:first-child > input:checked+label {
     background-color: rgb(60, 60, 60);
 }
 #classDiagram > div:first-child {
+    transform: scale(0.9);
     height: 5%;
     width:100%;
     text-align: center;
-    font-size: 130%;
+    font-size: 2.5vh;
 }
 #classDiagramBox {
     width:39vw;
@@ -333,13 +343,10 @@ div#right > div:first-child > input:checked+label {
 #classDiagramBox > div:last-child {
     width: calc(90% + 2vw - 2vmin);
     height: 100%;
-    display:flex;
-    align-items: center;
-    justify-content: center;
 }
 #classDisplay {
-    width: 95%;
-    height: 95%;
+    width: 100%;
+    height: 60vh;
     display:flex;
     align-items: center;
     justify-content: center;
@@ -347,10 +354,12 @@ div#right > div:first-child > input:checked+label {
 #classDiagramImg {
     height: inherit;
     width: inherit;
-    max-height: 100%;
+    max-width: 95%;
+    max-height: 95%;
     object-fit:contain;
 }
 #classData {
+    width: calc(90% + 2vw - 2vmin);
     cursor: default;
     float:right;
     resize: none;
@@ -367,6 +376,7 @@ div#right > div:first-child > input:checked+label {
     font-size: 2.5vmin;
     display: none;
     border-left: solid 1.5px rgb(77, 77, 77);
+    font-family: Arial;
 }
 #classData:focus {
     outline: none;
@@ -378,13 +388,15 @@ div#right > div:first-child > input:checked+label {
     left: 50%;
     transform: translateX(-50%);
     width: calc(100% - 10px);
-    height: calc(100vh - 4vmin - 26px - 30px);
+    height: calc(100vh - 4vmin - 70px);
+    margin-top: 5.5px;
     display:flex;
     align-items: center;
     flex-direction: column;
     justify-content: center;
 }
 #listBox > .code {
+    font-family: sans-serif;
     margin: 0px;
     width: 98%;
     height: 98%;

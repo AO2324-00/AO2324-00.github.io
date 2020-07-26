@@ -5,12 +5,32 @@ function navClicked(){
     checkbox.checked = !checkbox.checked;
 }
 
+/**
+ * 読み込み済みのファイルを削除する
+ */
+function deleteAllFiles(){
+    document.getElementById("fileList").innerHTML = "";
+    setLocalData("JavaDocConverter", files = {});
+}
+
+function selectedFileStyle(fileName){
+    let tmp = document.getElementsByClassName("fileTab");
+    for(let i = 0; i < tmp.length; i++){
+        tmp[i].style.backgroundColor = "rgba(0, 0, 0, 0)";
+    }
+    //console.log(tmp = document.getElementById(fileName));
+    if((tmp = document.getElementById(fileName)) != undefined) tmp.style.backgroundColor = "rgb(49, 49, 49)";
+}
+
 /**コードの表示切替 */
 function listSelect(s){
     const selecter = {
         list : document.getElementById("list"),
         latex : document.getElementById("latex"),
         java : document.getElementById("java")
+    }
+    document.getElementById("copyBtn").onclick = function(){
+        copyCode(s);
     }
     for(let type in selecter){
         if(s == type) selecter[type].style.display = "block";
@@ -30,7 +50,7 @@ function switchClassDisplay(s){
     }
     for(let type in display){
         if(s == type){
-            display[type].style.display = "block";
+            display[type].style.display = "flex";
             btn[type].style.pointerEvents = "none";
             btn[type].style.backgroundColor = "rgb(15, 15, 15)";
         } else {
@@ -43,6 +63,10 @@ function switchClassDisplay(s){
 
 /**クラス図のプロパティ―のコピー */
 function copyClassProp(){
-    console.log(document.getElementById("classData").value)
     copyToClipboard(document.getElementById("classData").value);
+}
+
+/**コードのコピー */
+function copyCode(type) {
+    copyToClipboard(document.getElementById(type).innerText);
 }

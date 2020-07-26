@@ -9,7 +9,7 @@ function doc_to_classproperty(doc){
         if(param == null) return "()";
         let sig = param[1].replace(/\s*,+\s*/g, ",").split(",").filter(v => v);
         for(let i in sig) {
-            sig[i] = sig[i].replace(" ", /\s/).replace(/&nbsp;/g, /\s/).deleteZeroSpace(/\s/).split(/\s/).filter(v => v);
+            sig[i] = sig[i].deleteZeroSpace(" ").replace(/\s/, " ").replace(/&nbsp;/g, " ").split(" ").filter(v => v);
             let tmp = sig[i][0];
             sig[i][0] = sig[i][1];
             sig[i][1] = tmp;
@@ -44,13 +44,13 @@ function doc_to_classproperty(doc){
             continue;
         }
         //console.log(code[type]);
-        if(type == "constructor" || type == "field" || (type == "enumConst" && code[type].length != 0)) output += "--\n";
+        if(type == "constructor" || type == "enumConst") output += "--\n";
         for(let i in cd){
             tmp = cd[i][0].parseJavaCode();
-            console.log(tmp)
+            //console.log(tmp)
 
-            if(tmp.isStatic) output += '_';
-            if(tmp.isAbstract) output += '/';
+            if(tmp.isStatic && type != "enumConst") output += '_';
+            if(tmp.isAbstract && type != "enumConst") output += '/';
             
             let AM;
             switch (tmp.accessModified) {
@@ -66,8 +66,9 @@ function doc_to_classproperty(doc){
 
             switch (type) {
                 case "enumConst":
-                    if(tmp.type == "") output += `${tmp.name.replace(/\s?\((.+)\)/g, "" )}: ${code["declaration"][0].parseJavaCode().name.replace(/\s?\((.+)\)/g, "").replace(/,/g, ", ")}`;
-                    else output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}: ${tmp.type.replace(/,/g, ", ")}`;
+                    /*if(tmp.type == "") output += `${tmp.name.replace(/\s?\((.+)\)/g, "" )}: ${code["declaration"][0].parseJavaCode().name.replace(/\s?\((.+)\)/g, "").replace(/,/g, ", ")}`;
+                    else output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}: ${tmp.type.replace(/,/g, ", ")}`;*/
+                    output += `${tmp.name.replace(/\s?\((.+)\)/g, "" )}`;
                     break;
                 case "field":
                 case "classField":
@@ -86,9 +87,9 @@ function doc_to_classproperty(doc){
                     break;
             }
             output += tmp.default;
-            if(tmp.isFinal) output += " {Read only}";
-            if(tmp.isAbstract) output += '/';
-            if(tmp.isStatic) output += '_';
+            if(tmp.isFinal && type != "enumConst") output += " {Read only}";
+            if(tmp.isAbstract && type != "enumConst") output += '/';
+            if(tmp.isStatic && type != "enumConst") output += '_';
             output += '\n';
         }
         

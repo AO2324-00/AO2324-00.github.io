@@ -10,7 +10,7 @@
 
 <body>
     <header class="accent_color">
-        <h1>JavaDoc 変換ツール <span style="font-size: 50%;">ver 4.0.0 α</span></h1>
+        <h1>JavaDoc 変換ツール <span style="font-size: 50%;">ver 4.1.0</span></h1>
     </header>
     <div id="body">
             <input type="checkbox" disabled id="navBtn" style="display: none;">
@@ -20,11 +20,11 @@
                     <span></span>
                     </div>
                     <div id="nav">
-                        <div>ファイル一覧<span>全て削除</span></div>
-                        <div id="fileList">
+                        <div>ファイル一覧<span onclick="deleteAllFiles()">全て削除</span></div>
+                        <div id="fileList" class="scroll">
                         </div>
                         <hr style="width: 100%;border: none;border-top: solid gray 0.1px;">
-                        <div id="umlBtn" class="accent_color">UML図を生成</div>
+                        <div id="umlBtn" class="accent_color" style="display: none;">UML図を生成</div>
                     
                         <p id="c">
                             Created by
@@ -74,7 +74,7 @@
                     </div>
                     <div>
                         <div id="classDisplay">
-                            <div id="domBox" style="opacity: 0;position: absolute;"></div>
+                            <div id="domBox" style="opacity: 0;position: absolute;white-space: nowrap;"></div>
                             <img id="classDiagramImg"></img>
                         </div>
                         <textarea id="classData" spellcheck="false" class="output scroll"></textarea>
@@ -85,6 +85,7 @@
         </div>
         <div id="right">
             <div>
+                <img id="copyBtn" src="./images/copy.svg" alt="copy" onclick="copyCode('list')">
                 <input id="tab_list" type="radio" name="listBox" onclick="listSelect('list')" checked><label for="tab_list">リスト</label>
                 <input id="tab_latex" type="radio" name="listBox" onclick="listSelect('latex')"><label for="tab_latex">LaTeXリスト</label>
                 <input id="tab_java" type="radio" name="listBox" onclick="listSelect('java')"><label for="tab_java">Javaファイル</label>
@@ -117,8 +118,10 @@
 <script type="text/javascript" src="./script/doc_to_classproperty.js"></script>
 <script type="text/javascript" src="./script/classproperty_to_classdiagram.js"></script>
 <script type="text/javascript" src="./script/doc_to_java.js"></script>
+<script type="text/javascript" src="./script/doc_to_list.js"></script>
+<script type="text/javascript" src="./script/doc_to_latex.js"></script>
+<script type="text/javascript" src="./script/file_manager.js"></script>
 <script type="text/javascript" src="./script/file_reader.js"></script>
 <script type="text/javascript" src="./script/file_drop.js"></script>
-<script type="text/javascript" src="./script/file_manager.js"></script>
 
 </html>
