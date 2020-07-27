@@ -49,5 +49,5 @@ function doc_to_latex(doc){
     }
     output += `\\end{itemize}\n`;
 
-    return output;
+    return output.replace(/\*\n/g, "\n");
 }

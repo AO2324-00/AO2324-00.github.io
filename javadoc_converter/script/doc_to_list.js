@@ -45,5 +45,5 @@ function doc_to_list(doc){
         }
     }
 
-    return output.split(/(?=．)(?!．\))(?!．\n)/).join(`．\n${indent+indent+indent}`).replace(/\s．/g, "").split(/(?=。)(?!。\))(?!。\n)/g).join(`。\n${indent+indent+indent}`).replace(/\s。/g, "");
+    return output.split(/(?=．)(?!．\))(?!．\n)/).join(`．\n${indent+indent+indent}`).replace(/\s．/g, "").split(/(?=。)(?!。\))(?!。\n)/g).join(`。\n${indent+indent+indent}`).replace(/\s。/g, "").replace(/\*\n/g, "\n");
 }
