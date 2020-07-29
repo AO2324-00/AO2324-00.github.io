@@ -133,15 +133,17 @@ String.prototype.toLatex = function(){
        '$' : '\\$ ', 
        '%' : '\\% ', 
        '&' : '\\& ',
+       '*' : '\\textasteriskcentered ',
+       '·' : '\\textperiodcentered ',
        '_' : '\\_ ', 
        '\{' : '\\{ ', 
        '\}' : '\\} ', 
-       '\\' : '\\verv|\\| ',
-       '\^' : '\\verv|\^| ', 
-       '~' : '\\verv|~| ', 
-       '\<' : '\\verv|\<| ', 
-       '\>' : '\\verv|\>| ',
-       '\|' : '\\verv+|+ '
+       '\\' : '\\textbackslash ',
+       '\^' : '\\^{} ', 
+       '~' : '\\textasciitilde ', 
+       '\<' : '\\textless ', 
+       '\>' : '\\textgreater ',
+       '\|' : '\\textbar '
      }; 
   return this.replace(/[#$%&_\{\}\\\^~\<\>\|]/g, function (c) {return character[c];});
 }

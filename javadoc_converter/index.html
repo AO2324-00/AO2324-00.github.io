@@ -7,13 +7,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/main.css">
     <title>JavaDoc変換ツール</title>
-    <meta name="keywords" content="ドキュメント,変換,一覧">
+    <meta name="keywords" content="コンバーター,ドキュメント,変換,一覧">
     <meta name="description" content="JavaDocからクラスの詳細を分かりやすくまとめたリストの生成やクラス図の生成、ドキュメントのHTMLファイルからJavaファイルのひな形を生成できるアプリケーション">
 </head>
 
 <body>
     <header class="accent_color">
-        <h1>JavaDoc 変換ツール <span style="font-size: 50%;">ver 4.1.2</span></h1>
+        <h1>JavaDoc 変換ツール <span style="font-size: 50%;">ver 4.1.3</span></h1>
     </header>
     <div id="body">
             <input type="checkbox" disabled id="navBtn" style="display: none;">
@@ -59,19 +59,19 @@
                 <div id="classDiagramBox">
                     <div class="menu">
                         <div id="classPreviewBtn" class="hoverArea" onclick="switchClassDisplay('diagram');classproperty_to_classdiagram('classDiagram')" style="pointer-events: none;background-color: rgb(15, 15, 15);">
-                            <img src="./images/preview.svg">
+                            <img src="./images/preview.svg" alt="プレビュー">
                             <div>プレビューを表示</div>
                         </div>
                         <div id="classPropertyBtn" class="hoverArea" onclick="switchClassDisplay('property')">
-                            <img src="./images/property.svg">
+                            <img src="./images/property.svg" alt="プロパティ">
                             <div>プロパティを表示</div>
                         </div>
                         <div id="classDownloadBtn" class="hoverArea">
-                            <img src="./images/download.svg">
+                            <img src="./images/download.svg" alt="ダウンロード">
                             <div>ダウンロード(svg)</div>
                         </div>
                         <div id="classCopyBtn" class="hoverArea" onclick="copyClassProp()">
-                            <img src="./images/copy.svg">
+                            <img src="./images/copy.svg" alt="コピー">
                             <div>プロパティをコピー</div>
                         </div>
                     </div>
@@ -88,7 +88,7 @@
         </div>
         <div id="right">
             <div>
-                <img id="copyBtn" src="./images/copy.svg" alt="copy" onclick="copyCode('list')">
+                <img id="copyBtn" src="./images/copy.svg" alt="コピー" onclick="copyCode('list')">
                 <input id="tab_list" type="radio" name="listBox" onclick="listSelect('list')" checked><label for="tab_list">リスト</label>
                 <input id="tab_latex" type="radio" name="listBox" onclick="listSelect('latex')"><label for="tab_latex">LaTeXリスト</label>
                 <input id="tab_java" type="radio" name="listBox" onclick="listSelect('java')"><label for="tab_java">Javaファイル</label>
