@@ -32,6 +32,7 @@ Document.prototype.getJavaCode = function(){
         }
         code = detail[i].parentNode.getElementsByTagName("pre");
         for(let j = 0; j < code.length; j++){
+            const tmpType = type;
             if(type == "field" || type == "method") {
                 let tmp = code[j].textContent.parseJavaCode();
                 if(tmp.isAbstract) type = "abstract";
@@ -40,6 +41,7 @@ Document.prototype.getJavaCode = function(){
             let explanation = code[j].parentNode.getElementsByClassName("block");
             if(explanation.length != 0) output[type].push( [code[j].textContent.deleteZeroSpace(), explanation[0].textContent]);
             else output[type].push( [code[j].textContent.deleteZeroSpace()]);
+            type = tmpType;
         }
     }
     return output;
@@ -129,22 +131,22 @@ String.prototype.entityify = function(){
 /**文字列をLaTeXの特殊文字に置き換える */
 String.prototype.toLatex = function(){ 
     var character = { 
-       '#' : '\\# ', 
-       '$' : '\\$ ', 
-       '%' : '\\% ', 
-       '&' : '\\& ',
-       '*' : '\\textasteriskcentered ',
-       '·' : '\\textperiodcentered ',
-       '_' : '\\_ ', 
-       '\{' : '\\{ ', 
-       '\}' : '\\} ', 
-       '\\' : '\\textbackslash ',
-       '\^' : '\\^{} ', 
-       '~' : '\\textasciitilde ', 
-       '\<' : '\\textless ', 
-       '\>' : '\\textgreater ',
-       '\|' : '\\textbar '
-     }; 
+        '#' : '\\# ', 
+        '$' : '\\$ ', 
+        '%' : '\\% ', 
+        '&' : '\\& ',
+        '*' : '\\textasteriskcentered ',
+        '·' : '\\textperiodcentered ',
+        '_' : '\\_ ', 
+        '\{' : '\\{ ', 
+        '\}' : '\\} ', 
+        '\\' : '\\textbackslash ',
+        '\^' : '\\^{} ', 
+        '~' : '\\textasciitilde ', 
+        '\<' : '\\textless ', 
+        '\>' : '\\textgreater ',
+        '\|' : '\\textbar '
+    }; 
   return this.replace(/[#$%&_\{\}\\\^~\<\>\|]/g, function (c) {return character[c];});
 }
 

@@ -214,6 +214,5 @@ function java_to_doc(file){
     createDetailElement(innerElement, "field");
     createDetailElement(innerElement, "constructor");
     createDetailElement(innerElement, "method");
-
     return doc;
 }
