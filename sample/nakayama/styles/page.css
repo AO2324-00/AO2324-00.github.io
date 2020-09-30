@@ -1,0 +1,426 @@
+
+.caption {
+    margin-top: 6vmax;
+    margin-bottom: 4vmax;
+    text-align: center;
+    font-size: 1.4em;
+    font-weight: bold;
+}
+.caption > span {
+    white-space: nowrap;
+    padding: 0 0.5em;
+}
+.message {
+    text-align: center;
+    font-size: 1.2em;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    min-width: 700px;
+    line-height: 2em;
+    text-shadow: 0 1px 2px rgba(128, 128, 128, 0.5);
+}
+.message > span {
+    white-space: nowrap;
+}
+
+.footer {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 97%;
+    background-color: rgb(46, 46, 46);
+    border: solid 3px gray;
+    border-bottom: none;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.1em;
+    line-height: 1.8em;
+    padding: 3vmin 0;
+    border-radius: 40px 40px 0 0;
+    margin-top: 6vmax;
+}
+.footer > p > a {
+    color: white;
+}
+.footer > p > a:hover {
+    color: rgb(240, 143, 64);
+}
+/* Top */
+#top {
+    display: none;
+}
+
+/* About ======================-*/
+
+#about > .top_img {
+    background-image: url("../images/1.jpg");
+    width: 100%;
+    height: 35vmax;
+    background-size: cover;
+    background-position: top;
+    color: white;
+}
+#about > .top_img::before {
+    content: '';
+    background-color: rgba(0, 0, 0, 0.26);
+    position: absolute;
+    height: 35vmax;
+    width: 100%;
+}
+#about > .top_img > h1 {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+#about > .top_img > h1 > span:last-child {
+    font-size: 1.6em;
+}
+#about > .top_img > div {
+    position: relative;
+    text-align: center;
+    top: 40%;
+    font-size: 1.2em;
+    color: #d7d7d7;
+    mix-blend-mode: screen;
+}
+#about > .top_img > div > br {
+    display: none;
+}
+#goods {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-width: 750px;
+}
+#goods > div {
+    border-radius: 10px;
+    margin: 4vmax 0;
+    width: 100%;
+    display: flex;
+}
+#goods > div:nth-child(2) {
+    flex-direction: row-reverse;
+}
+#goods > div > img {
+    width: 200px;
+    height: 250px;
+    object-fit: cover;
+    object-position: center top;
+    transform: scale(0.9);
+}
+#goods > div > div {
+    font-size: 1.1em;
+    width: calc(100% - 220px);
+}
+#goods > div > div > h3 {
+    font-size: 150%;
+    margin: 12px 0;
+}
+#goods > div > div > p {
+    margin: 0;
+}
+#goods > div > div > p > a {
+    display: inline-block;
+    margin: 10px 0;
+    color: rgb(165, 97, 42);
+}
+#goods > div > div > p > a:hover {
+    color: rgb(99, 56, 21);
+}
+#services {
+    display: flex;
+    justify-content: center;
+    margin: 4vmax 0;
+    margin-bottom: 6vmax;
+}
+#services > p {
+    display: block;
+    width: 300px;
+    margin: 25px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+    padding: 15px;
+    border-radius: 10px;
+}
+#services > p > span:first-child {
+    display: block;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-bottom: 5px;
+}
+
+/* Menu ======================-*/
+#menu > h3 {
+    font-size: 1.6em;
+    text-align: center;
+    margin: 3vmax;
+    margin-bottom: 0;
+}
+#menu > div.menu {
+    margin-top: 1vmax;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+#menu > div.menu > table {
+    min-width: 450px;
+    width: 45%;
+    border-collapse:collapse;
+}
+
+#menu > div.menu > table > thead > tr > th {
+    padding-top: 3vmin;
+    padding-bottom: 1vmin;
+    font-size: 1.2em;
+}
+#menu > div.menu > table > tbody > tr {
+    border-bottom: solid 1px rgb(24, 24, 24);
+    width: 100%;
+}
+#menu > div.menu > table > tbody > tr > * {
+    font-weight: normal;
+    font-family: メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGOTHIC";
+    text-align: left;
+    line-height: 1.8em;
+}
+#menu > div.menu > table > tbody > tr > * > span {
+    color: rgb(66, 66, 66);
+    white-space: nowrap;
+}
+#menu > div:nth-child(3) {
+    font-family: メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGOTHIC";
+    width: 100%;
+    text-align: center;
+    margin-top: 2vmax;
+}
+@media (max-width: 1400px) {
+    #menu > div.menu {
+        position: relative;
+        display: block;
+        left: 50%;
+        transform: translateX(-50%);
+        width: min-content;
+    }
+    
+    #menu > div.menu > table {
+        min-width: 450px;
+        width: 45%;
+        border-collapse:collapse;
+    }
+}
+
+/* Access ======================-*/
+#access > div {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80%;
+    min-width: 740px;
+}
+#map {
+    width: 100%;
+    height:50vh;
+    min-height: 500px;
+}
+address {
+    margin-top: 3vmax;
+    font-style: normal;
+    font-size: 1.1em;
+    font-family: メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGOTHIC";
+    height: min-content;
+    display: flex;
+    justify-content: center;
+}
+address > img {
+    border-radius: 20px;
+    height: 15em;
+}
+address > table {
+    margin: 0 1.5em;
+}
+address > table  > * > tr {
+    line-height: 1.8em;
+}
+address > table  > thead > tr > th > br {
+    display: none;
+}
+address > table  > tbody > tr > th {
+    text-align: left;
+    font-weight: normal;
+}
+
+@media (max-width: 750px) {
+    .message {
+        font-size: 1em;
+        width: 95%;
+        min-width: 0;
+    }
+    .message > br {
+        display: none;
+    }
+
+    .footer {
+        width: 100%;
+        border: none;
+        border-top: solid 3px gray;
+        display: block;
+        border-radius: 0;
+        font-size: 1em;
+        padding-bottom: 15vmin;
+    }
+    .footer > p {
+        text-align: center;
+        padding-bottom: 5vmin;
+    }
+    /* Top */
+    #top {
+        display: block;
+        position: absolute;
+        width: 100%;
+        opacity: 0;
+        animation: fadeIn-content 3.5s ease-in 3s 1 normal forwards;
+    }
+    #top > img {
+        position: absolute;
+        height: calc(70vh - 250px);
+        width: 100%;
+        object-fit: cover;
+    }
+    #top > div.cover {
+        content: '';
+        background-image: -moz-linear-gradient(top,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0), white);
+        background-image: -webkit-linear-gradient(top, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0),white);
+        background-image: linear-gradient(to bottom,rgba(0, 0, 0, 0),rgba(0, 0, 0, 0), white);
+        position: relative; left: 0px; top: 0px;
+        height: calc(70vh - 250px);
+        width: 100%;
+        background-blend-mode: darken;
+    }
+    #top > p {
+        text-align: center;
+        font-size: 1.4em;
+        line-height: 1.8em;
+        font-family: serif;
+        font-weight: bold;
+        text-shadow: 0 1px 2px rgb(185, 185, 185);
+        margin: 0.5em;
+    }
+    #top > p:last-child {
+        font-weight: normal;
+    }
+    /* About ==========================*/
+    #about > .top_img > h1 {
+        font-size: 6vmin;
+    }
+    #about > .top_img > h1 > span:last-child {
+        font-size: 1.2em;
+    }
+    #about > .top_img > div {
+        font-size: 1em;
+    }
+    #about > .top_img > div > br {
+        display: none;
+    }
+    #about > .top_img {
+        height: 40vmax;
+    }
+    #about > .top_img::before {
+        height: 40vmax;
+    }
+
+    #goods {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 95%;
+        min-width: 0;
+    }
+    #goods > div {
+        margin: 4vmax 0;
+        width: 100%;
+        display: block;
+    }
+    #goods > div > img {
+        width: 100%;
+        height: 90vw;
+        transform: scale(1);
+    }
+    #goods > div > div {
+        font-size: 1em;
+        width: 100%;
+    }
+
+    #services {
+        flex-direction: column;
+        margin: 0;
+    }
+    #services > p {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        margin: 1%;
+        width: 85%;
+    }
+
+    /* Menu =====================- */
+
+    #menu > div.menu {
+        display: block;
+        width: max-content;
+    }
+    
+    #menu > div.menu > table {
+        position: relative;
+        left: 50%;
+        transform: translateX(-50%);
+        min-width: 0;
+        width: 95%;
+    }
+    #menu > div.menu > table > thead > tr > th {
+        padding-top: 10vmin;
+    }
+    #menu > div.menu > table > tbody > tr > * {
+        max-width: 60vw;
+    }
+    #menu > div.menu > table > tbody > tr > * > span {
+        white-space: normal;
+    }
+
+    /* Access ================ */
+
+    #access > div {
+        width: 95%;
+        min-width: 0;
+        margin-bottom: 25vmin;
+    }
+    #map {
+        height:45vh;
+        min-height: 0;
+    }
+    address {
+        font-size: 1em;
+    }
+    address > img {
+        display: none;
+    }
+    address > table {
+        margin: 0;
+        border-collapse:collapse;
+    }
+    address > table  > thead > tr > th > br {
+        display: inline;
+    }
+    address > table  > tbody > tr {
+        border-bottom: solid 1px gray;
+    }
+    address > table  > tbody > tr > th {
+        min-width: 6em;
+    }
+}
