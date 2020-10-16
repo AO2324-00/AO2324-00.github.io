@@ -95,7 +95,10 @@ function java_to_doc(file){
             //console.log(tmpFileData[d])
             if(tmpFileData[d].match(/</)) inCount++;
             if(inCount == 0) tmpFileData[d] = tmpFileData[d].replace(/\s/g, "/space/");
-            if(inCount == 0 && tmpFileData[d].match(/extends/)) break;
+            if(inCount == 0 && tmpFileData[d].match(/extends/)){
+                tmp += tmpFileData[d].split(/(\s*extends\s*)/g).filter(v => v)[0];
+                break;
+            }
             else tmp += tmpFileData[d];
             if(tmpFileData[d].match(/>/)) inCount--;
         }

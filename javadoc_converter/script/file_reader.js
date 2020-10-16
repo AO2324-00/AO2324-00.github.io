@@ -33,10 +33,11 @@ let fileReader;
                 let fileData = reader.result;
                 files[file.name] = {data:fileData}
                 try{
-                setLocalData("JavaDocConverter", files);
-                addFile(file.name);
-                readData(file.name);
-                }catch{
+                    setLocalData("JavaDocConverter", files);
+                    addFile(file.name);
+                    readData(file.name);
+                }catch(e){
+                    //console.log(e)
                     delete files[file.name];
                     setLocalData("JavaDocConverter", files);
                     document.getElementById(file.name).remove();
