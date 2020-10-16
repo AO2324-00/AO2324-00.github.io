@@ -15,6 +15,7 @@ String.prototype.replacePlural = function(array){
 Document.prototype.getJavaCode = function(){
     let output = {declaration:[], enumConst:[], field:[], classField:[], constructor:[], method:[], abstract:[], classMethod:[]};
     output.declaration = [this.getElementsByTagName("pre")[0].textContent.deleteZeroSpace(), this.getElementsByClassName("title")[0].textContent.deleteZeroSpace()];
+
     //console.log(this.getElementsByTagName("pre")[0].textContent.parseJavaCode())
     let details = this.getElementsByClassName("details")[0];
     let detail = details.getElementsByTagName("h3");
@@ -52,13 +53,35 @@ Document.prototype.getJavaCode = function(){
  */
 String.prototype.parseJavaCode = function(){
     let output = {accessModified: "", type: "", name: "", default: "", isAbstract: false, isStatic: false, isFinal: false}
-    let tmp = this.split(/\s?=\s?/g).filter(v => v);
+    let tmp = this.replace(/\n/g, " ").split(/\s?=\s?/g).filter(v => v);
+    //console.log(tmp)
     if(tmp.length != 1) output.default = " = " + tmp[1];
-    tmp = tmp[0].replace(/\s*,\s*/g, ",").split(/\sextends/g).filter(v => v)[0].split(/\simplements/g).filter(v => v)[0].replace(/\s?\((.+)\)/g, "()").split(/\s/g).filter(v => v);
+    //tmp = tmp[0].replace(/\s*,\s*/g, ",").split(/\sextends/g).filter(v => v)[0].split(/\simplements/g).filter(v => v)[0].replace(/\s?\((.+)\)/g, "()").split(/\s/g).filter(v => v);
+    
+
+    tmp =  tmp[0].replace(/\s{2,}/g, " ").replace(/\s*,\s*/g, ",").split(/\s*=/g).filter(v => v)[0].split(/(\simplements\s)/g).filter(v => v)[0].replace(/\s?\((.+)\)/g, "()").split(/(<)|(>)/g).filter(v => v);
+    //console.log(tmp)
+    let insideTmp = "", inCount = 0;
+    for(let d in tmp){
+        //console.log(tmp[d])
+        if(tmp[d].match(/</)) inCount++;
+        if(inCount == 0) tmp[d] = tmp[d].replace(/\s/g, "/space/");
+        if(inCount == 0 && tmp[d].match(/extends/)){
+            insideTmp += tmp[d].split(/(\s*extends\s*)/g).filter(v => v)[0];
+            break;
+        }
+        else insideTmp += tmp[d];
+        if(tmp[d].match(/>/)) inCount--;
+    }
+    //console.log(tmp)
+    tmp = insideTmp.split("/space/").filter(v => v);
+    //console.log(tmp)
+
     let innerTmp = this.split(/=/g).filter(v => v)[0].match(/\s?\((.+)\)/g);
     if(innerTmp != null) output.name = tmp[tmp.length-1].replace("()", "") + innerTmp;
     else output.name = tmp[tmp.length-1];
     tmp.pop();
+    //console.log(tmp)
     if(tmp.length > 1) {
         output.type = tmp[tmp.length-1];
         tmp.pop();
@@ -78,7 +101,7 @@ String.prototype.parseJavaCode = function(){
         else if(tmp.match(/protected/)) output.accessModified = "protected";
         else output.accessModified = "package";
     }
-    
+    //console.log(output)
     return output;
 }
 

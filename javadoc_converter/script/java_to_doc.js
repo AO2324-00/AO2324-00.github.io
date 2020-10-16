@@ -61,7 +61,7 @@ function java_to_doc(file){
             tmpFileData[i] = tmp
         }
     }
-    
+
     /** 列挙型や変数の連続宣言を別々の宣言に変換する */
     for(let i in tmpFileData){
         fileData.splice( i, 1 );
@@ -87,15 +87,29 @@ function java_to_doc(file){
     /** データを区別してわける */
     let className = null, classType = null;
     for(let i in fileData) {
-        //console.log(fileData[i][0])
-        tmpFileData = fileData[i][0].replace(/\s{2,}/g, " ").replace(/\((.+)\)/g, "()").split(/\s*=/g).filter(v => v)[0].split(/(\sextends\s)|(\simplements\s)/g).filter(v => v)[0].split(/\s/g).filter(v => v);
+        //console.log(fileData[i][0].replace(/\s{2,}/g, " ").split(/\s*=/g).filter(v => v)[0].split(/(?<=<)|(?<=>)/g) )
+        tmpFileData = fileData[i][0].replace(/\s{2,}/g, " ").split(/\s*=/g).filter(v => v)[0].split(/(\simplements\s)/g).filter(v => v)[0].split(/(<)|(>)/g).filter(v => v);
+        //console.log(tmpFileData)
+        let tmp = "", inCount = 0;
+        for(let d in tmpFileData){
+            //console.log(tmpFileData[d])
+            if(tmpFileData[d].match(/</)) inCount++;
+            if(inCount == 0) tmpFileData[d] = tmpFileData[d].replace(/\s/g, "/space/");
+            if(inCount == 0 && tmpFileData[d].match(/extends/)) break;
+            else tmp += tmpFileData[d];
+            if(tmpFileData[d].match(/>/)) inCount--;
+        }
+        //console.log(tmp)
+        tmpFileData = tmp.split("/space/").filter(v => v);
+        //tmpFileData = fileData[i][0].replace(/\s{2,}/g, " ").replace(/\((.+)\)/g, "()").split(/\s*=/g).filter(v => v)[0].split(/(\sextends\s)|(\simplements\s)/g).filter(v => v)[0].split(/\s/g).filter(v => v);
+        //console.log(tmpFileData)
         if(tmpFileData[0].match(/(import)|(package)/)) continue;
         if(data.declaration == null && tmpFileData[tmpFileData.length-2].match(/(class)|(interface)|(enum)/)) {
             className = tmpFileData[tmpFileData.length-1];
             classType = tmpFileData[tmpFileData.length-2];
             data.declaration = fileData[i];
         }
-        else if(tmpFileData[tmpFileData.length-1].match(/\(\)/)){
+        else if(tmpFileData[tmpFileData.length-1].match(/\)/)){
             if(tmpFileData[tmpFileData.length-1].replace("()", "") == className) data.constructor.push(fileData[i]);
             //else if(!tmpFileData[tmpFileData.length-1].match(/[a-z]/)) data.enumConst.push(fileData[i]);
             else if(tmpFileData.length == 1) data.enumConst.push(fileData[i]);

@@ -37,6 +37,7 @@ function doc_to_classproperty(doc){
                     break;
             }
             if(tmp.isAbstract) output += '/';
+            //console.log(tmp)
             className = tmp.name.replace(/\s?\((.+)\)/g, "");
             output += `${className}`;
             if(tmp.isAbstract) output += '/';
