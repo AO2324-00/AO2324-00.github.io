@@ -73,15 +73,15 @@ function doc_to_classproperty(doc){
                     break;
                 case "field":
                 case "classField":
-                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}: ${tmp.type.replace(/,/g, ", ")}`;
+                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}: ${tmp.type.replace(/,/g, ", ").replace(/<</g, "< <").replace(/>>/g, "> >")}`;
                     break;
                 case "constructor":
-                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}`;
+                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ").replace(/<</g, "< <").replace(/>>/g, "> >")}`;
                     break;
                 case "method":
                 case "classMethod":
                 case "abstract":
-                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ")}: ${tmp.type.replace(/,/g, ", ")}`;
+                        output += `${AM} ${tmp.name.replace(/\s?\((.+)\)/g, switchSig(tmp.name.match(/\s?\((.+)\)/)) ).replace(/,/g, ", ").replace(/<</g, "< <").replace(/>>/g, "> >")}: ${tmp.type.replace(/,/g, ", ").replace(/<</g, "< <").replace(/>>/g, "> >")}`;
                     break;
             
                 default:
