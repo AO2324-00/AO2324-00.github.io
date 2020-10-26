@@ -19,7 +19,7 @@ function classproperty_to_classdiagram(fileName){
 
     let domBox = document.getElementById("domBox");
         domBox.innerHTML = dom.replace(/＜&#160;＜/g, "＜＜").replace(/＞&#160;＞/g, "＞＞");
-    let WIDTH = domBox.clientWidth*1.01;
+    let WIDTH = domBox.clientWidth*1.05;
     let HEIGHT = domBox.clientHeight;
     domBox.innerHTML = "";
     let FONT_SIZE = 20;

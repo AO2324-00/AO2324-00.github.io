@@ -103,9 +103,8 @@ function java_to_doc(file){
             if(tmpFileData[d].match(/>/)) inCount--;
         }
         //console.log(tmp)
-        tmpFileData = tmp.split("/space/").filter(v => v);
+        tmpFileData = tmp.replace(/\((.+)\)/g, "()").split(/\s*=/g).filter(v => v)[0].split("/space/").filter(v => v);
         //tmpFileData = fileData[i][0].replace(/\s{2,}/g, " ").replace(/\((.+)\)/g, "()").split(/\s*=/g).filter(v => v)[0].split(/(\sextends\s)|(\simplements\s)/g).filter(v => v)[0].split(/\s/g).filter(v => v);
-        //console.log(tmpFileData)
         if(tmpFileData[0].match(/(import)|(package)/)) continue;
         if(data.declaration == null && tmpFileData[tmpFileData.length-2].match(/(class)|(interface)|(enum)/)) {
             className = tmpFileData[tmpFileData.length-1];
