@@ -2,56 +2,56 @@
 (function(){
 
     const AI = class{
-        #cards = null;
-        #selectedCard = null;
-        #difficulty = null;
-        #state = false;
-        #strategy = {0:2,1:0,2:1}
-        #actLoop = null;
+        cards = null;
+        selectedCard = null;
+        difficulty = null;
+        state = false;
+        strategy = {0:2,1:0,2:1}
+        actLoop = null;
         constructor(cards, selectedCard, difficulty = 99){
-            this.#cards = cards;
-            this.#selectedCard = selectedCard;
-            this.#difficulty = difficulty/2 + 4;
+            this.cards = cards;
+            this.selectedCard = selectedCard;
+            this.difficulty = difficulty/2 + 4;
         }
 
         setDifficulty(difficulty){
-            this.#difficulty = difficulty + 4;
+            this.difficulty = difficulty + 4;
         }
 
         switchState(flug = null){
-            (flug == null)? this.#state = !this.#state : this.#state = flug;
-            clearTimeout(this.#actLoop);
+            (flug == null)? this.state = !this.state : this.state = flug;
+            clearTimeout(this.actLoop);
             this.action();
         }
 
         attack(randomNum){
-            console.log(this.#cards.style.pointerEvents == "none" || this.#cards.getElementsByClassName("card")[0].style.pointerEvents == "none")
-            if(this.#selectedCard.enemy != null || this.#cards.style.pointerEvents == "none" || this.#cards.getElementsByClassName("card")[0].style.pointerEvents == "none") return null;
-            console.log(this.#selectedCard)
-            if(!this.#selectedCard.player){
+            //console.log(this.cards.style.pointerEvents == "none" || this.cards.getElementsByClassName("card")[0].style.pointerEvents == "none")
+            if(this.selectedCard.enemy != null || this.cards.style.pointerEvents == "none" || this.cards.getElementsByClassName("card")[0].style.pointerEvents == "none") return null;
+            //console.log(this.selectedCard)
+            if(!this.selectedCard.player){
                 return Math.floor(Math.random()*3);
             }
             switch (randomNum) {
                 case (0):
-                    return (this.#selectedCard.player+1)-Math.floor((this.#selectedCard.player+1)/3);
+                    return (this.selectedCard.player+1)-Math.floor((this.selectedCard.player+1)/3);
                 case (1):
-                    return this.#selectedCard.player;
+                    return this.selectedCard.player;
                 default:
-                    return this.#strategy[this.#selectedCard.player];
+                    return this.strategy[this.selectedCard.player];
             }
         }
 
         action(){
             //console.log("aaaaaaa")
-            const randomNum = Math.floor(Math.random()*this.#difficulty);
+            const randomNum = Math.floor(Math.random()*this.difficulty);
             const tmp = this;
-            if(!this.#state) return;
-            this.#actLoop = setTimeout(function(){
+            if(!this.state) return;
+            this.actLoop = setTimeout(function(){
                 const result = tmp.attack(randomNum);
                 //console.log(result)
                 if(result != null){
-                    console.log(tmp.#cards)
-                    tmp.#cards.getElementsByClassName("card")[result].click();
+                    //console.log(tmp.cards)
+                    tmp.cards.getElementsByClassName("card")[result].click();
                 }
                 tmp.action();
             }, (randomNum*100 > 2000)?2000:randomNum*100);
@@ -60,78 +60,78 @@
     }
 
     const Character = class {
-        #helth = 100;
-        #attackable = true;
-        #coolTime = 1500;
-        #includeDamage = null;
-        #gotDamage = 0;
-        #stateChange = null
+        helth = 100;
+        attackable = true;
+        coolTime = 1500;
+        includeDamage = null;
+        gotDamage = 0;
+        stateChange = null
         constructor(stateChange = null) { /* コンストラクタ */
-            this.#stateChange = stateChange;
+            this.stateChange = stateChange;
         }
 
         getHelth(){
-            return this.#helth;
+            return this.helth;
         }
 
         resetState(){
-            this.#helth = 100;
-            this.#gotDamage = 0;
-            this.#attackable = true;
-            this.#stateChange();
+            this.helth = 100;
+            this.gotDamage = 0;
+            this.attackable = true;
+            this.stateChange();
         }
 
         hit(){
             const tmp = this;
-            this.#includeDamage = setTimeout(function(){
+            this.includeDamage = setTimeout(function(){
                 tmp.damage(1, true);
             }, 0);
         }
 
         damage(num, forever = false){
-            this.#gotDamage += num;
+            this.gotDamage += num;
             const tmp = this;
-            if((this.#helth -= num) < 0) this.#helth = 0;
-            else if(forever) this.#includeDamage = setTimeout(function(){
+            if((this.helth -= num) < 0) this.helth = 0;
+            else if(forever) this.includeDamage = setTimeout(function(){
                 tmp.damage(num, true);
             }, 50);
-            this.#stateChange();
+            this.stateChange();
         }
 
         recover(num){
-            this.#helth += num;
+            this.helth += num;
         }
 
         cover(result){
-            clearTimeout(this.#includeDamage);
+            clearTimeout(this.includeDamage);
             switch (result) {
                 case true:
-                    this.recover(this.#gotDamage/2);
+                    this.recover(this.gotDamage/2);
                     break;
                 case false:
-                    this.damage(this.#gotDamage/3+10);
+                    this.damage(this.gotDamage/3+10);
                     break;
             
                 default:
                     break;
             }
-            this.#stateChange();
-            this.#gotDamage = 0;
+            this.stateChange();
+            this.gotDamage = 0;
         }
 
         attack(){
-            if(!this.#attackable) return;
-            this.#attackable = false;
-            this.#stateChange();
+            if(!this.attackable) return;
+            this.attackable = false;
+            this.stateChange();
             const tmp = this;
             setTimeout(function(){
-                tmp.#attackable =true;
-                tmp.#stateChange();
-            }, tmp.#coolTime);
+                tmp.attackable =true;
+                tmp.stateChange();
+            }, tmp.coolTime);
         }
 
         isAttackable(){
-            return this.#attackable;
+            return this.attackable;
         }
     }
 
@@ -201,7 +201,7 @@
     function matchResult(flug){
         enemyAI.switchState(false);
         document.getElementById("result").style.display = "";
-        console.log("flug: "+flug);
+        //console.log("flug: "+flug);
         document.getElementById("displayBox").style.pointerEvents = "none";
         document.getElementById("resultText").textContent = (flug)?"You win!":"You lose...";
         document.getElementById("resultTime").textContent = msToTime(new Date() - new Date(startTime));
@@ -287,10 +287,10 @@
 
     const inputDifficulty = document.getElementById("difficulty");
     inputDifficulty.addEventListener("change", ()=>{
-        console.log(inputDifficulty.value > 100)
+        //console.log(inputDifficulty.value > 100)
         if(inputDifficulty.value > 100) inputDifficulty.value = 100;
         else if(inputDifficulty.value < 1) inputDifficulty.value = 1;
-        console.log("Difficulty: " + (100-Number(inputDifficulty.value)));
+        //console.log("Difficulty: " + (100-Number(inputDifficulty.value)));
         enemyAI.setDifficulty(100-Number(inputDifficulty.value));
     });
 
