@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles/main.css">
+    <title>Speed R.P.S.</title>
+</head>
+<body>
+    <div id="displayBox">
+        <div id="field">
+
+            <div id="enemy" class="character">
+                <div class="cards">
+                    <input type="radio" name="enemy" id="e0" class="inputOfCard"><label for="e0" class="card"><img src="images/0.png" width="100%"></label>
+                    <input type="radio" name="enemy" id="e1" class="inputOfCard"><label for="e1" class="card"><img src="images/1.png" width="100%"></label>
+                    <input type="radio" name="enemy" id="e2" class="inputOfCard"><label for="e2" class="card"><img src="images/2.png" width="100%"></label>
+                </div>
+                <div class="HP"><div id="enemyHelth" class="helth"></div></div>
+            </div>
+
+            <div id="player" class="character">
+                <div class="cards">
+                    <input type="radio" name="player" id="p0" class="inputOfCard"><label for="p0" class="card"><img src="images/0.png" width="100%"></label>
+                    <input type="radio" name="player" id="p1" class="inputOfCard"><label for="p1" class="card"><img src="images/1.png" width="100%"></label>
+                    <input type="radio" name="player" id="p2" class="inputOfCard"><label for="p2" class="card"><img src="images/2.png" width="100%"></label>
+                </div>
+                <div class="HP"><div id="playerHelth" class="helth"></div></div>
+            </div>
+
+            <div id="titleBox">
+                <h1>Speed R.P.S.</h1>
+            </div>
+        </div>
+    </div>
+    <div id="UI">
+        <div id="startCounter"></div>
+        <div id="title" class="UIBOX">
+            <h1 class="lText">Speed R.P.S.</h1>
+            <button class="playBtn">プレイ</button>
+            <p>Created by <a href="https://twitter.com/ao2324">AO2324</a></p>
+        </div>
+        <div id="result" class="UIBOX" style="display: none;">
+            <div>Speed R.P.S. Level <span id="currentLevel"></span></div>
+            <div id="resultText" class="lText"></div>
+            <div id="resultTime"></div>
+            <label>難易度変更 : <input type="number" value="1" id="difficulty"  min="1" max="100" placeholder="1~100"></label>
+            <button class="playBtn">もう一度遊ぶ</button>
+            <p>Created by <a href="https://twitter.com/ao2324">AO2324</a></p>
+        </div>
+    </div>
+    <script src="./scripts/main.js" type="text/javascript"></script>
+</body>
+</html>
