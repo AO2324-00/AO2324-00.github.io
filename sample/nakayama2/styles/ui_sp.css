@@ -1,0 +1,45 @@
+@media (max-width: 750px) {
+    header > nav > span#logo_space {
+        display: none;
+    }
+
+    nav {
+        width: 95%;
+        bottom: 3%;
+        font-size: 1em;
+    }
+
+    input#switch_scene:checked + * + header {
+        height: 95px;
+    }
+
+    header > .logo {
+        transition: width 1.5s ease-out, transform 1.5s;
+        width: 100%;
+    }
+
+    input#switch_scene:checked + * + header > .logo {
+        transform: translateY(-55%);
+        min-width: 0;
+        width: 180px;
+        transition: width 1.5s ease-out, transform 1s;
+    }
+
+    #contents {
+        margin-top: 95px;
+        min-height: calc(100vh - 95px);
+        height: calc(100vh - 95px);
+        scroll-snap-type: x proximity;
+        scroll-behavior: smooth;
+    }
+
+    footer {
+        opacity: 0;
+        font-size: 0.6em;
+    }
+
+    input#switch_scene:checked + * + * + * + footer {
+        transition: opacity 1s;
+        opacity: 0.5;
+    }
+}
