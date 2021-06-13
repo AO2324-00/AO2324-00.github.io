@@ -19,7 +19,7 @@ class Game {
             const range = (height - (e.clientY - ground.getBoundingClientRect().top))/height*10;
             Sound.hit('ground',range);
         }
-        ground.addEventListener('touchstart', (e)=>clickEvent_ground(e) );
+        //ground.addEventListener('touchstart', (e)=>clickEvent_ground(e) );
         ground.onmousedown = (e)=>clickEvent_ground(e);
 
         for(let box of document.getElementsByClassName("targetBox")) {
@@ -36,14 +36,14 @@ class Game {
                 bulletMark.style.left = `calc(${((e.clientX || e.touches[0].clientX) - box.getBoundingClientRect().left)/box.clientWidth*100}% + ${Math.random()*4 - 2}px)`;
                 box.appendChild(bulletMark);
             }
-            box.addEventListener('touchstart', (e)=>clickEvent_box(e) );
+            //box.addEventListener('touchstart', (e)=>clickEvent_box(e) );
             box.onmousedown = (e)=>clickEvent_box(e);
         }
         
         const clickEvent_body = (e)=>{
             this.shot(e);
         }
-        document.body.addEventListener('touchstart', (e)=>clickEvent_body(e) );
+        //document.body.addEventListener('touchstart', (e)=>clickEvent_body(e) );
         document.body.onmousedown = (e)=>clickEvent_body(e);
         start(this);
     }
@@ -116,7 +116,7 @@ class Game {
             this.onHit(e);
             newEnemy.classList.add("hide");
         }
-        newEnemy.addEventListener('touchstart', (e)=>clickEvent_target(e) );
+        //newEnemy.addEventListener('touchstart', (e)=>clickEvent_target(e) );
         newEnemy.onmousedown = (e)=>clickEvent_target(e);
 
         return newEnemy;
