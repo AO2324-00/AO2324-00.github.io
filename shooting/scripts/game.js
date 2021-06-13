@@ -124,7 +124,6 @@ class Game {
 
     deleteAllEnemy() {
         for(let enemy of this._enemy_list) enemy.remove();
-        console.log(this._enemy_list)
         this._enemy_list = [];
     }
 }
