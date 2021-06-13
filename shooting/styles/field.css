@@ -1,0 +1,104 @@
+body {
+    cursor: url(../images/reticle.png) 16 16, crosshair;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background-color: lightskyblue;
+    background: -moz-linear-gradient(top, rgb(112, 191, 255), lightskyblue);
+    background: -webkit-linear-gradient(top, rgb(112, 191, 255), lightskyblue);
+    background: linear-gradient(to bottom, rgb(112, 191, 255), lightskyblue);
+}
+
+#ground {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 45%;
+    background-color: rgb(187, 160, 124);
+    background: -moz-linear-gradient(top, rgb(187, 141, 120), rgb(187, 160, 124));
+    background: -webkit-linear-gradient(top, rgb(187, 141, 120), rgb(187, 160, 124));
+    background: linear-gradient(to bottom, rgb(187, 141, 120), rgb(187, 160, 124));
+}
+
+main {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    width: 100vmin;
+    height: 60vmin;
+    user-select: none;
+}
+
+.targetBox {
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    pointer-events: none;
+}
+
+.targetBox::before {
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    background-color: gray;
+    background: -moz-linear-gradient(top, gray, rgb(133, 132, 132));
+    background: -webkit-linear-gradient(top, gray, rgb(133, 132, 132));
+    background: linear-gradient(to bottom, gray, rgb(133, 132, 132));
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    z-index: -1;
+    pointer-events: all;
+}
+
+#targetOnTop {
+    height: calc(90% / 3);
+    width: 90%;
+    z-index: 0;
+}
+#targetOnTop::before {
+    height: 15%;
+}
+
+#targetOnMiddle {
+    height: calc(95% / 3);
+    width: 95%;
+    z-index: 1;
+}
+
+#targetOnBottom {
+    height: calc(100% / 3);
+    width: 100%;
+    z-index: 2;
+}
+
+#targetOnBottom::after {
+    position: absolute;
+    bottom: 0;
+    content: '';
+    width: 100%;
+    height: 10%;
+    background-color: gray;
+    border: solid 2px rgba(0, 0, 0, 0.1);
+    border-bottom: none;
+    z-index: 1;
+    transform: translateY(100%) scale(1.05);
+    pointer-events: all;
+}
+
+.bulletMark {
+    position: absolute;
+    width: 0.2%;
+    padding-bottom : 0.2% ;
+    box-shadow: 0 0 0.1vmin rgb(60, 60, 60);
+    background-color: rgb(60, 60, 60);
+    opacity: 0.5;
+    border-radius: 50%;
+    transform: translateY(-50%) translateX(-50%);
+    z-index: 2;
+}
