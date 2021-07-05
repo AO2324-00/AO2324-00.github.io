@@ -11,23 +11,46 @@ function java_to_doc(file){
     let inside = 0;
     let tmpFileData = "";
 
+    let serial = -1;
+    let tmpDeclaration = "";
+
     /** {} で囲まれた内側の文字列を削除する */
     for(let i = 0; i < fileData.length; i++){
         if(fileData[i] == "/" && fileData[i+1] == "*" && fileData[i+2] == "*") ++inside;
         if(inside == 0 && cd == 0 && fileData[i] == "{") tmpFileData += "{begin";
         if(inside < 1 && fileData[i] == "{") ++cd;
         if(cd <= 1) tmpFileData += fileData[i];
-        if(inside == 0 && fileData[i] == ";" && cd <= 1) tmpFileData += "end;";
+
+        if(inside == 0 && fileData[i] == "," && cd <= 1) {
+            tmpFileData += ";end;";
+            const tmp = fileData.slice(serial, i).split(" ").filter(v=>v);
+            tmpDeclaration = tmp.slice(0, tmp.length-1).join("  ");
+            //console.log(tmpDeclaration);
+            if(tmpDeclaration.length) tmpFileData += tmpDeclaration;
+        }
+
+        if(inside == 0 && fileData[i] == ";" && cd <= 1) {
+            tmpFileData += "end;";
+            tmpDeclaration = "";
+            serial = i+1;
+        }
         if(inside < 1 && cd != 0 && fileData[i] == "}") {
-            if(cd <= 2) tmpFileData += ";end;";
+            if(cd <= 2) {
+                tmpFileData += ";end;";
+            }
             --cd;
+            tmpDeclaration = "";
+            serial = i + 1;
         }
         //if(cd == 0 && fileData[i] == "}") tmpFileData += "end}";
         if(inside > 0 && fileData[i] == "/" && fileData[i-1] == "*"){
             tmpFileData += "partition/";
             --inside;
+            tmpDeclaration = "";
+            serial = i + 1;
         }
     }
+    //console.log(tmpFileData)
     fileData = tmpFileData.replacePlural([[/{begin{/g, ";end;"], [/}end}/g, ""], [/\/partition\/\s*/g, "/partition/"], [/\s*\/\*\*/g, ""], [/\n\s*\*/g,""], [/\n/g, ""]]).split(";end;").filter(v => v);
     tmpFileData = {};
     for(let i in fileData){
