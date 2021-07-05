@@ -26,12 +26,12 @@ function java_to_doc(file){
             const tmp = fileData.slice(serial, i).split(" ").filter(v=>v);
             tmpDeclaration = tmp.slice(0, tmp.length-1).join("  ");
             //console.log(tmpDeclaration);
-            if(tmpDeclaration.length) tmpFileData += tmpDeclaration;
+            tmpFileData += tmpDeclaration;
+            serial = i+1;
         }
 
         if(inside == 0 && fileData[i] == ";" && cd <= 1) {
             tmpFileData += "end;";
-            tmpDeclaration = "";
             serial = i+1;
         }
         if(inside < 1 && cd != 0 && fileData[i] == "}") {
@@ -39,14 +39,12 @@ function java_to_doc(file){
                 tmpFileData += ";end;";
             }
             --cd;
-            tmpDeclaration = "";
             serial = i + 1;
         }
         //if(cd == 0 && fileData[i] == "}") tmpFileData += "end}";
         if(inside > 0 && fileData[i] == "/" && fileData[i-1] == "*"){
             tmpFileData += "partition/";
             --inside;
-            tmpDeclaration = "";
             serial = i + 1;
         }
     }
