@@ -8,6 +8,7 @@ function java_to_doc(file){
 
     let data = {declaration:null,enumConst:[], field:[],constructor:[], method:[]};
     let cd = 0;
+    let _cd = 0;
     let inside = 0;
     let tmpFileData = "";
 
@@ -20,8 +21,9 @@ function java_to_doc(file){
         if(inside == 0 && cd == 0 && fileData[i] == "{") tmpFileData += "{begin";
         if(inside < 1 && fileData[i] == "{") ++cd;
         if(cd <= 1) tmpFileData += fileData[i];
+        if(fileData[i] == "<") ++_cd;
 
-        if(inside == 0 && fileData[i] == "," && cd <= 1) {
+        if(inside == 0 && fileData[i] == "," && cd <= 1 && _cd == 0) {
             tmpFileData += ";end;";
             const tmp = fileData.slice(serial, i).split(" ").filter(v=>v);
             tmpDeclaration = tmp.slice(0, tmp.length-1).join("  ");
@@ -34,6 +36,7 @@ function java_to_doc(file){
             tmpFileData += "end;";
             serial = i+1;
         }
+        if(fileData[i] == ">") --_cd;
         if(inside < 1 && cd != 0 && fileData[i] == "}") {
             if(cd <= 2) {
                 tmpFileData += ";end;";
