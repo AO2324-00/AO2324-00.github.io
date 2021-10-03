@@ -47,6 +47,7 @@ span.title {
 }
 span.text {
     display: inline-block;
+    white-space: nowrap;
 }
 span.bold {
     font-weight: bold;
