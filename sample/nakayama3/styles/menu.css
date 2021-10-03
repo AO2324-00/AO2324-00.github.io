@@ -1,0 +1,73 @@
+#Menu > div.menu {
+    margin-top: 1vmax;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+}
+
+#Menu > div.menu > table {
+    margin: 0 auto;
+    min-width: 450px;
+    width: 45%;
+    border-collapse:collapse;
+}
+
+#Menu > div.menu > table > thead > tr > th {
+    padding-top: 3vmin;
+    padding-bottom: 1vmin;
+    font-size: 1.2em;
+}
+#Menu > div.menu > table > tbody > tr {
+    border-bottom: solid 1px rgb(24, 24, 24);
+    width: 100%;
+}
+#Menu > div.menu > table > tbody > tr > * {
+    font-weight: normal;
+    font-family: メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGOTHIC";
+    text-align: left;
+    line-height: 1.8em;
+}
+#Menu > div.menu > table > tbody > tr > * > span {
+    color: rgb(66, 66, 66);
+    white-space: nowrap;
+}
+#Menu > div:nth-child(3) {
+    font-family: メイリオ, Meiryo, "ＭＳ Ｐゴシック", "MS PGOTHIC";
+    width: 100%;
+    text-align: center;
+    margin-top: 2vmax;
+}
+@media (max-width: 1400px) {
+    #Menu > div.menu {
+        position: relative;
+        display: block;
+        width: min-content;
+    }
+    
+    #Menu > div.menu > table {
+        min-width: 450px;
+        width: 45%;
+        border-collapse:collapse;
+    }
+}
+@media (max-width: 750px) {
+    #Menu > div.menu {
+        display: block;
+        width: max-content;
+    }
+    
+    #Menu > div.menu > table {
+        position: relative;
+        min-width: 0;
+        width: 95%;
+    }
+    #Menu > div.menu > table > thead > tr > th {
+        padding-top: 10vmin;
+    }
+    #Menu > div.menu > table > tbody > tr > * {
+        max-width: 60vw;
+    }
+    #Menu > div.menu > table > tbody > tr > * > span {
+        white-space: normal;
+    }
+}

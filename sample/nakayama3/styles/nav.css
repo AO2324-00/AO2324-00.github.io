@@ -1,0 +1,34 @@
+header {
+    height: fit-content;
+    background-color: white;
+    z-index: 1;
+    width: 100vw;
+    padding: 10px 0;
+    font-family: 'Palatino Linotype', 'ＭＳ Ｐ明朝', 'ＭＳ 明朝';
+}
+nav {
+    display: flex;
+    justify-content: space-around;
+    margin: auto;
+}
+nav > a {
+    text-decoration: none;
+    color: rgb(20, 20, 20);
+    font-size: 1.2em;
+}
+@media (min-width: 750px) {
+    nav {
+        min-width: 750px;
+        width: 60vw;
+        max-width: 1000px;
+    }
+}
+@media (max-width: 749.9px) {
+    nav {
+        /* min-width: 100vw;
+        width: 100vw; */
+    }
+    nav > span {
+        display: none;
+    }
+}

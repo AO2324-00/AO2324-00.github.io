@@ -1,0 +1,160 @@
+html, body {
+    color: rgb(20, 20, 20);
+    height: 100%;
+    margin: 0;
+    line-height : 1.75;
+    letter-spacing : 0.05em;
+    font-family: "Montserrat","游ゴシック",YuGothic,"ヒラギノ角ゴ ProN W3","Hiragino Kaku Gothic ProN","メイリオ",Meiryo,sans-serif;
+}
+body {
+    display: flex;
+    flex-direction: column;
+}
+main {
+    flex: auto;
+    display: flex;
+    overflow-x: scroll;
+    scroll-snap-type: x mandatory;
+    scroll-snap-type: x proximity;
+    scroll-behavior: smooth;
+}
+section {
+    width: 100vw;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    scroll-snap-align: center;
+    overflow-y: auto;
+}
+section > * {
+    width: 1000px;
+    max-width: 90%;
+}
+h2 {
+    text-align: center;
+    margin-top: 80px;
+    margin-bottom: 20px;
+}
+p {
+    text-align: center;
+    line-height : 1.85;
+    letter-spacing : 0.05em;
+}
+span.title {
+    display: inline-block;
+}
+span.text {
+    display: inline-block;
+}
+span.bold {
+    font-weight: bold;
+}
+.recommend_card {
+    display: flex;
+    max-width: 1300px;
+    width: 95%;
+    margin: 16px 0;
+}
+.recommend_card > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    flex: 1;
+    min-height: 400px;
+    margin: 6px;
+    box-shadow: 0 5px 6px rgba(0, 0, 0, 0.08);
+    background-color: gray;
+}
+.recommend_card > div > input + label {
+    transition: height 0.3s, background-color 0.3s;
+    height: 100%;
+    position: relative;
+    cursor: pointer;
+}
+.recommend_card > div > input:checked + label {
+    height: 35%;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+.recommend_card > div > label > h3 {
+    position: absolute;
+    bottom: 0;
+    display: inline-block;
+    height: 3em;
+    width: 100%;
+    padding: 0 5px;
+    padding-top: 10px;
+    margin: 0;
+    line-height : 1.4;
+    background-color: white;
+}
+.recommend_card > div > input {
+    display: none;
+}
+.recommend_card > div > input + label + p {
+    text-align: left;
+    transition: height 0.3s, padding 0.3s;
+    padding: 0 5px;
+    overflow-y: hidden;
+    height: 0;
+    margin: 0;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+    background-color: white;
+}
+.recommend_card > div > input:checked + label + p {
+    height: 260px;
+    overflow-y: auto;
+}
+.recommend_card > div > p::-webkit-scrollbar {
+    display:none;
+}
+.recommend_card > div > p > a {
+    display: block;
+}
+.service_card {
+    display: flex;
+}
+.service_card > div {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    padding: 10px 15px;
+    margin: 15px 10px;
+}
+.service_card > div > * {
+    margin: 0;
+}
+.service_card > div > p {
+    text-align: left;
+    line-height : 1.6;
+}
+
+@media (min-width: 900px) {
+    section > * {
+        min-width: 900px;
+    }
+}
+@media (max-width: 899.9px) {
+    h2 {
+        margin-top: 30px;
+        margin-bottom: 10px;
+        font-size: 1rem;
+    }
+    section > * {
+        min-width: 90vw;
+        /* text-align: left; */
+    }
+    .recommend_card {
+        flex-direction: column;
+        width: 100%;
+    }
+    .recommend_card > div {
+        box-shadow: none;
+        margin: 0;
+        margin-bottom: 30px;
+    }
+    .service_card {
+        flex-direction: column;
+        max-width: 100%;
+    }
+}

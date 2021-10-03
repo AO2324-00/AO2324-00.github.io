@@ -1,0 +1,21 @@
+.footer {
+    position: relative;
+    margin-top: 100px;
+    flex: auto;
+    color: white;
+    background-color: rgb(37, 37, 37);
+    width: 100%;
+    max-width: 100%;
+}
+.footer > p {
+    margin-top: 60px;
+    margin-bottom: 100px;
+}
+.footer > .copy {
+    font-size: 0.8em;
+    width: 100%;
+    position: absolute;
+    bottom: 8px;
+    text-align: center;
+    opacity: 0.5;
+}
